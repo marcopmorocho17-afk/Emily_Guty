@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi amiga Emily</title>
+    <link rel="icon" href="guty.png">
+     <style>
+        :root {
+            --pink-soft: #ffdde1;
+            --pink-bright: #ffafbd;
+            --pink-dark: #ef7d8e;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            background-image: url('imag.png');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #7d5a5a;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* PANTALLA DE BLOQUEO SIMPLE */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffafbd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lock-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 300px;
+            width: 90%;
+            position: relative;
+            z-index: 10000; /* Asegura estar por encima de las estrellas */
+        }
+
+        .lock-card input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 2px solid var(--pink-soft);
+            border-radius: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* CONTENIDO OCULTO POR DEFECTO */
+        #main-content {
+            display: none;
+        }
+
+        header {
+            background-image: url('image.png');
+            background-position: center 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--white);
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: -30px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .traits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .trait {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid var(--pink-soft);
+            color: var(--pink-dark);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .trait:hover {
+            background: #ffecf0;
+            transform: translateY(-3px);
+        }
+
+        .trait.revealed {
+            background: linear-gradient(135deg, #fff0f2, #ffe3e7);
+            border-color: var(--pink-bright);
+            color: #c74d5e;
+            font-weight: 500;
+        }
+
+        .btn-magic {
+            background: #ffafbd;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .carta{
+            background-color: aqua;
+            border-radius: 50px;
+        }
+
+        .btn-magic:hover {
+            box-shadow: 0 5px 15px rgba(255, 175, 189, 0.4);
+        }
+
+        .music-box {
+            margin: 20px auto;
+            padding: 12px;
+            background: white;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--pink-soft);
+        }
+
+        /* EFECTO DE ESTRELLAS FUGACES CAYENDO */
+        .shooting-star {
+            position: fixed;
+            top: -10px;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8), 
+                        0 0 20px 4px rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate(0, 0) rotate(-35deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(-35deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-300px, 100vh) rotate(-35deg) scale(0.4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Bloqueo -->
+    <div id="lock-screen">
+        <div class="lock-card">
+            <h2>Hola Emily 🌸</h2>
+            <p>Introduce la contraseña:</p>
+            <input type="password" id="pass-input" placeholder="Escribe aquí...">
+            <button class="btn-magic" onclick="verificarClave()">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div id="main-content">
+        <header>
+            <h1>Emily</h1>
+            <p>Una chica inolvidable</p>
+        </header>
+        <div class="music-box">
+    <span>🎵 Música de fondo:</span>
+    <audio id="bg-music" src="extracted-audio.mp3" preload="auto"></audio>
+    <button class="btn-magic" id="music-btn" onclick="controlarMusica()" style="padding: 8px 20px; font-size: 0.9rem;">▶️ Play</button>
+</div>
+        <div class="container">
+            <div class="main-card">
+                <h2>Nuestra guerrera de 10mo</h2>
+                <p>Emily, tienes la mezcla perfecta entre una <strong>luchadora valiente</strong> y un alma <strong>misionera</strong> llena de bondad.</p>
+                
+                <div class="traits-grid">
+                    <div class="trait">🌸 Amable y Dulce</div>
+                    <div class="trait">💫 Sociable</div>
+                    <div class="trait">🛡️ Valiente</div>
+                    <div class="trait">✨ Sonrisa Bonita</div>
+                </div>
+
+                <button class="btn-magic" onclick="efectoMagico()">¡Efecto Mariposas!</button>
+                
+            </div>
+            <button class="carta">
+                    <h2 >Proxiamente carta😊😊😊aqui</h2>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // LA CONTRASEÑA ES: emily10
+        function verificarClave() {
+            const input = document.getElementById('pass-input').value;
+            
+            if (input === "emily10") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                alert("Contraseña incorrecta 🌸");
+            }
+        }
+
+        function efectoMagico() {
+            for(let i=0; i<30; i++) {
+                setTimeout(() => {
+                    const item = document.createElement('div');
+                    item.style.position = 'fixed';
+                    item.style.left = Math.random() * 100 + 'vw';
+                    item.style.top = Math.random() * 100 + 'vh';
+                    item.style.fontSize = '24px';
+                    item.innerHTML = '🦋';
+                    item.style.zIndex = '1000';
+                    item.style.transition = 'all 1.5s ease-out';
+                    
+                    document.body.appendChild(item);
+
+                    setTimeout(() => {
+                        item.style.transform = 'translateY(-100px)';
+                        item.style.opacity = '0';
+                    }, 50);
+
+                    setTimeout(() => item.remove(), 1500);
+                }, i * 50);
+            }
+        }
+        function controlarMusica() {
+    const musica = document.getElementById('bg-music');
+    const boton = document.getElementById('music-btn');
+    if (musica.paused) {
+        musica.play().catch(err => console.log("Permiso denegado por el navegador."));
+        boton.innerHTML = "⏸️ Pause";
+    } else {
+        musica.pause();
+        boton.innerHTML = "▶️ Play";
+    }
+}
+    </script>
+</body>
+</html>
