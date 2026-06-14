@@ -1,285 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi amiga Emily</title>
-    <link rel="icon" href="guty.png">
-     <style>
-        :root {
-            --pink-soft: #ffdde1;
-            --pink-bright: #ffafbd;
-            --pink-dark: #ef7d8e;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            margin: 0;
-            background-image: url('imag.png');
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #7d5a5a;
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* PANTALLA DE BLOQUEO SIMPLE */
-        #lock-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffafbd;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .lock-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 300px;
-            width: 90%;
-            position: relative;
-            z-index: 10000; /* Asegura estar por encima de las estrellas */
-        }
-
-        .lock-card input {
-            width: 100%;
-            padding: 10px;
-            margin: 15px 0;
-            border: 2px solid var(--pink-soft);
-            border-radius: 20px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        /* CONTENIDO OCULTO POR DEFECTO */
-        #main-content {
-            display: none;
-        }
-
-        header {
-            background-image: url('image.png');
-            background-position: center 50%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--white);
-        }
-
-        header h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin: 0;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: white;
-            margin-top: 10px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: -30px auto 50px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 5;
-        }
-
-        .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-radius: 30px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .traits-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .trait {
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            border: 1px solid var(--pink-soft);
-            color: var(--pink-dark);
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .trait:hover {
-            background: #ffecf0;
-            transform: translateY(-3px);
-        }
-
-        .trait.revealed {
-            background: linear-gradient(135deg, #fff0f2, #ffe3e7);
-            border-color: var(--pink-bright);
-            color: #c74d5e;
-            font-weight: 500;
-        }
-
-        .btn-magic {
-            background: #ffafbd;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .carta{
-            background-color: aqua;
-            border-radius: 50px;
-        }
-
-        .btn-magic:hover {
-            box-shadow: 0 5px 15px rgba(255, 175, 189, 0.4);
-        }
-
-        .music-box {
-            margin: 20px auto;
-            padding: 12px;
-            background: white;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid var(--pink-soft);
-        }
-
-        /* EFECTO DE ESTRELLAS FUGACES CAYENDO */
-        .shooting-star {
-            position: fixed;
-            top: -10px;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8), 
-                        0 0 20px 4px rgba(255, 255, 255, 0.5);
-            pointer-events: none;
-            z-index: 1;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translate(0, 0) rotate(-35deg) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-                transform: translate(0, 0) rotate(-35deg) scale(1);
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-300px, 100vh) rotate(-35deg) scale(0.4);
-                opacity: 0;
-            }
-        }
-        .carta-checkbox {
-    display: none;
-}
-
-.boton-contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 20px 0;
-}
-
-.carta-popup {
-    display: none;
-    margin-top: 25px;
-    padding: 20px;
-    background: #fff5f6;
-    border: 2px dashed var(--pink-bright);
-    border-radius: 20px;
-    animation: fadeIn 0.5s ease forwards;
-}
-
-/* Al presionar el botón se despliega la interfaz de la clave */
-.carta-checkbox:checked ~ .carta-popup {
-    display: block;
-}
-
-.input-password-letter {
-    width: 80%;
-    padding: 10px;
-    border: 2px solid var(--pink-soft);
-    border-radius: 15px;
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 0.95rem;
-    outline: none;
-    margin-bottom: 15px;
-}
-
-.input-password-letter:focus {
-    border-color: var(--pink-bright);
-}
-
-.texto-carta-secreta {
-    display: none;
-    padding: 15px;
-    background: white;
-    border-radius: 15px;
-    color: #5c4444;
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
-    animation: fadeIn 0.5s ease forwards;
-}
-
-/* Validación con CSS puro: si coincide con el pattern se revela la carta */
-.input-password-letter:valid ~ .texto-carta-secreta {
-    display: block;
-}
-
-.input-password-letter:valid {
-    border-color: #77dd77;
-    background-color: #f0fff0;
-}
-
-.input-password-letter:valid ~ p {
-    display: none;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-    </style>
+    <title>Para Emily Guty de Mi </title>
+    <link rel="icon" href="icono.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="scrip.js"></script>
 </head>
+
 <body>
 
     <!-- Pantalla de Bloqueo -->
@@ -294,182 +24,179 @@
 
     <!-- Contenido Principal -->
     <div id="main-content">
+        <div id="lluvia-estrellas"></div>
         <header>
             <h1>Emily</h1>
-            <p>Una chica inolvidable</p>
+            <p>Una luz para las noches mas oscuras de cualquier persona</p>
         </header>
         <div class="music-box">
-    <span>🎵 Para ti:</span>
-    <audio id="bg-music" src="extracted-audio.mp3" preload="auto" controls></audio>
-    <button class="btn-magic" id="music-btn" onclick="controlarMusica()" style="padding: 8px 20px; font-size: 0.9rem;">▶️ Play</button>
-</div>
+            <span>🎵 Para ti:</span>
+            <audio id="bg-music" src="extracted-audio.mp3" preload="auto"></audio>
+            <button class="btn-magic" id="music-btn" onclick="controlarMusica()"
+                style="padding: 8px 20px; font-size: 0.9rem;">▶️ Play</button>
+        </div>
+        <br>
         <div class="container">
             <div class="main-card">
-                <h2>Nuestra guerrera de 1ro </h2>
-                <p>Emily, tienes la mezcla perfecta entre una <strong>luchadora valiente</strong> y un alma <strong>misionera</strong> llena de bondad.</p>
-                
+                <h2>Una estrella que brilla a pesar de la oscuridad</h2>
+                <p><strong>No cambies ni dejes que nadie lo haga siempre estare contigo no lo olvides Guty</strong>
+                </p>
+
                 <div class="traits-grid">
-                    <div class="trait">🌸 Amable y Dulce</div>
-                    <div class="trait">💫 Sociable</div>
-                    <div class="trait">🛡️ Valiente</div>
-                    <div class="trait">✨ Sonrisa Bonita</div>
+                    <button class="trait">🌸 Amable y Dulce</button>
+                    <button class="trait">💫 Sociable</button>
+                    <button class="trait">🛡️ Valiente</button>
+                    <button class="trait">✨ Sonrisa Bonita</button>
+                    <button class="trait" id="btn-album">❤️Album de fotos </button>
+                    <button class="trait">🧐Cosas que se sobre ti</button>
+                </div>
+                <!-- Estructura de la ventana del cuaderno con navegación -->
+                <div id="modal-cuaderno" class="modal-overlay">
+                    <div class="cuaderno">
+                        <button class="cerrar-cuaderno" onclick="cerrarAlbum()">❌</button>
+
+                        <!-- Flecha Izquierda (Anterior) -->
+                        <button class="flecha-nav flecha-izq" onclick="cambiarHoja(-1)">◀</button>
+
+                        <!-- HOJA 1 (Activa por defecto) -->
+                        <div class="hoja-libro activa">
+                            <div class="pagina pagina-izq">
+                                <h3>Nuestros Momentos</h3>
+                                <div class="foto-marco">
+                                    <!-- 🔴 Añadido el click y su frase -->
+                                    <img src="Confirmacion.jpeg" alt="Foto 1"
+                                        onclick="ampliarImagen(this, 'Un día súper especial y lleno de bendiciones. ¡Te veías radiante! ✨')">
+                                </div>
+                                <p class="nota">¡Tu confirmacion! ✨</p>
+                            </div>
+                            <div class="pagina pagina-der">
+                                <h3>Recuerdos</h3>
+                                <div class="foto-marco">
+                                    <!-- 🔴 Añadido el click y su frase -->
+                                    <img src="Ramdon.jpeg" alt="Foto 2"
+                                        onclick="ampliarImagen(this, 'No nos acordamos qué día era exactamente ni qué hacíamos, ¡pero la risa y el buen momento nunca faltaron! 😂❤️')">
+                                </div>
+                                <p class="nota">Dia Ramdon (No me acuerdo de que era jsjs)</p>
+                            </div>
+                        </div>
+
+                        <!-- HOJA 2 (Oculta al inicio) -->
+                        <div class="hoja-libro">
+                            <div class="pagina pagina-izq">
+                                <h3>Grandes Aventuras</h3>
+                                <div class="foto-marco">
+                                    <img src="valiente.jpg" alt="Foto 3"
+                                        onclick="ampliarImagen(this, '¡Sorpresa! Una aventura más para nuestra colección de momentos inolvidables. 😱')">
+                                </div>
+                                <p class="nota">Sorpresa 😱</p>
+                            </div>
+                            <div class="pagina pagina-der">
+                                <h3>Más Sonrisas</h3>
+                                <div class="foto-marco">
+                                    <img src="sofia.jpg" alt="Foto 4"
+                                        onclick="ampliarImagen(this, 'Tu sonrisa es lo mejor de cada foto. ¡Que nunca falte esa felicidad! 🌸')">
+                                </div>
+                                <p class="nota">Sorpresa 😱</p>
+                            </div>
+                        </div>
+
+                        <!-- Flecha Derecha (Siguiente) -->
+                        <button class="flecha-nav flecha-der" onclick="cambiarHoja(1)">▶</button>
+                    </div>
                 </div>
 
+                <!-- 🔴 RECUERDA AÑADIR ESTE BLOQUE AL FINAL DE TU HTML (Antes de </body>) -->
+                <div id="modal-foto-grande" class="lightbox-overlay" onclick="cerrarFotoGrande()">
+                    <div class="lightbox-contenido" onclick="event.stopPropagation()">
+                        <button class="cerrar-foto" onclick="cerrarFotoGrande()">❌</button>
+                        <img id="foto-ampliada" src="" alt="Foto grande">
+                        <p id="texto-foto-ampliada"></p>
+                    </div>
+                </div>
                 <button class="btn-magic" onclick="efectoMagico()">¡Efecto Mariposas!</button>
-                
+
             </div>
-            <input type="checkbox" id="toggle-carta" class="carta-checkbox">
-<label for="toggle-carta" class="btn-magic">✉️ Abrir Carta Secreta</label>
-
-<!-- Contenedor desplegable de la carta -->
-<div class="carta-popup">
-    <p style="margin: 0 0 10px 0; font-size: 0.9rem; font-weight: bold;">🔒 Esta carta está protegida:</p>
-    
-    <!-- Modifica el atributo pattern="..." para cambiar la contraseña. Clave actual: emily15 -->
-    <input type="text" class="input-password-letter" placeholder="Introduce la clave de la carta..." pattern="emily15" required>
-    
-    <p style="font-size: 0.85rem; color: #aaa; margin: 5px 0 0 0;">(Pista: Escribe tu nombre seguido de tu edad actual en minúsculas)</p>
-
-    <!-- Puedes borrar y cambiar libremente todas estas palabras para escribir tu carta -->
-    <div class="texto-carta-secreta">
-        <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: #ff8a9a; margin-top: 0;">Querida Emily,</p>
-        Aquí puedes colocar todas las palabras que quieras dedicarle. Escribe tus mejores recuerdos, anécdotas o frases especiales de amistad de manera libre.
-        <br><br>
-        ¡El espacio se expandirá automáticamente para albergar todo el texto de tu carta! 🌟
-    </div>
-</div>
         </div>
     </div>
-    <script>
-    const FRASE_CORRECTA = ["siempre", "estare", "contigo"];
-    let indiceActual = 0;
-    let erroresSeguidos = 0;
+    </div>
+    </div>
+    <!-- 1. BLOQUE VISUAL DE LA CARTA (Colocar dentro de tu .main-card) -->
+    <div class="boton-contenedor">
+        <button class="btn-magic" onclick="mostrarOcultarCarta()">✉️ Abrir Carta Secreta</button>
+    </div>
 
-    function mostrarOcultarCarta() {
-        const panel = document.getElementById('carta-seccion');
-        if (panel.style.display === 'block') {
-            panel.style.display = 'none';
-        } else {
-            panel.style.display = 'block';
-        }
-    }
+    <div class="carta-popup" id="carta-seccion" style="display: none;">
+        <p style="margin: 0 0 5px 0; font-size: 0.95rem; font-weight: bold;">🔒 Escribe la frase exacta para desbloquear
+            la carta:</p>
 
-    function evaluarPalabra(e) {
-        if (e.key === 'Enter') {
-            const input = document.getElementById('password-letter-input');
-            // Convierte a minúsculas y quita acentos automáticamente para evitar fallos por tildes
-            const palabraIngresada = input.value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            const palabraObjetivo = FRASE_CORRECTA[indiceActual].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        <!-- Cuadro de texto interactivo conectado al script -->
+        <input type="text" id="password-letter-input" placeholder="Escribe la frase aquí..."
+            onkeypress="evaluarFraseCompleta(event)">
 
-            if (palabraIngresada === palabraObjetivo) {
-                // Guarda la palabra acertada y cambia el bloque a verde (activo)
-                const bloque = document.getElementById(`p${indiceActual}`);
-                if (bloque) {
-                    bloque.textContent = FRASE_CORRECTA[indiceActual].toUpperCase();
-                    bloque.classList.add('activa');
-                }
-                
-                indiceActual++;
-                erroresSeguidos = 0; // Reinicia los errores al acertar
-                
-                const contador = document.getElementById('contador-intentos');
-                if (contador) contador.textContent = "Errores seguidos: 0 / 3";
-                input.value = "";
+        <div class="intentos-texto" id="contador-intentos">Errores seguidos: 0 / 3</div>
+        <p style="font-size: 0.8rem; color: #aaa; margin: 8px 0 0 0;">(Pista: Todo en minúsculas, con espacios y sin
+            acentos. Presiona Enter al terminar)</p>
 
-                // Si se completaron las 3 palabras, revela la carta secreta
-                if (indiceActual === FRASE_CORRECTA.length) {
-                    input.style.display = 'none';
-                    if (contador) contador.style.display = 'none';
-                    
-                    const instruccion = document.querySelector('#carta-seccion p');
-                    if (instruccion) instruccion.textContent = "🔓 ¡Frase completada con éxito!";
-                    
-                    const contenido = document.getElementById('carta-contenido');
-                    if (contenido) contenido.style.display = 'block';
-                }
-            } else if (palabraIngresada !== "") {
-                // Suma un error consecutivo si la palabra está mal
-                erroresSeguidos++;
-                
-                const contador = document.getElementById('contador-intentos');
-                if (contador) contador.textContent = `Errores seguidos: ${erroresSeguidos} / 3`;
-                input.value = "";
+        <!-- El contenido escrito de tu carta -->
+        <div class="texto-carta-secreta" id="carta-contenido" style="display: none;">
 
-                // Si acumula 3 errores seguidos, borra todo el progreso acumulado
-                if (erroresSeguidos >= 3) {
-                    alert("❌ ¡Has cometido 3 errores seguidos! Se ha borrado todo el progreso de la contraseña. Inténtalo de nuevo. 🌸");
-                    reiniciarTodoElProgreso();
-                }
-            }
-        }
-    }
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: #ff8a9a; margin-top: 0;">Querida
+                Emily,</p>
+            Bueno no se como iniciar con esta carta como tal inicie esta pagina web en son de ver como acruabas
+            jamas pense que iba a tener esa reaccion lo continue por que te merecias algo mejor la proxima y tal vez la
+            ultima va hacer el doble de asombroso por que se podra ver desde los celulares jsjs y mas cosas capaz de un
+            videojuego
+            de una mascota para criar jsjs no se jsjs ahora sip
+            <br>
+            Emi yo me estaba undiendo cuando te conoci sentia aun el dolor de haber perdido a un mejor amigo y un vacio
+            que nadie lo
+            pudo llenar ni siquiera mi familia pero cuando te conoci pense uq solo ibas a estar por un tiempo es mas
+            hasta mi mente mismo
+            me lo dijo me dijo oye ella solo es momentanio veras yo le dije okey jsjsj y mejor llamadas hasta madrugadas
+            jsjsj risas
+            chismes ronquidos jsjsj y mi mente tambien quedo como yo que pedo oye te dije que solo era momentanio ahora
+            que esperas a que
+            te llame o que chuchas y yo le dije nono y no se le dije solo me acostumbre a escucharla y los dos nos
+            quedamos locasossss dijimos
+            goodddd pero nooooo por que ahora no te enamoraras ni haras que te guste y que paso que pun me gustastes y
+            yo le dije a mi mente y corazon y
+            ellos me reclamaron como nunca ya que me dijieron como cuando y como paso y yo les dije no seeee paso el
+            tiempo y se calmo todo deje de sentir
+            de nuevo y segun yo aun sigue asi salvo que me este engañando por que como me dijo alguien me puedo engañar
+            yo pero al corazon nunca le podre
+            engañar jsjsjs
+            <br>
+            Eres increible hoy en tu confirmacion casi me haces llorar no se por que pero estaba con ganas de llorar
+            cuando te vi al frente desde las gradas
+            por eso hasta el pablito me vio con ojos medio queriendo llorar jsjsj cuando era el momento de que nos
+            arodillamos si me salio una que otra lagrima
+            y cuando me levante me tuve que secar rapidisio jsjsj creo que se por que es y es por que ya estoy
+            asimilando desde ahora que ya tengo que irme al
+            voluntariado y dejarte tus locuras si me va a doler horrible jsjs las llamadas las risas y todo jsjsj si te
+            extrañare tu eres una de las personas por las
+            que lloraria si les pasara algo incluso cuando me valla jsjs no lo olvide nunca estaras solo yo siempre
+            estare contigo pase lo que pase nunca estaras sola
+            te hize la carta por que se que decirte esto en persona se me traba la lengua ya me viste hoy como me fue
+            solo para una foto quede pendejo sjsjs por eso
+            si soy bien awuebado sjsj perdonaras jsjs gracias Emi por todo enserio eres wuao jsjsj no seras la mas pilas
+            pero eres una persona muy interesante
+            que cada que descubro algo nuevo de ti quedo como que wuao por que me sorprendes jsjsj no cambies por fas no
+            quiero conocer a otra guty por que a la unica
+            guty que quisiera haber conocido ya la conoci y eres tu gracias por llenar ese vacio de mi mejor amigo el me
+            diria pendejo por hacerte esto pero te mereces esto
+            y mas pero solo puedo esto por ahora jsjsj
+            <br>
+            Para ti Guty 😊 de todo corazon ^0^
+            <br>
+            <audio id="musica-bendita" src="Bendita la luz.mp3" preload="auto"></audio>
 
-    function reiniciarTodoElProgreso() {
-        indiceActual = 0;
-        erroresSeguidos = 0;
-        
-        const contador = document.getElementById('contador-intentos');
-        if (contador) contador.textContent = "Errores seguidos: 0 / 3";
-        
-        // Limpia los bloques visuales devolviéndolos a su estado oculto original
-        for (let i = 0; i < FRASE_CORRECTA.length; i++) {
-            const bloque = document.getElementById(`p${i}`);
-            if (bloque) {
-                bloque.textContent = "¿______?";
-                bloque.classList.remove('activa');
-            }
-        }
-    }
-</script>
+<!-- Botón de reproducción -->
+<button class="btn-magic" id="btn-reproductor" onclick="reproducirPausar()">▶️ Escuchar "Bendita la luz"</button>
 
-    
-    <script>
-        function verificarClave() {
-            const input = document.getElementById('pass-input').value;
-            
-            if (input === "emily10") {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            } else {
-                alert("Contraseña incorrecta 🌸");
-            }
-        }
-
-        function efectoMagico() {
-            for(let i=0; i<30; i++) {
-                setTimeout(() => {
-                    const item = document.createElement('div');
-                    item.style.position = 'fixed';
-                    item.style.left = Math.random() * 100 + 'vw';
-                    item.style.top = Math.random() * 100 + 'vh';
-                    item.style.fontSize = '24px';
-                    item.innerHTML = '🦋';
-                    item.style.zIndex = '1000';
-                    item.style.transition = 'all 1.5s ease-out';
-                    
-                    document.body.appendChild(item);
-
-                    setTimeout(() => {
-                        item.style.transform = 'translateY(-100px)';
-                        item.style.opacity = '0';
-                    }, 50);
-
-                    setTimeout(() => item.remove(), 1500);
-                }, i * 50);
-            }
-        }
-        function controlarMusica() {
-    const musica = document.getElementById('bg-music');
-    const boton = document.getElementById('music-btn');
-    if (musica.paused) {
-        musica.play().catch(err => console.log("Permiso denegado por el navegador."));
-        boton.innerHTML = "⏸️ Pause";
-    } else {
-        musica.pause();
-        boton.innerHTML = "▶️ Play";
-    }
-}
-    </script>
-    
+<!-- Espacio exclusivo donde aparecerá la letra -->
+<p id="subtitulos-musica"></p>
+        </div>
+    </div>
 </body>
+
 </html>

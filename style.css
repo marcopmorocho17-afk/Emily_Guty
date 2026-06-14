@@ -1,0 +1,555 @@
+:root {
+    --pink-soft: #ffdde1;
+    --pink-bright: #ffafbd;
+    --pink-dark: #ef7d8e;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    background-image: url('image.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #7d5a5a;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* PANTALLA DE BLOQUEO SIMPLE */
+#lock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(paisaje.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lock-card {
+    background: transparent;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 90%;
+    position: relative;
+    z-index: 10000;
+    /* Asegura estar por encima de las estrellas */
+    color: black;
+}
+
+.lock-card input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 2px solid var(--pink-soft);
+    border-radius: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* CONTENIDO OCULTO POR DEFECTO */
+#main-content {
+    display: none;
+}
+
+header {
+
+    background-position: center 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--white);
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    /* Lo agrandamos un poco más para que luzca mejor */
+    font-weight: bold;
+    /* 🔴 OBLIGATORIO: Hace las letras cursivas más gruesas */
+    margin: 0;
+    text-align: center;
+
+    /* 1. Insertamos tu imagen de fondo */
+    background-image: url('nombre.png');
+    /* Remplaza por el nombre exacto de tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 2. El truco para recortar la imagen solo dentro de las letras */
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+
+    /* 3. 🔴 CAMBIO VITAL: Quitamos el 'color: white' y lo hacemos transparente */
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+
+    /* 4. Sombra exterior para darle relieve y separar las letras del fondo */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+header p {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 600px;
+    margin: -30px auto 50px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.main-card {
+    color: white;
+    background: transparent;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.traits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.trait {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid var(--pink-soft);
+    color: var(--pink-dark);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.trait:hover {
+    background: #ffecf0;
+    transform: translateY(-3px);
+}
+
+.trait.revealed {
+    background: linear-gradient(135deg, #fff0f2, #ffe3e7);
+    border-color: var(--pink-bright);
+    color: #c74d5e;
+    font-weight: 500;
+}
+
+.btn-magic {
+    background: #ffafbd;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+
+.carta {
+    background-color: aqua;
+    border-radius: 50px;
+}
+
+.btn-magic:hover {
+    box-shadow: 0 5px 15px rgba(255, 175, 189, 0.4);
+}
+
+.music-box {
+    margin: 20px auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--pink-soft);
+    display: flex;
+    justify-content: center;
+
+}
+
+.music-box {
+    margin: 20px auto;
+    padding: 0;
+    background: transparent;
+    /* Fondo transparente */
+    border-radius: 20px;
+
+    /* 🔴 ELIMINADO: Quitamos la línea de borde que se estiraba */
+    border: none;
+
+    /* 🔴 CORREGIDO: Dejamos un solo display limpio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    /* 🔥 AGREGA ESTO: Evita que la caja se estire a los lados de la pantalla */
+    width: max-content;
+}
+
+
+.trait {
+    background: white;
+    /* Fondo blanco limpio */
+    color: #ff758c;
+    /* Color de texto rosa suave (ajústalo si usas otro) */
+    border: none;
+    /* Quita el borde tosco por defecto */
+    border-radius: 20px;
+    /* Bordes completamente redondeados */
+    padding: 12px 25px;
+    /* Espacio interno para que parezcan botones amplios */
+    font-size: 1rem;
+    /* Tamaño de la letra */
+    font-weight: bold;
+    /* Texto en negrita para mejor lectura */
+    cursor: pointer;
+    /* Cambia el cursor a la mano interactiva */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar volumen */
+    transition: all 0.3s ease;
+    /* Transición suave para los efectos */
+    display: inline-block;
+    /* Permite aplicar los márgenes correctamente */
+}
+
+/* Efecto visual al pasar el mouse por encima (Hover) */
+.trait:hover {
+    transform: translateY(-3px);
+    /* El botón sube ligeramente */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    /* La sombra se vuelve un poco más profunda */
+    background: #fff5f6;
+    /* El fondo cambia a un tono rosa muy sutil */
+}
+
+/* Efecto visual al hacer clic */
+.trait:active {
+    transform: translateY(-1px);
+    /* Baja un poco al presionarlo */
+}
+
+/* EFECTO DE ESTRELLAS FUGACES CAYENDO */
+.shooting-star {
+    position: fixed;
+    top: -10px;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8),
+        0 0 20px 4px rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate(0, 0) rotate(-35deg) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-35deg) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-300px, 100vh) rotate(-35deg) scale(0.4);
+        opacity: 0;
+    }
+}
+
+.carta-checkbox {
+    display: none;
+}
+
+.boton-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.input-password-letter:focus {
+    border-color: var(--pink-bright);
+}
+
+.boton-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.carta-popup {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff5f6;
+    border: 2px dashed #ffafbd;
+    border-radius: 20px;
+}
+
+#password-letter-input {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ffdde1;
+    border-radius: 15px;
+    text-align: center;
+    outline: none;
+    font-family: sans-serif;
+    margin-top: 10px;
+}
+
+#password-letter-input:focus {
+    border-color: #ffafbd;
+}
+
+.intentos-texto {
+    font-size: 0.85rem;
+    color: #ef7d8e;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.texto-carta-secreta {
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
+    color: #5c4444;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+    margin-top: 15px;
+}
+
+/* Contenedor fijo de fondo completo */
+#lluvia-estrellas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    /* Evita que las estrellas bloqueen tus botones */
+    z-index: -1;
+    /* Las posiciona detrás de la caja de música */
+    overflow: hidden;
+}
+
+/* Estilo individual para cada estrella */
+.estrella-cayendo {
+    position: absolute;
+    top: -20px;
+    /* Inician arriba de la pantalla */
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffffff, 0 0 12px #ffafbd;
+    opacity: 0;
+    /* 🔴 CORREGIDO: "linear" en inglés para que CSS lo entienda */
+    animation: caer linear infinite;
+}
+
+/* Animación matemática de la caída */
+@keyframes caer {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        /* Aparece al entrar a la pantalla */
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) scale(0.5);
+        /* Baja hasta salir por completo */
+        opacity: 0;
+    }
+}
+
+/* Contenedor del mensaje que aparece debajo del botón */
+.trait-message {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 15px;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Se adapta al ancho del bloque */
+    box-sizing: border-box;
+    
+    /* Animación de apertura */
+    animation: abrirMensaje 0.3s ease-out forwards;
+}
+
+@keyframes abrirMensaje {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-overlay {
+    /* 🔴 CRUCIAL: Mantiene oculto todo el módulo al cargar la página */
+    display: none; 
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Asegura que el cuaderno no se deforme */
+.cuaderno {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative; 
+    max-width: 600px;
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+    color: black;
+}
+
+/* 🔴 CRUCIAL: Mantiene las hojas ocultas por defecto */
+.hoja-libro {
+    display: none !important; 
+    width: 100%;
+}
+
+/* 🔴 CRUCIAL: Solo la hoja activa se muestra y se divide en 2 páginas */
+.hoja-libro.activa {
+    display: flex !important;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Cada una de las dos páginas internas */
+.pagina {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Tamaño controlado para las fotos */
+.foto-marco img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo para los botones de cerrar y flechas en la parte superior */
+.cerrar-cuaderno, .flecha-nav {
+    background: #ff758c;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px 20px 5px;
+    display: inline-block;
+}
+.flecha-nav:hover, .cerrar-cuaderno:hover {
+    background: #ff9aa2;
+}
+
+.foto-marco img {
+    /* ... Conserva tus estilos actuales (width, height, etc.) ... */
+    
+    /* 🔴 AGREGA ESTO: Cambia el cursor a la mano interactiva al pasar por encima */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* 🔥 OPCIONAL: Hace que la foto resalte un poquito al pasar el mouse */
+.foto-marco img:hover {
+    transform: scale(1.03);
+}
+
+.lightbox-overlay {
+    /* 🔴 CRUCIAL: Esto hace que desaparezca de la pantalla al cargar la página */
+    display: none; 
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+#subtitulos-musica {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: black;
+    text-align: center;
+    margin: 20px auto;
+    min-height: 50px; /* Evita que la página salte cuando cambie el texto */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 175, 189, 0.4);
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    max-width: 80%;
+}
