@@ -37,7 +37,7 @@ function evaluarFraseCompleta(e) {
 function verificarClave() {
     const input = document.getElementById('pass-input').value;
 
-    if (input === "emilyGuty") {
+    if (input === "emilyG") {
         document.getElementById('lock-screen').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
     } else {
