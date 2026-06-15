@@ -553,3 +553,130 @@ header p {
     font-weight: bold;
     max-width: 80%;
 }
+
+/* Espaciado del área de la rosa */
+.seccion-rosa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* El lienzo matemático donde nacen las estrellas */
+#canvas-rosa {
+    display: none;          /* Oculto hasta que se pulse el botón */
+    position: fixed;        /* 🔴 Fijo sobre toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;   /* Evita bloquear los clics en la web */
+    z-index: 9999;          /* Por encima de todo */
+    background: transparent;
+    transition: opacity 1s ease-out; /* Desvanecimiento suave al final */
+    opacity: 1;
+}
+
+/* Clase que aplicará JavaScript para desaparecer la rosa con suavidad */
+#canvas-rosa.desaparecer {
+    opacity: 0;
+}
+
+
+/* Animación para que el lienzo aparezca suavemente */
+@keyframes aparecerCanvas {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+.btn-magic {
+    /* Mantiene tus estilos de fondo, borde, etc. */
+    transition: opacity 0.4s ease, transform 0.3s ease !important;
+}
+
+#canvas-nombre {
+    display: none;          /* Oculto por defecto */
+    position: fixed;        /* 🔴 Fijo sobre toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;   /* Permite hacer clic a través del canvas */
+    z-index: 9999;          /* Por encima de absolutamente todo */
+    background: transparent;
+    transition: opacity 1s ease-out; /* 🔴 Efecto de desvanecimiento al terminar */
+    opacity: 1;
+}
+
+/* Clase que aplicará JavaScript para desaparecer el canvas */
+#canvas-nombre.desaparecer {
+    opacity: 0;
+}
+
+body {
+    transition: background-image 0.8s ease-in-out;
+}
+
+/* 🔴 NUEVO: Esta clase se activará al pulsar el botón */
+body.fondo-rapunzel {
+    /* Reemplaza 'orilla-rapunzel.jpg' por el nombre exacto con el que guardaste la imagen */
+    background-image: url('rapunzel.png') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.zona-minijuego {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 175, 189, 0.2);
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+.marcador {
+    color: #ffafbd;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#canvas-juego {
+    display: none; /* Oculto hasta darle al botón de iniciar */
+    background: rgba(0, 0, 0, 0.4); /* Fondo oscuro transparente interno */
+    border-radius: 12px;
+    margin: 10px auto 0 auto;
+    max-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Busca esta clase en tu código de estilos y déjala exactamente así: */
+.carta-popup {
+    /* ... Conserva tus otros estilos (background, border, etc.) ... */
+    
+    /* 🔴 CORREGIDO: Esto destruye las paredes que cortan tu carta */
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* Busca esta clase también y déjala exactamente así: */
+.texto-carta-secreta {
+    /* 🔴 CORREGIDO: Esto obliga a que el texto empuje la tarjeta hacia abajo */
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important; 
+    padding-bottom: 30px !important; /* Espacio extra para que respire el reproductor de música */
+}
+
