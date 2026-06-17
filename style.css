@@ -680,3 +680,763 @@ body.fondo-rapunzel {
     padding-bottom: 30px !important; /* Espacio extra para que respire el reproductor de música */
 }
 
+/* ==========================================================================
+   📱 CÓDIGO EXCLUSIVO Y COMPLETO PARA ADAPTAR LA PÁGINA AL CELULAR
+   ========================================================================== */
+@media (max-width: 600px) {
+    /* --- 1. CONFIGURACIÓN DEL BODY Y PANTALLA DE BLOQUEO --- */
+    body {
+        padding: 5px;
+    }
+
+    #lock-screen {
+        background-position: center center !important; /* Centra el paisaje de fondo */
+    }
+
+    .lock-card {
+        width: 95% !important;
+        padding: 20px !important;
+        box-sizing: border-box;
+    }
+
+    body.fondo-rapunzel {
+        background-position: center center !important; /* Centra el fondo de Rapunzel en vertical */
+    }
+
+    /* --- 2. CABECERA, TÍTULOS Y CONTENEDOR PRINCIPALES --- */
+    header {
+        padding: 40px 10px !important;
+    }
+
+    header h1 {
+        font-size: 2.3rem !important; /* Evita que el nombre de Emily se corte lateralmente */
+    }
+
+    header p {
+        font-size: 0.95rem !important;
+    }
+
+    .container {
+        margin: -10px auto 30px !important;
+        padding: 0 10px !important;
+    }
+
+    .main-card {
+        padding: 20px 15px !important;
+        border-radius: 20px !important;
+        box-sizing: border-box;
+    }
+
+    /* --- 3. CUADRÍCULA DE BOTONES (TRAITS) Y SUBTÍTULOS --- */
+    /* 🔴 EL CAMBIO MÁS IMPORTANTE: Transforma las 2 columnas en 1 lista vertical */
+    .traits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        margin: 15px 0 !important;
+    }
+
+    .trait {
+        display: block !important;
+        width: 100% !important;
+        padding: 12px 10px !important;
+        font-size: 0.9rem !important; /* Letra un poco más pequeña para textos largos */
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .trait:hover, .foto-marco img:hover {
+        transform: none !important; /* Desactiva efectos de mouse para evitar bugs táctiles */
+    }
+
+    .btn-magic {
+        width: 100% !important;
+        padding: 12px 15px !important;
+        box-sizing: border-box;
+    }
+
+    .music-box {
+        flex-direction: column !important; /* Apila los iconos del reproductor si la pantalla es angosta */
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    #subtitulos-musica {
+        font-size: 1.4rem !important; /* Evita que la letra de Maná encime otros elementos */
+        max-width: 95% !important;
+        margin: 15px auto !important;
+        min-height: 40px !important;
+    }
+
+    /* --- 4. ZONA EXCLUSIVA DEL MINIJUEGO --- */
+    .zona-minijuego {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px !important;
+        box-sizing: border-box;
+        margin: 15px auto !important;
+    }
+
+    .marcador {
+        font-size: 1.05rem !important; /* Reduce ligeramente el tamaño del texto de puntos */
+    }
+
+    #canvas-juego {
+        border-radius: 8px !important;
+        margin-top: 8px !important;
+    }
+
+    /* --- 5. VENTANAS EMERGENTES (CARTA POPUP, FOTOS Y MODALES PSYDUCK) --- */
+    .carta-popup, 
+    .texto-carta-secreta,
+    .cuaderno,
+    #modal-psyduck div, 
+    #modal-cantando div, 
+    #modal-escribiendo div, 
+    #modal-mas-cartas div, 
+    #modal-investigando div {
+        width: 95% !important;
+        max-height: 85vh !important; /* Limita la altura para que no se salga de la pantalla del celular */
+        padding: 15px !important;
+        box-sizing: border-box;
+    }
+
+    /* Las hojas del álbum pasan de 2 páginas horizontales a apilarse una abajo de otra */
+    .hoja-libro.activa {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .pagina {
+        width: 100% !important;
+        padding: 5px !important;
+    }
+
+    /* Ajuste para que los botones de cerrar y flechas sean más fáciles de pulsar con el dedo */
+    .cerrar-cuaderno, .flecha-nav {
+        padding: 8px 16px !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Evita que los dibujos de Psyduck o fotos se deformen o salgan del cuadro del celular */
+    .carta-popup img, 
+    .lightbox-overlay img,
+    #modal-psyduck img, 
+    #modal-cantando img, 
+    #modal-escribiendo img, 
+    #modal-mas-cartas img, 
+    #modal-investigando img {
+        max-width: 100% !important;
+        max-height: 55vh !important;
+        object-fit: contain !important;
+    }
+
+    .foto-marco img {
+        width: 140px !important; /* Agranda un poquito las fotos en vertical para que luzcan más */
+        height: 140px !important;
+    }
+
+    /* Las cajas de mensajes interactivas y notas toman el ancho completo de la pantalla */
+    .trait-message, .caja-transparente-nota, #caja-nota {
+        max-width: 100% !important;
+        width: 100% !important;
+        font-size: 0.9rem !important;
+        padding: 12px !important;
+        box-sizing: border-box;
+    }
+
+    /* --- 6. OPTIMIZACIÓN DE RENDIMIENTO (FALLL Y SHOOTING STAR) --- */
+    /* Aligeramos el desenfoque de sombras para que el procesador del teléfono no se caliente */
+    .shooting-star, .estrella-cayendo {
+        box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.8),
+                    0 0 12px 2px rgba(255, 255, 255, 0.5) !important;
+    }
+    .carta-popup, 
+    .texto-carta-secreta {
+        width: 95% !important;
+        height: auto !important;          /* ⚡ Destruye el límite rígido de altura */
+        max-height: none !important;      /* ⚡ Desbloquea las paredes verticales */
+        overflow: visible !important;     /* ⚡ Permite que la música sea visible abajo */
+        padding: 20px 15px !important;
+        box-sizing: border-box;
+        display: block !important;
+    }
+}
+
+/* --- 7. CONTROL DE LIENZOS GENERALES (FUERA DEL MEDIA QUERY) --- */
+/* Impide de forma global que los lienzos de las estrellas o el juego generen scroll horizontal */
+
+
+.letras{
+    color: transparent;
+}
+
+/* CONFIGURACIÓN DEL CONTENEDOR (Colócalo donde quieras en tu pantalla) */
+#contenedor-cajon {
+    position: relative;
+    display: inline-block;
+    margin: 20px; /* Puedes cambiar este margen para mover todo el bloque */
+    z-index: 100;
+}
+
+/* DISEÑO DEL CAJÓN MORADO/ROSADO INICIAL */
+#cajon-cerrado {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    width: 240px;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+    font-family: sans-serif;
+}
+
+#cajon-cerrado:hover {
+    transform: scale(1.03);
+}
+
+.icono-musica {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+/* DISEÑO DEL REPRODUCTOR MEJORADO (No se corta en los bordes) */
+/* =======================================================
+   📦 1. CONFIGURACIÓN DEL CONTENEDOR DE MÚSICA GENERAL
+   ======================================================= */
+#contenedor-cajon {
+    position: relative;
+    display: inline-block;
+    margin: 20px auto;
+    z-index: 100;
+}
+
+/* =======================================================
+   🎵 2. DISEÑO DEL CAJÓN MORADO/ROSADO INICIAL (CERRADO)
+   ======================================================= */
+#cajon-cerrado {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    width: 240px;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    user-select: none;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#cajon-cerrado:hover {
+    transform: scale(1.03);
+}
+
+.icono-musica {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+/* =======================================================
+   🔮 3. DISEÑO DEL REPRODUCTOR PRINCIPAL INDEPENDIENTE
+   ======================================================= */
+#reproductor {
+    background: #121026;
+    border: 2px solid #f472b6;
+    width: 290px;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    
+    /* Centrado absoluto local respecto al contenedor */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25), opacity 0.4s ease;
+    pointer-events: none; 
+}
+
+/* Clases de activación por JS */
+#reproductor.mostrar {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#reproductor.oculto {
+    display: none;
+}
+
+#btn-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #2e2a4f;
+    border: none;
+    color: #f472b6;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+/* Textos internos del reproductor */
+.info-cancion h3 {
+    margin: 25px 0 5px 0;
+    font-size: 1.2rem;
+    color: #f472b6;
+    text-align: center;
+}
+
+.info-cancion p {
+    margin: 0 0 10px 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-align: center;
+}
+
+/* Recuadro romántico del "Por qué" */
+.texto-porque {
+    margin: 10px 0 20px 0;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+    padding: 8px;
+    background: rgba(244, 114, 182, 0.05);
+    border-radius: 8px;
+}
+
+/* Controles y Botón de Play */
+.controles {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#btn-play {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    border: none;
+    color: white;
+    padding: 10px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+    transition: transform 0.2s;
+}
+
+#btn-play:hover {
+    transform: scale(1.05);
+}
+
+/* Barra de progreso interactiva */
+.progreso-contenedor {
+    background: #221f47;
+    height: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#progreso-actual {
+    background: #f472b6;
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+}
+
+/* Lista de canciones del reproductor */
+#lista-canciones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+#lista-canciones li {
+    padding: 10px;
+    border-bottom: 1px solid #221f47;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+#lista-canciones li:hover {
+    background: rgba(244, 114, 182, 0.1);
+    color: #f472b6;
+}
+
+#lista-canciones li.activa {
+    background: rgba(244, 114, 182, 0.15);
+    color: #f472b6;
+    font-weight: bold;
+}
+
+/* =======================================================
+   🎤 4. DISEÑO DEL BOTÓN CORREGIDO DE "VER LETRA"
+   ======================================================= */
+#btn-letra {
+    background: rgba(244, 114, 182, 0.1) !important;
+    border: 1px solid #f472b6 !important;
+    color: #f472b6 !important;
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+#btn-letra:hover {
+    background: #f472b6 !important;
+    color: white !important;
+}
+
+/* =======================================================
+   📝 5. ESTILOS DEL DIV DE LA LETRA (TOTALMENTE SEPARADO)
+   ======================================================= */
+#cajon-letra {
+    background: #0d0b1a;
+    border: 2px solid #8b5cf6;
+    width: 280px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    
+    /* Posicionado flotando a la derecha del reproductor en PC */
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 160px); 
+    transform: translateY(-50%) scale(0.5);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estados de animación controlados por el script */
+#cajon-letra.letra-visible {
+    transform: translateY(-50%) scale(1) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+#cajon-letra.letra-oculta {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+#btn-cerrar-letra {
+    background: #221f47;
+    border: none;
+    color: #cbd5e1;
+    padding: 5px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+    font-size: 0.8rem;
+}
+
+#titulo-letra-pantalla {
+    color: #8b5cf6;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#contenido-letra {
+    color: #f1f5f9;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+    overflow-y: auto;
+    flex-grow: 1;
+    white-space: pre-line;
+    font-style: italic;
+    padding-right: 5px;
+}
+
+/* Personalizar barra de scroll de la letra */
+#contenido-letra::-webkit-scrollbar {
+    width: 4px;
+}
+#contenido-letra::-webkit-scrollbar-thumb {
+    background: #8b5cf6;
+    border-radius: 10px;
+}
+
+/* =======================================================
+   📱 6. ADAPTACIÓN COMPLETA PARA CELULARES (RESPONSIVE)
+   ======================================================= */
+@media (max-width: 480px) {
+    #contenedor-cajon {
+        margin: 15px auto;
+        display: block;
+        text-align: center;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    #cajon-cerrado {
+        width: auto;
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+
+    .icono-musica {
+        font-size: 2.8rem;
+    }
+
+    #reproductor {
+        width: calc(100% - 30px);
+        max-width: 290px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .info-cancion h3 {
+        font-size: 1.1rem;
+    }
+
+    .texto-porque {
+        max-height: 60px;
+        overflow-y: auto;
+    }
+
+    #btn-play {
+        padding: 12px 40px;
+    }
+
+    #btn-letra {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    #lista-canciones {
+        max-height: 100px;
+    }
+
+    /* En celulares, el div de letras se abre elegantemente justo abajo del reproductor */
+    #cajon-letra {
+        left: 50%;
+        top: calc(100% + 230px);
+        transform: translateX(-50%) scale(0.8);
+        width: 270px;
+        height: 350px;
+    }
+
+    #cajon-letra.letra-visible {
+        transform: translateX(-50%) scale(1) !important;
+    }
+}
+
+/* =======================================================
+   🐶 ESTILOS DE LA MASCOTA DIGITAL (PERRITO)
+   ======================================================= */
+#contenedor-mascota {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 500; /* Asegura que flote por encima de todo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+/* Burbuja de diálogo del perrito */
+#burbuja-mascota {
+    background: white;
+    color: #121026;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 2px solid #8b5cf6;
+    text-align: center;
+    max-width: 150px;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+/* Pequeña flecha de la burbuja de diálogo */
+#burbuja-mascota::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: white transparent;
+    display: block;
+    width: 0;
+}
+
+/* El cuerpo del perrito */
+#mascota {
+    font-size: 4rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+    animation: flotarMascota 3s ease-in-out infinite;
+}
+
+#mascota:active {
+    transform: scale(0.9);
+}
+
+/* Botones de interacción */
+#controles-mascota {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+#controles-mascota button {
+    background: #121026;
+    border: 1px solid #f472b6;
+    color: #f472b6;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#controles-mascota button:hover {
+    background: #f472b6;
+    color: white;
+}
+
+/* Animación de respiración/flotado para el perrito */
+@keyframes flotarMascota {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Adaptación para celulares (lo mueve un poquito para no estorbar) */
+@media (max-width: 480px) {
+    #contenedor-mascota {
+        bottom: 15px;
+        right: 15px;
+    }
+    #mascota {
+        font-size: 3.2rem;
+    }
+    #burbuja-mascota {
+        font-size: 0.75rem;
+        max-width: 120px;
+    }
+}
+
+/* =======================================================
+   ✨ ESTILOS COMPLETOS: COFRE EN LA ESQUINA IZQUIERDA
+   ======================================================= */
+#contenedor-cofre {
+    position: fixed;       /* Hace que flote fijo en la pantalla sin moverse con el scroll */
+    bottom: 20px;          /* Distancia desde el borde inferior de la web */
+    left: 20px;            /* ¡Enviado fijo a la esquina izquierda! */
+    z-index: 500;          /* Al mismo nivel que el perrito para flotar por encima del fondo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    max-width: 150px;      /* Ancho compacto para que no estorbe ni tape textos */
+}
+
+/* Burbuja de diálogo del cofre mágico */
+#burbuja-cofre {
+    background: #121026;
+    color: #f472b6;
+    border: 2px solid #8b5cf6;
+    padding: 8px 12px;     /* Tamaño cómodo y compacto para la esquina */
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+/* El elemento/emoji del cofre */
+#cofre {
+    font-size: 4rem;       /* Tamaño idéntico al de la cabeza del perrito */
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+    animation: flotarCofre 3s ease-in-out infinite; /* Animación de flotado suave */
+}
+
+#cofre:hover {
+    transform: scale(1.05);
+}
+
+/* Botón para volver a cerrar el cofre */
+#btn-cerrar-cofre {
+    background: #121026;
+    border: 1px solid #f472b6;
+    color: #f472b6;
+    font-size: 0.75rem;    /* Compacto e idéntico a los botones del perro */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.2s ease;
+}
+
+#btn-cerrar-cofre:hover {
+    background: #f472b6;
+    color: white;
+}
+
+/* Clase que controla JavaScript para ocultar el botón cuando el cofre esté cerrado */
+#btn-cerrar-cofre.oculto-cofre {
+    display: none;
+}
+
+/* Animación de balanceo/flotado vertical */
+@keyframes flotarCofre {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* =======================================================
+   📱 ADAPTACIÓN RESPONSIVA PARA PANTALLAS DE CELULARES
+   ======================================================= */
+@media (max-width: 480px) {
+    #contenedor-cofre {
+        bottom: 15px;      /* Se pega un poquito más al borde en móviles */
+        left: 15px;
+    }
+    #cofre {
+        font-size: 3.2rem; /* Reduce el tamaño para no saturar la pantalla táctil */
+    }
+    #burbuja-cofre {
+        font-size: 0.75rem;
+        max-width: 120px;
+    }
+}

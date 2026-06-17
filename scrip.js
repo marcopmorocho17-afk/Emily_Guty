@@ -1,39 +1,4 @@
-let fallosConsecutivos = 0;
-
-function mostrarOcultarCarta() {
-    const panel = document.getElementById('carta-seccion');
-    panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';
-}
-
-function evaluarFraseCompleta(e) {
-    if (e.key === 'Enter') {
-        const input = document.getElementById('password-letter-input');
-        const textoIngresado = input.value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-        // Contraseña objetivo procesada limpia
-        const claveObjetivo = "siempre estare contigo";
-
-        if (textoIngresado === claveObjetivo) {
-            // ÉXITO: Revela la carta
-            input.style.display = 'none';
-            document.getElementById('contador-intentos').style.display = 'none';
-            document.querySelector('#carta-seccion p').textContent = "🔓 ¡Contraseña correcta!";
-            document.getElementById('carta-contenido').style.display = 'block';
-            fallosConsecutivos = 0;
-        } else if (textoIngresado !== "") {
-            // ERROR: Registra el intento fallido
-            fallosConsecutivos++;
-            document.getElementById('contador-intentos').textContent = `Errores seguidos: ${fallosConsecutivos} / 3`;
-            input.value = "";
-
-            if (fallosConsecutivos >= 3) {
-                alert("❌ ¡Has cometido 3 errores seguidos! Inténtalo de nuevo desde el principio. 🌸");
-                fallosConsecutivos = 0;
-                document.getElementById('contador-intentos').textContent = "Errores seguidos: 0 / 3";
-            }
-        }
-    }
-}
+//Crear la clave de acceso a la pagina principal
 function verificarClave() {
     const input = document.getElementById('pass-input').value;
 
@@ -44,7 +9,7 @@ function verificarClave() {
         alert("Contraseña incorrecta 🌸");
     }
 }
-
+//Caida de estrellas
 function efectoMagico() {
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
@@ -131,20 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
         12. Antes  te gustaba hacer videos contando algunas cosas para subirlas a insta
         13. Te gustan las fiestas
         14. Eres expectacular
-        15. Hasta alli por que no quiero decir cosas mas alla solo las superficiales 😖😖`, // 🔴 Agregamos esta coma para separar
-
-    /* 🔴 NUEVO: Tu nuevo mensaje nostálgico conectado directamente al botón de los días */
+        15. Hasta alli por que no quiero decir cosas mas alla solo las superficiales 😖😖`,
     "🥲Contador de dias": "Quiero seguir riendo en todo este tiempo que me queda en el colegio aunque aun nos seguiremos viendo despues de graduarme yo se que no sera lo mismo pondria una musica triste como la que ahora estoy escuchando pero no te quiero hacer sentir mal jsjsj asi que prefiero reirme de cada momento que me queda contigo y con todos a los que quiero"
 };
-
-    
     const botones = document.querySelectorAll(".trait");
-
     botones.forEach(boton => {
         boton.addEventListener("click", () => {
             // Buscamos si ya hay un mensaje abierto debajo de ESTE botón
             const mensajeExistente = boton.nextElementSibling;
-
             // Si ya existe y es un mensaje, lo cerramos (alternar)
             if (mensajeExistente && mensajeExistente.classList.contains("trait-message")) {
                 mensajeExistente.remove();
@@ -160,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Obtenemos el texto limpio del botón (sin espacios extras)
             const textoBoton = boton.textContent.trim();
-            cajaMensaje.textContent = mensajes[textoBoton] || "Queria sacar solo imagenes de instagram pero decidi mejor que no y mejor tomarlas yo mismo o poner las que ya tengo jsjs";
+            cajaMensaje.textContent = mensajes[textoBoton] || "";
 
             // 3. Insertamos el mensaje justo debajo del botón presionado
             boton.parentNode.insertBefore(cajaMensaje, boton.nextSibling);
@@ -1169,3 +1128,497 @@ function cerrarImagenInvestigando() {
         modal.style.display = "none";
     }
 }
+
+function toggleCartaSecreta() {
+    const cartaSeccion = document.getElementById('carta-seccion');
+    
+    if (!cartaSeccion) return;
+    
+    if (cartaSeccion.style.display === "none" || cartaSeccion.style.display === "") {
+        // La abrimos por completo
+        cartaSeccion.style.display = "block";
+    } else {
+        // La cerramos si vuelve a dar clic
+        cartaSeccion.style.display = "none";
+    }
+}
+
+// Variable global para evitar que el temporizador se duplique si aplastan Play muchas veces
+let temporizadorLetraActivo = false;
+
+// 1. Función principal del botón de Play
+// Variable global para controlar que el escuchador del tiempo no se duplique
+let escuchadorManaActivo = false;
+
+function controlarMusicaManaDefinitiva(idSubtitulos) {
+    const audio = document.getElementById('musica-mana-definitiva');
+    const boton = document.getElementById('btn-mana-definitivo');
+    const cajaSubtitulos = document.getElementById(idSubtitulos);
+    
+    if (!audio || !boton || !cajaSubtitulos) return;
+    
+    // 💥 TRUCO DE SEGURIDAD: Forzamos al navegador a darle permisos de reproducción al archivo de audio
+    audio.muted = false; 
+
+    // Tu lista de tiempos exactos calibrados de Maná
+    const lineasLetra = [
+        { tiempo: 0, texto: "♪ (Introducción Musical) ♪" },
+        { tiempo: 5, texto: "Bendito el lugar y el motivo de estar ahí... 🌸" },
+        { tiempo: 13, texto: "Bendita la coincidencia." },
+        { tiempo: 21, texto: "Bendito el reloj que nos puso puntual ahí... ⏱️" },
+        { tiempo: 29, texto: "Bendita sea tu presencia." },
+        { tiempo: 36, texto: "Bendito Dios por encontrarnos en el camino..." },
+        { tiempo: 45, texto: "Y de quitarme esta soledad de mi destino. ✨" },
+        { tiempo: 51, texto: "Bendita la luz... bendita la luz de tu mirada... 💫" },
+        { tiempo: 60, texto: "Bendita la luz... bendita la luz de tu mirada desde el alma." },
+        { tiempo: 86, texto: "Benditos ojos que me esquivaban... 😉" },
+        { tiempo: 91, texto: "Simulaban desdén que me ignoraban..." },
+        { tiempo: 95, texto: "Y de repente, sostienes la mirada... 👀" },
+        { tiempo: 103, texto: "Bendito Dios por encontrarnos en el camino..." },
+        { tiempo: 111, texto: "Y de quitarme esta soledad de mi destino. ❤️" },
+        { tiempo: 118, texto: "Bendita la luz... bendita la luz de tu mirada... 💫" },
+        { tiempo: 127, texto: "Bendita la luz... bendita la luz de tu mirada, oh..." }
+    ];
+
+    if (audio.paused) {
+        // Encendemos la música con una promesa para ganarle al bloqueo de Chrome
+        audio.play().then(() => {
+            boton.innerHTML = "⏸️ Pausar Música";
+            
+            // Activamos la sincronización en vivo solo si no estaba encendida ya
+            if (!escuchadorManaActivo) {
+                audio.addEventListener('timeupdate', function() {
+                    const tiempoActual = audio.currentTime;
+                    let fraseActiva = "";
+                    
+                    for (let i = 0; i < lineasLetra.length; i++) {
+                        if (tiempoActual >= lineasLetra[i].tiempo) {
+                            fraseActiva = lineasLetra[i].texto;
+                        }
+                    }
+                    
+                    if (cajaSubtitulos.innerHTML !== fraseActiva) {
+                        cajaSubtitulos.innerHTML = fraseActiva;
+                    }
+                });
+                escuchadorManaActivo = true;
+            }
+        }).catch(error => {
+            console.log("El navegador bloqueó el audio temporalmente: ", error);
+            // Si falla por seguridad, forzamos un segundo intento directo
+            audio.play();
+        });
+    } else {
+        audio.pause();
+        boton.innerHTML = "▶️ Escuchar \"Bendita la luz\"";
+    }
+}
+
+function revelarNuevaCartaHorizontal() {
+    const cartaNueva = document.getElementById('nueva-carta-emily');
+    if (!cartaNueva) return;
+    
+    if (cartaNueva.style.display === "none" || cartaNueva.style.display === "") {
+        cartaNueva.style.display = "block"; // La muestra completa en la pantalla
+    } else {
+        cartaNueva.style.display = "none";  // La oculta si vuelven a hacer clic
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. SELECCIÓN DE ELEMENTOS DE LA PANTALLA
+    const cajonCerrado = document.getElementById('cajon-cerrado');
+    const reproductor = document.getElementById('reproductor');
+    const btnCerrar = document.getElementById('btn-cerrar');
+    const btnPlay = document.getElementById('btn-play');
+    const audio = document.getElementById('reproductor-audio');
+    const tituloCancion = document.getElementById('titulo-cancion');
+    const artistaCancion = document.getElementById('artista-cancion');
+    const porqueCancion = document.getElementById('porque-cancion'); 
+    const progresoActual = document.getElementById('progreso-actual');
+    const progresoBar = document.getElementById('progreso-bar');
+    const listaCancionesUI = document.getElementById('lista-canciones');
+     const btnLetra = document.getElementById('btn-letra');
+    const cajonLetra = document.getElementById('cajon-letra');
+    const btnCerrarLetra = document.getElementById('btn-cerrar-letra');
+    const contenidoLetra = document.getElementById('contenido-letra');
+    const tituloLetraPantalla = document.getElementById('titulo-letra-pantalla');
+
+    let audioFondoOriginal = null;
+    let indiceCancionActual = 0;
+    let estaReproduciendo = false;
+
+    // 2. BASE DE DATOS DE TUS CANCIONES CON EL "POR QUÉ"
+    const cancionesDedicadas = [
+        {
+            titulo: "Bendita la luz",
+            artista: "Maná",
+            url: "canciones/Bendita la luz.mp3", 
+            porque: "Porque eres una luz para cada persona que está en tu vida, eres una luz que sirve para salir de esa oscuridad demasiado espesa.",
+            letra: `Bendito el lugar y el motivo de estar contigo\nBendita la coincidencia\nBendito el reloj que nos dio puntualidad\nBendita sea tu presencia\n\nAmor, qué bendita tu luz\nAmor, qué bendito tu amor\nAmor, qué bendita tu luz, amor`
+        },
+        {
+            titulo: "Veo en ti la luz",
+            artista: "Alan Menken",
+            url: "canciones/extracted-audio.mp3",
+            porque: "Emi veo en ti una luz pero osea no una asi normal de foco jsjsj sino una que es capaz de lograr cualquier cosa ",
+            letra: `Veo en ti la luz\nY la niebla se ha marchado\nVeo en ti la luz\nCaminar contigo al lado\n\nEs tan bello y real\nY el mundo es ideal\nYa todo es diferente...\nVeo en ti la luz`
+
+        },
+        {
+            titulo: "Valiente",
+            artista: "Elenco de soy luna",
+            url: "canciones/Soy.mp3",
+            porque: "Por que se que llegaras tan lejosssss y sabes por que lo se por que eres tu pues y por que lo vas a lograr cualquier cosa hoy que te vi como ya te despedias de 10mo me en orgullesi no se como se escribe jsjs pero es por que lo lograste y estoy feliz por ti te lo puedo prometer yo se que llegaras lejos y espero que cuando lo hagas no te olvides de mi jsjs",
+            letra: `Todo lo que quieras lo podrás alcanzar\nSi eres valiente, volarás\nNo importa la distancia, no importa el dolor\nSi en tu camino está el amor`
+        },
+        {
+            titulo: "La estrategia",
+            artista: "Calee y Dandee",
+            url: "canciones/Cali Y El Dandee - La Estrategia.mp3",
+            porque: "Aun no te puedo dar mucho contexto sobre esto pero si haz visto la musica veras que es una de las mas tristes y tal vez alli te de contexto pero mientras tanto sjsj no puedo jsjsj ",
+            letra: `Yo sé que nunca es bueno aparecer, que no debo llamarla
+            Que debe parecer que así estoy bien, que ya pude olvidarla
+            Igual yo sé que fue su decisión y debo respetarla
+            Y debo reprimir esta esperanza de volver a amarla
+
+            Hacerlo todo sin errores, para ver si te cautivo
+            Y buscar la excusa perfecta para que sepas que aún vivo
+            Y para hacer esa llamada que demuestre que aún existo
+            La estrategia es lo de menos, yo solo quiero oír tu voz
+
+            No quiero seguir jugando a que sean mis amigos
+            Quienes decidan qué hago
+            La verdad me estoy ahogando al tragarme las palabras
+            Y no decir que te extraño
+            Y no decir que te amo
+
+            Duele tanto tu partida que ruego por anestesia
+            Se desangra un corazón mientras el tuyo tiene amnesia
+            No se acuerda de esa noche que juramos ser eternos
+            Que íbamos a darlo todo por querernos...`
+        },
+        {
+            titulo: "Aqui estoy yo",
+            artista: "Luis Fonsi",
+            url: "canciones/Luis Fonsi - Aqui Estoy Yo ft. Aleks Syntek, Noel Schajris, David Bisbal.mp3",
+            porque: "Por que siempre estare para ti aunque ya me valla de voluntariado pues jsjsj ",
+            letra: `Aquí estoy yo para darte mi fuerza\nPara darte mi vida, para darte mi amor\nAquí estoy yo para abrirte la puerta\nY cerrar la distancia entre tu alma y mi voz`
+        },
+        {
+            titulo: "Por ti",
+            artista: "Nicolas Mayorca",
+            url: "canciones/Nicolas Mayorca - Por Ti (Audio) ft. Alkilados.mp3",
+            porque: "No tengo contexto para esto por ahora o no se 🥲🥲",
+            letra: `Y por ti, yo sería capaz de todo\nDe encontrar un nuevo modo\nPara no perderte jamás\nY por ti, lo daría todo entero\nPorque sabes que te quiero...`
+        },
+        {
+            titulo: "100 años",
+            artista: "HA-ASH, Prince Royce",
+            url: "canciones/HA-ASH, Prince Royce - 100 Años (Video Oficial).mp3",
+            porque: "Por que contaras conmigo siempreee hasta que me muera jsjs",
+            letra: "Disponible para la proxima actualizacion jsjsj esperate guty esta y mas musicas sjsj",
+
+        },
+        {
+            titulo: "Coleccionista de canciones",
+            artista: "Camila",
+            url: "canciones/Camila - Coleccionista De Canciones (Official Video).mp3",
+            porque: "Por que hasta que me valla aqui van a aver la bolaaaaaaaaaaaaaaaaaaaaaaaaaaaa de musicas jsjsj cada uno con diferentes significados obviooo jsjs",
+            letra: `Eres coleccionista de canciones\nDame razones para vivir\nLlenas el espacio que había en mí\nEres el imán de mi energía\nY mi alegría, eres tú...`
+        },
+    ];
+
+    // 3. FUNCIONES PARA DETECTAR Y CONTROLAR LA MÚSICA AMBIENTAL DE FONDO
+    function pausarMusicaDeFondo() {
+        const todosLosAudios = document.querySelectorAll('audio, video');
+        todosLosAudios.forEach(elemento => {
+            if (elemento !== audio && !elemento.paused) {
+                audioFondoOriginal = elemento;
+                elemento.pause();
+            }
+        });
+    }
+
+    function reanudarMusicaDeFondo() {
+        // Solo reanuda el fondo si la música dedicada está totalmente pausada o no ha iniciado
+        if (audioFondoOriginal && (!estaReproduciendo || audio.paused)) {
+            audioFondoOriginal.play().catch(e => console.log("Espera interacción del usuario"));
+        }
+    }
+
+    // 4. MECANISMO DE APERTURA DEL CAJÓN
+    if (cajonCerrado) {
+        cajonCerrado.onclick = function() {
+            cajonCerrado.style.opacity = '0';
+            cajonCerrado.style.pointerEvents = 'none';
+            
+            if (reproductor) {
+                reproductor.classList.remove('oculto');
+                setTimeout(() => {
+                    reproductor.classList.add('mostrar');
+                }, 50);
+            }
+        };
+    }
+
+    // 5. MECANISMO DE CIERRE DEL CAJÓN (¡CORREGIDO! LA MÚSICA SIGUE SONANDO)
+    if (btnCerrar) {
+        btnCerrar.onclick = function() {
+            if (reproductor) {
+                reproductor.classList.remove('mostrar');
+                setTimeout(() => {
+                    reproductor.classList.add('oculto');
+                    if (cajonCerrado) {
+                        cajonCerrado.style.opacity = '1';
+                        cajonCerrado.style.pointerEvents = 'auto';
+                    }
+                }, 400);
+            }
+            
+            // SE QUITARON LAS LÍNEAS DE PAUSA: El audio del reproductor sigue ejecutándose aquí
+            // Tampoco reanudamos el fondo musical de la pantalla porque la canción dedicada sigue activa
+        };
+    }
+
+    // 6. CARGAR LISTA VISUAL DE CANCIONES
+    function cargarListaCanciones() {
+        if (!listaCancionesUI) return;
+        listaCancionesUI.innerHTML = "";
+        cancionesDedicadas.forEach((cancion, indice) => {
+            const li = document.createElement('li');
+            li.textContent = `${indice + 1}. ${cancion.titulo}`;
+            li.onclick = () => seleccionarCancion(indice);
+            listaCancionesUI.appendChild(li);
+        });
+    }
+
+    // 7. SELECCIONAR Y REPRODUCIR LA CANCIÓN
+    function seleccionarCancion(indice) {
+        indiceCancionActual = indice;
+        const cancion = cancionesDedicadas[indiceCancionActual];
+        
+        if (tituloCancion) tituloCancion.textContent = cancion.titulo;
+        if (artistaCancion) artistaCancion.textContent = cancion.artista;
+        if (porqueCancion) porqueCancion.textContent = cancion.porque; 
+        
+        audio.src = cancion.url;
+        
+         audio.play()
+            .then(() => {
+                estaReproduciendo = true;
+                if (btnPlay) btnPlay.textContent = "⏸ Pause";
+                pausarMusicaDeFondo(); // Aquí se te había cortado
+            })
+            .catch(error => {
+                if (btnPlay) btnPlay.textContent = "▶ Play";
+            });
+
+        const elementosLista = listaCancionesUI.querySelectorAll('li');
+        elementosLista.forEach((el, idx) => {
+            if (idx === indice) el.classList.add('activa');
+            else el.classList.remove('activa');
+        });
+    }
+
+    // 8. CONTROL DEL BOTÓN DE PLAY / PAUSE MANUAL
+    if (btnPlay) {
+        btnPlay.onclick = function() {
+            if (audio.src === "" || audio.ended) {
+                seleccionarCancion(indiceCancionActual);
+            } else if (estaReproduciendo) {
+                audio.pause();
+                estaReproduciendo = false;
+                btnPlay.textContent = "▶ Play";
+                reanudarMusicaDeFondo();
+            } else {
+                audio.play();
+                estaReproduciendo = true;
+                btnPlay.textContent = "⏸ Pause";
+                pausarMusicaDeFondo();
+            }
+        };
+    }
+
+    // 9. INTERACCIÓN DEL BOTÓN "VER LETRA" Y "CERRAR LETRA"
+    if (btnLetra) {
+        btnLetra.onclick = function() {
+            if (cajonLetra) {
+                cajonLetra.classList.remove('letra-oculta');
+                cajonLetra.classList.add('letra-visible');
+                
+                // Carga la letra de la canción que está sonando en ese instante
+                const cancion = cancionesDedicadas[indiceCancionActual];
+                if (contenidoLetra) contenidoLetra.textContent = cancion.letra;
+            }
+        };
+    }
+
+    if (btnCerrarLetra) {
+        btnCerrarLetra.onclick = function() {
+            if (cajonLetra) {
+                cajonLetra.classList.remove('letra-visible');
+                cajonLetra.classList.add('letra-oculta');
+            }
+        };
+    }
+
+    // 10. BARRA DE PROGRESO INTERACTIVA
+    audio.ontimeupdate = function() {
+        if (audio.duration && progresoActual) {
+            const porcentaje = (audio.currentTime / audio.duration) * 100;
+            progresoActual.style.width = `${porcentaje}%`;
+        }
+    };
+
+    if (progresoBar) {
+        progresoBar.onclick = function(evento) {
+            if (audio.duration) {
+                audio.currentTime = (evento.offsetX / progresoBar.clientWidth) * audio.duration;
+            }
+        };
+    }
+
+    // 11. REPRODUCIR SIGUIENTE CANCIÓN AUTOMÁTICAMENTE AL TERMINAR
+    audio.onended = function() {
+        let siguiente = (indiceCancionActual + 1) % cancionesDedicadas.length;
+        seleccionarCancion(siguiente);
+    };
+
+    // Inicializa la lista al arrancar la web
+    cargarListaCanciones();
+});
+
+// LÓGICA AISLADA Y EXCLUSIVA PARA LA MASCOTA
+document.addEventListener("DOMContentLoaded", () => {
+    const elPerro = document.getElementById('mascota');
+    const laBurbuja = document.getElementById('burbuja-mascota');
+    const elBtnMimo = document.getElementById('btn-mimo');
+    const elBtnComida = document.getElementById('btn-comida');
+
+    let dogInactivo = 0;
+    let dogDurmiendo = false;
+
+    const frasesMimos = [
+        "¡Guau! Me encantan las caricias 🥰",
+        "¡Eres la mejor, Emily! ❤️",
+        "¡Qué bonita canción suena! 🎶",
+        "¡Moveré mi colita por ti! 🐾"
+    ];
+
+    const frasesComida = [
+        "¡Nom nom! Sabía a chocolate virtual 🍫",
+        "¡Gracias, Emily! Estaba riquísimo 😋",
+        "¡Guau! Mi pancita está súper feliz ✨",
+        "¡Me diste tanta energía que quiero bailar! 🐕"
+    ];
+
+    function perroHabla(texto) {
+        if (laBurbuja) {
+            laBurbuja.textContent = texto;
+            laBurbuja.style.opacity = '1';
+        }
+    }
+
+    // Evento Mimos
+    if (elBtnMimo && elPerro) {
+        elBtnMimo.addEventListener('click', () => {
+            dogInactivo = 0;
+            dogDurmiendo = false;
+            elPerro.textContent = "🐕";
+            const azar = frasesMimos[Math.floor(Math.random() * frasesMimos.length)];
+            perroHabla(azar);
+            setTimeout(() => { if (!dogDurmiendo) elPerro.textContent = "🐶"; }, 2500);
+        });
+    }
+
+    // Evento Comida
+    if (elBtnComida && elPerro) {
+        elBtnComida.addEventListener('click', () => {
+            dogInactivo = 0;
+            dogDurmiendo = false;
+            elPerro.textContent = "🐾";
+            const azar = frasesComida[Math.floor(Math.random() * frasesComida.length)];
+            perroHabla(azar);
+            setTimeout(() => { if (!dogDurmiendo) elPerro.textContent = "🐶"; }, 2500);
+        });
+    }
+
+    // Evento Clic Directo
+    if (elPerro) {
+        elPerro.addEventListener('click', () => {
+            dogInactivo = 0;
+            if (dogDurmiendo) {
+                dogDurmiendo = false;
+                elPerro.textContent = "🐶";
+                perroHabla("¡Me despertaste! ¡Hola de nuevo! ☀️");
+            } else {
+                perroHabla("¡Guau guau! Emi, ¿ponemos música? 🎵");
+            }
+        });
+    }
+
+    // Sistema de sueño cada 30 segundos
+    setInterval(() => {
+        dogInactivo += 10;
+        if (dogInactivo >= 30 && !dogDurmiendo) {
+            dogDurmiendo = true;
+            if (elPerro) elPerro.textContent = "💤";
+            perroHabla("Zzz... Me dio un poquito de sueño... 🌙");
+        }
+    }, 10000);
+});
+
+// LÓGICA TOTALMENTE AISLADA PARA EL COFRE DE SORPRESAS
+document.addEventListener("DOMContentLoaded", () => {
+    const elCofre = document.getElementById('cofre');
+    const laBurbujaCofre = document.getElementById('burbuja-cofre');
+    const elBtnCerrarCofre = document.getElementById('btn-cerrar-cofre');
+
+    // Banco de mensajes aleatorios para Emily
+    const mensajesCofre = [
+        "Eres incrribleeeeeeeeeeeeee Guty ✨",
+        "Gracias por alegrar mis días con solo existir 🌻",
+        "Tu sonrisa tiene el poder de cambiar cualquier día gris ☀️",
+        "Admiro muchísimo tu forma de ser Guty eres unica entre tantas 😊",
+        "Recuerda que eres capaz de lograr todo lo que te propongas 🚀",
+        "No lo olvides nunca estaras sola NUNCAAAAA 🥰",
+        "Eres un rayo de sol en los momentos mas oscuros 🤫"
+    ];
+
+    if (elCofre) {
+        elCofre.onclick = function() {
+            // Cambiamos el aspecto a cofre abierto con destellos
+            elCofre.textContent = "✨🔓"; 
+            
+            // Elegimos un mensaje completamente random del banco
+            const mensajeAleatorio = mensajesCofre[Math.floor(Math.random() * mensajesCofre.length)];
+            
+            if (laBurbujaCofre) {
+                laBurbujaCofre.textContent = mensajeAleatorio;
+                laBurbujaCofre.style.borderColor = "#ec4899"; // Cambia el borde a rosa al abrirse
+            }
+
+            // Mostramos el botón para permitirle volverlo a cerrar
+            if (elBtnCerrarCofre) {
+                elBtnCerrarCofre.classList.remove('oculto-cofre');
+            }
+        };
+    }
+
+    if (elBtnCerrarCofre) {
+        elBtnCerrarCofre.onclick = function() {
+            // Regresamos el cofre a su estado cerrado original
+            if (elCofre) elCofre.textContent = "🧰";
+            
+            if (laBurbujaCofre) {
+                laBurbujaCofre.textContent = "¡Cofre cerrado! Vuelve a tocar para otra sorpresa. 🔮";
+                laBurbujaCofre.style.borderColor = "#8b5cf6";
+            }
+
+            // Escondemos de nuevo el botón de cerrar
+            elBtnCerrarCofre.classList.add('oculto-cofre');
+        };
+    }
+});

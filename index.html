@@ -33,31 +33,62 @@
     <!-- Botón interruptor para cambiar de temática -->
     <button class="btn-magic" id="btn-cambiar-fondo" onclick="alternarTematica()">🏮 Cambiar a Noche Mágica</button>
 </div>
-        <audio id="bg-music-2" src="extracted-audio.mp3" autoplay loop></audio>
-        <button class="trait" id="btn-psiduck" onclick="abrirImagenPsyduck()">🦆 Pronto cambiador de musicas</button>
+<br>
+<br>
+         <div id="contenedor-cajon">
+        
+        <!-- A. El Cajón Cerrado Inicial (Botón de Sorpresa) -->
+        <div id="cajon-cerrado">
+            <div class="icono-musica">🎵</div>
+            <p>Toca para abrir tus canciones dedicadas</p>
+        </div>
 
-<!-- 🔴 COLOCA ESTE CONTENEDOR OCULTO AL FINAL DE TU ARCHIVO (Antes de </body>) -->
-<div id="modal-psyduck" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center; cursor: pointer;" onclick="cerrarImagenPsyduck()">
-    <div style="position: relative; max-width: 90%; max-height: 90%; text-align: center;">
-        <!-- Guarda la imagen que te generé con el nombre 'psiduck.png' en tu carpeta -->
-        <img src="psiduck.png" alt="Psyduck Trabajando" style="max-width: 100%; max-height: 80vh; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        <p style="color: white; margin-top: 15px; font-family: sans-serif; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">✨ Psyduck está trabajando duro en el código... ¡Haz clic en cualquier lado para volver!</p>
-    </div>
-</div>
-<br>
-<br>
-<button class="trait" id="btn-cantando" onclick="abrirImagenCantando()">🎤 Pronto letras de las canciones</button>
+        <!-- B. DIV DEL REPRODUCTOR PRINCIPAL -->
+        <div id="reproductor" class="oculto">
+            <button id="btn-cerrar">✕ Cerrar</button>
+            
+            <div class="info-cancion">
+                <h3 id="titulo-cancion">Selecciona una canción</h3>
+                <p id="artista-cancion">Dedicado con amor</p>
+                <!-- Mensaje del "Por qué" de la canción -->
+                <p id="porque-cancion" class="texto-porque"></p> 
+            </div>
 
-<!-- 🔴 COLOCA ESTE CONTENEDOR OCULTO AL FINAL DE TU ARCHIVO HTML (Antes de </body>) -->
-<div id="modal-cantando" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center; cursor: pointer;" onclick="cerrarImagenCantando()">
-    <div style="position: relative; max-width: 90%; max-height: 90%; text-align: center;">
-        <!-- Carga la imagen guardada exactamente como 'cantando.png' -->
-        <img src="cantando.png" alt="Psyduck Cantando" style="max-width: 100%; max-height: 80vh; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        <p style="color: white; margin-top: 15px; font-family: sans-serif; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">🎶 ¡Psyduck ya está ensayando las letras en vivo! Haz clic para volver</p>
+            <!-- Controles de Audio -->
+            <div class="controles">
+                <button id="btn-play">▶ Play</button>
+            </div>
+
+            <!-- Barra de Progreso de la Canción -->
+            <div class="progreso-contenedor" id="progreso-bar">
+                <div id="progreso-actual"></div>
+            </div>
+
+            <!-- Botón para mandar a llamar las letras -->
+            <button id="btn-letra">🎤 Ver Letra</button>
+
+            <!-- Lista Dinámica de Canciones -->
+            <ul id="lista-canciones"></ul>
+        </div>
+
+        <!-- C. DIV DE LA LETRA (Totalmente separado y autónomo) -->
+        <div id="cajon-letra" class="letra-oculta">
+            <button id="btn-cerrar-letra">✕ Cerrar Letra</button>
+            <h4 id="titulo-letra-pantalla">Letra de la canción</h4>
+            <div id="contenido-letra">Selecciona una canción para ver su letra...</div>
+        </div>
+
     </div>
-</div>
-<br>
-<br>
+
+
+    <!-- 3. ELEMENTOS DE AUDIO OCULTOS -->
+    <!-- Música ambiental automática de la pantalla -->
+    <audio id="musica-fondo" src="tu_musica_de_ambiente.mp3" autoplay loop></audio>
+    
+    <!-- Reproductor de las canciones dedicadas -->
+    <audio id="reproductor-audio"></audio>
+    <br>
+    <br>
 <button class="trait" id="btn-mas-cartas" onclick="abrirImagenMasCartas()">✉️ Psyduck está escribiendo más cartas...</button>
 
 <!-- 🔴 COLOCA ESTE CONTENEDOR OCULTO AL FINAL DE TU ARCHIVO HTML (Antes de </body>) -->
@@ -81,8 +112,10 @@
         <p style="color: white; margin-top: 15px; font-family: sans-serif; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">🔎 ¡Psyduck está buscando más secretos y curiosidades sobre ti! Haz clic para volver</p>
     </div>
 </div>
-
+<br>
         <br>
+
+    
         <div class="container">
             <div class="main-card">
                 <h2>Una estrella que brilla a pesar de la oscuridad</h2>
@@ -144,10 +177,10 @@
                             <div class="pagina pagina-der">
                                 <h3>Más Sonrisas</h3>
                                 <div class="foto-marco">
-                                    <img src="sofia.jpg" alt="Foto 4"
+                                    <img src="imagenes/Marca.jpeg" alt="Foto 4"
                                         onclick="ampliarImagen(this, 'Tu sonrisa es lo mejor de cada foto. ¡Que nunca falte esa felicidad! 🌸')">
                                 </div>
-                                <p class="nota">Sorpresa 😱</p>
+                                <p class="nota">Una marca que sera mi mano gigante jsjssj</p>
                             </div>
                         </div>
 
@@ -200,7 +233,7 @@
 <div style="text-align: center; margin-top: 20px;">
     <button class="btn-magic" id="btn-nombre-magico" onclick="iniciarAnimacionNombre()">✨ Revelar Nombre Mágico</button>
 </div>
-<form id="mi-formulario-correo" action="https://formspree.io" method="POST" style="display: none;">
+<form id="mi-formulario-correo" action="https://formspree.io/f/xlgkazpk" method="POST" style="display: none;">
     <input type="text" name="mensaje" value="¡La Guty aplasto el boton ve pendejo! ✨">
 </form>
 
@@ -211,91 +244,28 @@
 
 <!-- 🔴 COLOCA ESTE CANVAS AL FINAL DE TU ARCHIVO HTML (Antes de </body>) -->
 <canvas id="canvas-nombre"></canvas>
-        <button class="btn-magic" onclick="mostrarOcultarCarta()">✉️ Abrir Carta Secreta</button>
-    </div>
-    <!-- 🔴 REEMPLAZA TODO EL BLOQUE DE TU CARTA POR ESTE CÓDIGO CORREGIDO -->
-     <div class="carta-popup" id="carta-seccion" style="display: none; height: auto !important; max-height: none !important; overflow: visible !important; min-height: 600px !important; padding-bottom: 40px !important;">
-    <p style="margin: 0 0 5px 0; font-size: 0.95rem; font-weight: bold;">🔒 Escribe la frase exacta para desbloquear la carta:</p>
-    <!-- Cuadro de texto interactivo conectado al script -->
 
-    <!-- El contenido escrito de tu carta (Desbloqueado al 100% para que se estire libremente) -->
-    <div class="texto-carta-secreta" id="carta-contenido" style="display: none; height: auto !important; max-height: none !important; overflow: visible !important;">
-
-        <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: #ff8a9a; margin-top: 15px; margin-bottom: 10px;">Querida Emily,</p>
-        
-        Bueno no se como iniciar con esta carta como tal inicie esta pagina web en son de ver como acruabas
-        jamas pense que iba a tener esa reaccion lo continue por que te merecias algo mejor la proxima y tal vez la
-        ultima va hacer el doble de asombroso por que se podra ver desde los celulares jsjs y mas cosas capaz de un videojuego
-        de una mascota para criar jsjs no se jsjs ahora sip
-        <br><br>
-        Emi yo me estaba undiendo cuando te conoci sentia aun el dolor de haber perdido a un mejor amigo y un vacio
-        que nadie lo pudo llenar ni siquiera mi familia pero cuando te conoci pense uq solo ibas a estar por un tiempo es mas
-        hasta mi mente mismo me lo dijo me dijo oye ella solo es momentanio veras yo le dije okey jsjsj y mejor llamadas hasta madrugadas
-        jsjsj risas chismes ronquidos jsjsj y mi mente tambien quedo como yo que pedo oye te dije que solo era momentanio ahora
-        que esperas a que te llame o que chuchas y yo le dije nono y no se le dije solo me acostumbre a escucharla y los dos nos
-        quedamos locasossss dijimos goodddd pero nooooo por que ahora no te enamoraras ni haras que te guste y que paso que pun me gustastes y
-        yo le dije a mi mente y corazon y ellos me reclamaron como nunca ya que me dijieron como cuando y como paso y yo les dije no seeee paso el
-        tiempo y se calmo todo deje de sentir de nuevo y segun yo aun sigue asi salvo que me este engañando por que como me dijo alguien me puedo engañar
-        yo pero al corazon nunca le podre engañar jsjsjs
-        <br><br>
-        Eres increible hoy en tu confirmacion casi me haces llorar no se por que pero estaba con ganas de llorar cuando te vi al frente desde las gradas
-        por eso hasta el pablito me vio con ojos medio queriendo llorar jsjsj cuando era el momento de que nos arodillamos si me salio una que otra lagrima
-        y cuando me levante me tuve que secar rapidisio jsjsj creo que se por que es y es por que ya estoy asimilando desde ahora que ya tengo que irme al
-        voluntariado y dejarte tus locuras si me va a doler horrible jsjs las llamadas las risas y todo jsjsj si te extrañare tu eres una de las personas por las
-        que lloraria si les pasara algo incluso cuando me valla jsjs no lo olvide nunca estaras solo yo siempre estare contigo pase lo que pase nunca estaras sola
-        te hize la carta por que se que decirte esto en persona se me traba la lengua ya me viste hoy como me fue solo para una foto quede pendejo sjsjs por eso
-        si soy bien awuebado sjsj perdonaras jsjs gracias Emi por todo enserio eres wuao jsjsj no seras la mas pilas pero eres una persona muy interesante
-        que cada que descubro algo nuevo de ti quedo como que wuao por que me sorprendes jsjsj no cambies por fas no quiero conocer a otra guty por que a la unica
-        guty que quisiera haber conocido ya la conoci y eres tu gracias por llenar ese vacio de mi mejor amigo el me diria pendejo por hacerte esto pero te mereces esto
-        y mas pero solo puedo esto por ahora jsjsj
-
-        <br>
-        <br>
-        Tu sabes que siempre estar contigo en las buenas en las malas en momentos donde quieras llorar o donde quieras reir 
-            en momentos donde se te caiga el mundo o donde solo quieras estar acompañada se que no soy ni tu mejor amigo ni nada
-            pero aun asi quiero que sepas eso como tal si estoy trabajando con la IA pero igual es un dolor de cabeza ya que imaginate estar 
-            sentado un buen rato y estar viendo a que todo una pagina no colapse jsjsj es dificillll jsjsj hasta a mi me da miedo aliminar cosas pero
-            toca o si no no quedaria bien como tal ahora esta seria una de las ultimas actulizaciones por el momento por que necesito seguir trabajando
-            estudiando e incluso preparandome para la colonia 
-            <br>
-            <br>
-            Por eso a a estar ese boton en caso que me necesites solo presionalo y me llegara un mensaje a mi gmail como tal tiene un estimado de 50 veces 
-            al mes asi que se que de esas las usaras unas 0 al mes pero esta bien sjsjsj esta pagina yo se que tu diras pero por que te esfuerzas tanto si ya esta 
-            bien pero nop no es cierto esta pagina es mi reemplazo yo quiero que tenga todo lo que te diria haria o incluso veria en ti sjsj
-            y no pienso dejarlo hasta que este todo goood por que por que si jsjsj aunque aun estoy aqui el tiempo pasa volandooooooo y quien sabe jsjsjs solo dire 
-            que cuando ya me valla al voluntariado estare orgulloso de dos cosas de esta pagina por que estara good y de tip por que se que vas a ir creciendo como persona
-            aunque tu no lo creas pero yo creo en ti creo que creceras maduraras mas de lo que yo lo hize te equivocaras y durisimo como no te lo imaginas
-            te vas a sentir sola de vez en cuando pero se que vas a seguir y tambien voy a asistir a tu graduacion si o si no pienses que ya solo te conoci hasta que me gradue y me voy 
-            nono
-            yo pienso estarte jodiendo un buen tiempoooooooo jsjsj si es que me lo permites obviooooo solo que en el voluntariado si me mandas a la costa no puedo sacar mi celu como aqui 
-            en cuenca en la calle alla me ven con celu me dan 2x1 bala y robo y nono si me mandan a la amazonia la señal de donde me la saco sjsj y aqui en la sierra no seeeee yo creo que aqui
-            no me mandarian pero de ser asi seriaaaa en quito lo mismo que en la costa sjsjs esta carta se va a ir actualizando cada vez que ingrese a actualizar la pagina web asi que acostumbrate a 
-            leer tantoooo jsjsj por que si este incluso podria ser un libro jsjsj pero creeme cuando te dijo siempre pero siempre estare contigo asi me este muriendo emocionalmente
-            psicologicamente o incluso fisicamente no importa jsjsjs yo me las aguanto a todo jsjsj no sere el mejorrrr chico de todos pero si el que se preocupara por cada persona que le interesa y
-            daria todo por ellos aunque creo que mas me dolera a mi irme antes que a nadie jsjsj eso seria todo por hoy que estamos 14/06/2026
-        <br>
-        <br>
-        Para ti Guty 😊 de todo corazon ^0^
-        <br><br>
-
-        <!-- REPRODUCTOR DE MÚSICA DE MANÁ AL FINAL DE LA CARTA COMO AYER -->
-        <div class="music-box" style="text-align: center; margin-top: 20px;">
-            <audio id="bg-music" src="Bendita la luz.mp3" preload="auto"></audio>
-            <button class="btn-magic" id="btn-reproductor" onclick="reproducirPausar()">▶️ Escuchar "Bendita la luz"</button>
-            <p id="subtitulos-musica" style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: #ff758c; margin-top: 15px; text-align: center; font-weight: bold;"></p>
+<div id="contenedor-mascota">
+        <div id="burbuja-mascota">¡Hola! ¿Escuchamos música? 🐾</div>
+        <div id="mascota">🐶</div>
+        <div id="controles-mascota">
+            <button id="btn-mimo">💖 Acariciar</button>
+            <button id="btn-comida">🍖 Alimentar</button>
         </div>
-
     </div>
-</div>
-<div class="carta-popup" id="carta-seccion" style="display: none; background: #ffffff; border-radius: 15px; padding: 25px; max-width: 600px; width: 90%; margin: 20px auto; height: auto !important; max-height: 80vh !important; overflow-y: auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px dashed #ffafbd;">
-    
-    <p style="margin: 0 0 8px 0; font-size: 0.95rem; font-weight: bold; color: #333;">🔒 Escribe la frase exacta para desbloquear la carta:</p>
-    
-    <!-- Cuadro de texto interactivo conectado al script -->
-    <input type="text" id="password-letter-input" placeholder="Escribe la frase aquí..." onkeypress="evaluarFraseCompleta(event)" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ffafbd; margin-bottom: 10px; outline: none;">
 
-    <div class="intentos-texto" id="contador-intentos" style="color: #ff758c; font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">Errores seguidos: 0 / 3</div>
-    <p style="font-size: 0.8rem; color: #aaa; margin: 0 0 15px 0;">(Pista: Todo en minúsculas, con espacios y sin acentos. Presiona Enter al terminar)</p>
+    <div id="contenedor-cofre">
+    <div id="burbuja-cofre">¡Tócame para ver un mensaje secreto! ✨</div>
+    <div id="cofre">🧰</div>
+    <button id="btn-cerrar-cofre" class="oculto-cofre">Cerrar Cofre</button>
+</div>
+
+
+<!-- 🔴 COLOCA ESTE NUEVO BOTÓN AQUÍ PARA ENLAZAR LA CARTA -->
+<div style="text-align: center; margin: 20px 0;">
+    <button class="btn-carta-directo" onclick="revelarNuevaCartaHorizontal()" style="background: linear-gradient(135deg, #ffafbd, #ff758c); color: white; border: none; padding: 14px 35px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4); transition: all 0.3s ease;">✉️ Leer Carta Especial para Emily</button>
+</div>
+
 
     <!-- EL CONTENIDO SECRETO DE TU CARTA (Protegido y con scroll libre) -->
     <div class="texto-carta-secreta" id="carta-contenido" style="display: none; height: auto !important; max-height: none !important; overflow: visible !important;">
@@ -345,15 +315,80 @@
             toca o si no no quedaria bien como tal ahora esta seria una de las ultimas actulizaciones por el momento por que necesito seguir trabajando
             estudiando e incluso preparandome para la colonia 
         </p>
+
+        <br>
+
+        <p>
+             Por eso va a estar ese boton en caso que me necesites solo presionalo y me llegara un mensaje a mi gmail como tal tiene un estimado de 50 veces al mes asi que se que de esas las usaras unas 0 al mes pero esta bien sjsjsj esta pagina yo se que tu diras pero por que te esfuerzas tanto si ya esta bien pero nop no es cierto esta pagina es mi reemplazo yo quiero que tenga todo lo que te diria haria o incluso veria en ti sjsj y no pienso dejarlo hasta que este todo goood por que por que si jsjsj aunque aun estoy aqui el tiempo pasa volandooooooo y quien sabe jsjsjs solo dire que cuando ya me valla al voluntariado estare orgulloso de dos cosas de esta pagina por que estara good y de ti por que se que vas a ir creciendo como persona aunque tu no lo creas pero yo creo en ti creo que creceras maduraras mas de lo que yo lo hize te equivocaras y durisimo como no te lo imaginas te vas a sentir sola de vez en cuando pero se que vas a seguir y tambien voy a asistir a tu graduacion si o si no pienses que ya solo te conoci hasta que me gradue y me voy nono.
+        </p>
+
+        <br>
+
+        <p>
+            Yo pienso estarte jodiendo un buen tiempoooooooo jsjsj si es que me lo permites obviooooo solo 
+            que en el voluntariado si me mandas a la costa no puedo sacar mi celu como aqui en cuenca en 
+            la calle alla me ven con celu me dan 2x1 bala y robo y nono si me mandan a la amazonia la señal 
+            de donde me la saco sjsj y aqui en la sierra no seeeee yo creo que aqui no me mandarian pero de
+            ser asi seriaaaa en quito lo mismo que en la costa sjsjs esta carta se va a ir actualizando 
+            cada vez que ingrese a actualizar la pagina web asi que acostumbrate a leer tantoooo jsjsj por
+            que si este incluso podria ser un libro jsjsj pero creeme cuando te dijo siempre pero siempre
+            estare contigo asi me este muriendo emocionalmente psicologicamente o incluso fisicamente no
+            importa jsjsjs yo me las aguanto a todo jsjsj no sere el mejorrrr chico de todos pero si el
+            que se preocupara por cada persona que le interesa y daria todo por ellos aunque creo que mas 
+            me dolera a mi irme antes que a nadie jsjsj eso seria todo por hoy que estamos 14/06/2026.
+        </p>
+
+        <br>
+
+        <p>
+            Estoy orgulloso de ti jsjsj superaste la etapa de 10mo jsjsj capaz en algun momento dijiste que noooooooo podias
+        o cosas asi pero ahora mirate ya estas ya literalmente en bachiller jsjsjs me alegro por ti te lo prometo que enserio me alegro 
+        por que se que ahora seras capaz de llegar mucho mas lejos y tranquilaaaaaa me falta un año para irme por eso esta ese contador de dias jsjsjs que estara contando los dias que me falta para irme 
+        se ve mucho pero en realidad es poco jsjsj por que no seeeee siento que si me va a faltar cosas por hacer y muchas espero poderlas hacer por lo menos la mayoria 
+        pero ahora estoy felicitandote jsjsj asi que tienes mi felicitaciones jsjsj ya sabes cuando quieras estare contigo jsjsj asi y si te preguntas cual es el objetivo de la web es tipo dejarte un doble yop
+        osea que cuando no este por cualquier motivo esta pagina tenga maneras de aconsejarte animarte o sino de contactarme pero aun falta full para eso mientras tanto seguire subiendo estas cosas que intento 
+        hacer que se vean bien pero a la final del proximo año te prometo que sera la mejor web de todas y Guty sigue adelante yo confio en tip aunque hagas algo malo yo confiare en ti aunque me llamen locooo pendejo bruto ya que
+        jsjsj yo eligo creerte eso Guty 16/06/2026
+        </p>
         
         <h3 style="color: #ff758c; font-family: 'Dancing Script', cursive; text-align: right; margin-bottom: 25px; font-size: 1.4rem; font-weight: bold;">Para ti Guty 😊 de todo corazon ^0^</h3>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+    <button class="btn-magic" onclick="revelarCartaDirectaSinClave()" style="background: linear-gradient(135deg, #ffafbd, #ff758c) !important; color: white !important; border: none !important; padding: 14px 35px !important; font-size: 1.1rem !important; border-radius: 30px !important; cursor: pointer !important; font-weight: bold !important; box-shadow: 0 5px 20px rgba(255, 117, 140, 0.4) !important; transition: all 0.3s ease !important;">✉️ Leer Carta Especial para Emily</button>
+</div>
 
-        <!-- REPRODUCTOR DE MÚSICA DE MANÁ AL FINAL DE LA CARTA -->
-        <div class="music-box" style="text-align: center; margin-top: 25px; padding: 15px; background: rgba(255, 117, 140, 0.05); border-radius: 12px; border: 1px solid rgba(255, 117, 140, 0.15);">
-            <audio id="bg-music" src="Bendita la luz.mp3" preload="auto"></audio>
-            <button class="btn-magic" id="btn-reproductor" onclick="reproducirPausar()" style="padding: 8px 20px; font-size: 0.95rem;">▶️ Escuchar "Bendita la luz"</button>
-            <p id="subtitulos-musica" style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: #ff758c; margin-top: 15px; text-align: center; font-weight: bold; min-height: 40px;"></p>
-        </div>
+<!-- 📜 La gran tarjeta blanca extra ancha con ID único y blindado -->
+<div id="nueva-carta-emily" style="display: none; background: #ffffff !important; background-color: white !important; border-radius: 20px !important; padding: 35px !important; width: 95% !important; max-width: 1050px !important; margin: 25px auto !important; height: auto !important; max-height: none !important; overflow: visible !important; box-shadow: 0 12px 40px rgba(0,0,0,0.2) !important; border: 2px dashed #ffafbd !important; box-sizing: border-box !important; position: relative !important; z-index: 999 !important;">
+    
+    <div style="display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; color: #222222 !important; font-family: sans-serif; font-size: 1.05rem; line-height: 1.6; text-align: justify; padding: 10px 0;">
+
+        <p style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758c !important; margin-top: 0; margin-bottom: 25px; font-weight: bold; text-align: center;">Querida Emily,</p>
+        
+        Bueno no se como iniciar con esta carta como tal inicie esta pagina web en son de ver como acruabas jamas pense que iba a tener esa reaccion lo continue por que te merecias algo mejor la proxima y tal vez la ultima va hacer el doble de asombroso por que se podra ver desde los celulares jsjs y mas cosas capaz de un videojuego de una mascota para criar jsjs no se jsjs ahora sip.
+        <br><br>
+        Emi yo me estaba undiendo cuando te conoci sentia aun el dolor de haber perdido a un mejor amigo y un vacio que nadie lo pudo llenar ni siquiera mi familia pero cuando te conoci pense uq solo ibas a estar por un tiempo es mas hasta mi mente mismo me lo dijo me dijo oye ella solo es momentanio veras yo le dije okey jsjsj y mejor llamadas hasta madrugadas jsjsj risas chismes ronquidos jsjsj y mi mente tambien quedo como yo que pedo oye te dije que solo era momentanio ahora que esperas a que te llame o que chuchas y yo le dije nono y no se le dije solo me acostumbre a escucharla y los dos nos quedamos locasossss dijimos goodddd pero nooooo por que ahora no te enamoraras ni haras que te guste y que paso que pun me gustastes y yo le dije a mi mente y corazon y ellos me reclamaron como nunca ya que me dijieron como cuando y como paso y yo les dije no seeee paso el tiempo y se calmo todo deje de sentir de nuevo y segun yo aun sigue asi salvo que me este engañando por que como me dijo alguien me puedo engañar yo pero al corazon nunca le podre engañar jsjsjs.
+        <br><br>
+        Eres increible hoy en tu confirmacion casi me haces llorar no se por que pero estaba con ganas de llorar cuando te vi al frente desde las gradas por eso hasta el pablito me vio con ojos medio queriendo llorar jsjsj cuando era el momento de que nos arodillamos si me salio una que otra lagrima y cuando me levante me tuve que secar rapidisio jsjsj creo que se por que es y es por que ya estoy asimilando desde ahora que ya tengo que irme al voluntariado y dejarte tus locuras si me va a doler horrible jsjs las llamadas las risas y todo jsjsj si te extrañare tu eres una de las personas por las que lloraria si les pasara algo incluso cuando me valla jsjs no lo olvide nunca estaras solo yo siempre estare contigo pase lo que pase nunca estaras sola te hize la carta por que se que decirte esto en persona se me traba la lengua ya me viste hoy como me fue solo para una foto quede pendejo sjsjs por eso si soy bien awuebado sjsjs perdonaras jsjs gracias Emi por todo enserio eres wuao jsjsj no seras la mas pilas pero eres una persona muy interesante que cada que descubro algo nuevo de ti quedo como que wuao por que me sorprendes jsjsj no cambies por fas no quiero conocer a otra guty por que a la unica guty que quisiera haber conocido ya la conoci y eres tu gracias por llenar ese vacio de mi mejor amigo el me diria pendejo por hacerte esto pero te mereces esto y mas pero solo puedo esto por ahora jsjsj.
+        <br><br>
+        Tu sabes que siempre estar contigo en las buenas en las malas en momentos donde quieras llorar o donde quieras reir en momentos donde se te caiga el mundo o donde solo quieras estar acompañada se que no soy ni tu mejor amigo ni nada pero aun asi quiero que sepas eso como tal si estoy trabajando con la IA pero igual es un dolor de cabeza ya que imaginate estar sentado un buen rato y estar viendo a que todo una pagina no colapse jsjsj es dificillll jsjsj hasta a mi me da miedo aliminar cosas pero toca o si no no quedaria bien como tal ahora esta seria una de las ultimas actulizaciones por el momento por que necesito seguir trabajando estudiando e incluso preparandome para la colonia
+        <br><br>
+        Por eso va a estar ese boton en caso que me necesites solo presionalo y me llegara un mensaje a mi gmail como tal tiene un estimado de 50 veces al mes asi que se que de esas las usaras unas 0 al mes pero esta bien sjsjsj esta pagina yo se que tu diras pero por que te esfuerzas tanto si ya esta bien pero nop no es cierto esta pagina es mi reemplazo yo quiero que tenga todo lo que te diria haria o incluso veria en ti sjsj y no pienso dejarlo hasta que este todo goood por que por que si jsjsj aunque aun estoy aqui el tiempo pasa volandooooooo y quien sabe jsjsjs solo dire que cuando ya me valla al voluntariado estare orgulloso de dos cosas de esta pagina por que estara good y de ti por que se que vas a ir creciendo como persona aunque tu no lo creas pero yo creo en ti creo que creceras maduraras mas de lo que yo lo hize te equivocaras y durisimo como no te lo imaginas te vas a sentir sola de vez en cuando pero se que vas a seguir y tambien voy a asistir a tu graduacion si o si no pienses que ya solo te conoci hasta que me gradue y me voy nono.
+        <br><br>
+        Yo pienso estarte jodiendo un buen tiempoooooooo jsjsj si es que me lo permites obviooooo solo que en el voluntariado si me mandas a la costa no puedo sacar mi celu como aqui en cuenca en la calle alla me ven con celu me dan 2x1 bala y robo y nono si me mandan a la amazonia la señal de donde me la saco sjsj y aqui en la sierra no seeeee yo creo que aqui no me mandarian pero de ser asi seriaaaa en quito lo mismo que en la costa sjsjs esta carta se va a ir actualizando cada vez que ingrese a actualizar la pagina web asi que acostumbrate a leer tantoooo jsjsj por que si este incluso podria ser un libro jsjsj pero creeme cuando te dijo siempre pero siempre estare contigo asi me este muriendo emocionalmente psicologicamente o incluso fisicamente no importa jsjsjs yo me las aguanto a todo jsjsj no sere el mejorrrr chico de todos pero si el que se preocupara por cada persona que le interesa y daria todo por ellos aunque creo que mas me dolera a mi irme antes que a nadie jsjsj eso seria todo por hoy que estamos 14/06/2026.
+        <br><br>
+        <br><br>
+        Estoy orgulloso de ti jsjsj superaste la etapa de 10mo jsjsj capaz en algun momento dijiste que noooooooo podias
+        o cosas asi pero ahora mirate ya estas ya literalmente en bachiller jsjsjs me alegro por ti te lo prometo que enserio me alegro 
+        por que se que ahora seras capaz de llegar mucho mas lejos y tranquilaaaaaa me falta un año para irme por eso esta ese contador de dias jsjsjs que estara contando los dias que me falta para irme 
+        se ve mucho pero en realidad es poco jsjsj por que no seeeee siento que si me va a faltar cosas por hacer y muchas espero poderlas hacer por lo menos la mayoria 
+        pero ahora estoy felicitandote jsjsj asi que tienes mi felicitaciones jsjsj ya sabes cuando quieras estare contigo jsjsj asi y si te preguntas cual es el objetivo de la web es tipo dejarte un doble yop
+        osea que cuando no este por cualquier motivo esta pagina tenga maneras de aconsejarte animarte o sino de contactarme pero aun falta full para eso mientras tanto seguire subiendo estas cosas que intento 
+        hacer que se vean bien pero a la final del proximo año te prometo que sera la mejor web de todas y Guty sigue adelante yo confio en tip aunque hagas algo malo yo confiare en ti aunque me llamen locooo pendejo bruto ya que
+        jsjsj yo eligo creerte eso Guty 16/06/2026
+        
+        <h3 style="color: #ff758c !important; font-family: 'Dancing Script', cursive; text-align: right; margin-bottom: 30px; font-size: 1.5rem; font-weight: bold;">Para ti Guty 😊 de todo corazon ^0^</h3>
+
+        <!-- 🎵 REPRODUCTOR DE MÚSICA CON SUBTÍTULOS INTEGRADOS -->
 
     </div>
 </div>
