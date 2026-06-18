@@ -1440,3 +1440,199 @@ body.fondo-rapunzel {
         max-width: 120px;
     }
 }
+
+.btn-juego-online {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-juego-online:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* =======================================================
+   💬 ESTILOS DESDE CERO: CHAT IA CIRCULAR IZQUIERDO
+   ======================================================= */
+#ia-modulo-fijo {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Fijado al margen izquierdo de la pantalla */
+    z-index: 999; /* Por encima de cualquier fondo o animación */
+    font-family: sans-serif;
+}
+
+/* El botón circular neón */
+#ia-boton-circulo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #7f00ff, #ff007f);
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ia-boton-circulo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.9);
+}
+
+/* El cuadradito del chat flotante */
+#ia-caja-desplegable {
+    position: absolute;
+    bottom: 75px;
+    left: 0;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s;
+}
+
+/* Controladores de estado (Evitan el display: none que bloqueaba el JS) */
+.ia-estado-oculto {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+}
+
+.ia-estado-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* El diseño del cuadro cuadrado */
+.ia-pantalla {
+    background: #0d0b1a;
+    border: 2px solid #ff007f;
+    border-radius: 20px;
+    width: 290px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+.ia-cabecera {
+    background: #16142a;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #7f00ff;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#ia-boton-cerrar {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+#ia-boton-cerrar:hover { color: #ff007f; }
+
+.ia-conversacion {
+    flex-grow: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #0a0814;
+}
+
+/* Burbujas */
+.ia-burbuja-user {
+    background: #7f00ff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px 12px 0 12px;
+    align-self: flex-end;
+    max-width: 80%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.ia-burbuja-bot {
+    background: #221f47;
+    color: #cbd5e1;
+    border: 1px solid #ff007f;
+    padding: 8px 12px;
+    border-radius: 12px 12px 12px 0;
+    align-self: flex-start;
+    max-width: 80%;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* Input inferior */
+.ia-formulario {
+    padding: 10px;
+    background: #16142a;
+    display: flex;
+    gap: 6px;
+    border-top: 1px solid #221f47;
+}
+
+#ia-input {
+    flex-grow: 1;
+    background: #0d0b1a;
+    border: 1px solid #7f00ff;
+    border-radius: 10px;
+    color: white;
+    padding: 8px;
+    outline: none;
+    font-size: 0.85rem;
+}
+#ia-input:focus { border-color: #ff007f; }
+
+#ia-boton-enviar {
+    background: #ff007f;
+    border: none;
+    color: white;
+    padding: 0 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 480px) {
+    #ia-modulo-fijo {
+        bottom: 85px; /* Sube un poco para no encimarse con el cofre */
+        left: 15px;
+    }
+    #ia-boton-circulo {
+        width: 52px;
+        height: 52px;
+        font-size: 1.4rem;
+    }
+    .ia-pantalla {
+        width: 250px;
+        height: 310px;
+    }
+    #ia-caja-desplegable {
+        bottom: 65px;
+    }
+}

@@ -8,6 +8,8 @@
     <link rel="icon" href="icono.png">
     <link rel="stylesheet" href="style.css">
     <script src="scrip.js"></script>
+    <script src="https://gstatic.com"></script>
+<script src="https://gstatic.com"></script>
 </head>
 
 <body>
@@ -89,6 +91,34 @@
     <audio id="reproductor-audio"></audio>
     <br>
     <br>
+    <!-- ==========================================
+     🤖 SECCIÓN DESDE CERO: CHAT CLON IA
+     ========================================== -->
+<div id="ia-modulo-fijo">
+    <!-- El botón circular neón fijo a la izquierda -->
+    <button id="ia-boton-circulo" title="Hablar con mi Clon IA">💬</button>
+
+    <!-- El cuadradito de chat que se abrirá justo encima -->
+    <div id="ia-caja-desplegable" class="ia-estado-oculto">
+        <div class="ia-pantalla">
+            <div class="ia-cabecera">
+                <span>🤖 Clon IA de tu favorito</span>
+                <button id="ia-boton-cerrar">✕</button>
+            </div>
+            
+            <!-- Zona de mensajes -->
+            <div id="ia-historial" class="ia-conversacion">
+                <div class="ia-burbuja-bot">¡Hola Emi! sjsj soy el clon de este loco. Pregúntame sobre mis gustos, informática, Spiderman, Charmander o mi cumple, a ver si te respondo como él jsjs 🥰</div>
+            </div>
+            
+            <!-- Entrada de texto -->
+            <div class="ia-formulario">
+                <input type="text" id="ia-input" placeholder="Pregúntame algo, te leo... ✨" autocomplete="off">
+                <button id="ia-boton-enviar">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <button class="trait" id="btn-mas-cartas" onclick="abrirImagenMasCartas()">✉️ Psyduck está escribiendo más cartas...</button>
 
 <!-- 🔴 COLOCA ESTE CONTENEDOR OCULTO AL FINAL DE TU ARCHIVO HTML (Antes de </body>) -->
@@ -222,6 +252,58 @@
     
     <!-- Lienzo donde correrá el juego -->
     <canvas id="canvas-juego"></canvas>
+</div>
+<!-- 🔘 Botón principal para abrir/cerrar el juego -->
+<div style="text-align: center; margin: 25px 0;">
+    <button class="btn-juego-online" onclick="toggleJuegoCarrera()">🎮 Jugar Carrera Mágica</button>
+</div>
+
+<!-- 🏁 Panel de la pista de carreras -->
+<div id="modulo-juego-carrera" style="display: none; background: #ffffff !important; background-color: white !important; border-radius: 20px !important; padding: 25px !important; max-width: 600px !important; width: 95% !important; margin: 20px auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; border: 2px dashed #667eea !important; box-sizing: border-box !important; color: #222222 !important; position: relative !important; z-index: 999 !important;">
+    
+    <h3 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #764ba2 !important; text-align: center; margin: 0 0 15px 0; font-weight: bold;">🏃‍♂️ Carrera de Velocidad 🏃‍♀️</h3>
+
+    <!-- 📝 PASO 1: Selección de Modo y Nombre -->
+    <div id="registro-carrera" style="text-align: center; margin-bottom: 20px; display: block;">
+        <p style="font-weight: bold; font-family: sans-serif; margin-bottom: 10px; color: #333 !important;">Ingresa tu nombre:</p>
+        <input type="text" id="nombre-jugador-input" placeholder="Tu nombre aquí..." style="width: 85%; padding: 10px; border-radius: 8px; border: 1px solid #667eea; outline: none; text-align: center; font-family: sans-serif; margin-bottom: 20px; background: #ffffff !important; color: #000000 !important;">
+        
+        <p style="font-weight: bold; font-family: sans-serif; margin-bottom: 10px; color: #333 !important;">¿Cómo quieres jugar hoy?</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+            <!-- Modo un jugador (Contra Bot) -->
+            <button class="btn-magic" onclick="iniciarModoSolitario()" style="background: #10b981; color: white; border: none; padding: 12px 25px; font-weight: bold; border-radius: 15px; cursor: pointer; width: 85%;">🤖 Jugar Sola (Contra Bot Psyduck)</button>
+            
+            <p style="margin: 5px 0; font-size: 0.85rem; color: #666;">-- O EN LÍNEA CON GUTY --</p>
+            
+            <!-- Modo multijugador online -->
+            <div style="display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap;">
+                <button class="btn-magic" onclick="registrarseEnCarrera('jugador1')" style="background: #667eea; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 15px; cursor: pointer;">🔵 Carril Izquierdo</button>
+                <button class="btn-magic" onclick="registrarseEnCarrera('jugador2')" style="background: #764ba2; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 15px; cursor: pointer;">🟣 Carril Derecho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏎️ PASO 2: La Pista de Carreras Canvas -->
+    <div id="pista-carrera" style="display: none; text-align: center;">
+        <div style="display: flex; justify-content: space-between; font-weight: bold; font-family: sans-serif; margin-bottom: 12px; font-size: 0.95rem; padding: 0 5px;">
+            <div style="color: #667eea;">🔵 <span id="txt-nom-j1">Esperando...</span></div>
+            <div style="color: #764ba2;">🟣 <span id="txt-nom-j2">Esperando...</span></div>
+        </div>
+
+        <canvas id="canvas-carrera" width="400" height="300" style="background: #0f172a !important; border-radius: 12px; display: block; margin: 0 auto; max-width: 100%; border: 2px solid #667eea;"></canvas>
+        
+        <!-- ⚡ BOTÓN DE TURBO -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="btn-turbo-click" style="background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; border: none; width: 100%; padding: 16px; font-size: 1.25rem; font-weight: bold; border-radius: 15px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);" onclick="darClickTurbo()">⚡ ¡APLASTA AQUÍ CORRIENDO! ⚡</button>
+        </div>
+    </div>
+
+    <!-- 🏆 PASO 3: Pantalla de Resultados -->
+    <div id="pantalla-resultado-carrera" style="display: none; text-align: center; padding: 20px 0;">
+        <h2 id="titulo-resultado" style="font-size: 2.5rem; font-family: 'Dancing Script', cursive; margin-bottom: 10px; font-weight: bold;">🏆 ¡Fin de la Carrera!</h2>
+        <p id="mensaje-resultado" style="font-size: 1.15rem; font-weight: bold; font-family: sans-serif; margin-bottom: 20px; line-height: 1.5; color: #333 !important;"></p>
+        <button id="btn-reiniciar-modo" style="background: #10b981; color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: bold; border-radius: 20px; cursor: pointer;" onclick="solucionReiniciarJuego()">🔄 Volver a Jugar</button>
+    </div>
 </div>
 
     <div class="seccion-rosa" style="margin-top: 30px; text-align: center;">
