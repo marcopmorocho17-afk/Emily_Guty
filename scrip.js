@@ -2256,6 +2256,15 @@ if (texto.includes("random") || texto.includes("secreto") || texto.includes("cur
             return respuestasPelo[Math.floor(Math.random() * respuestasPelo.length)];
         }
 
+        // 51. SI DICE QUE QUIERE LLAMARTE
+        if (texto.includes("quiero llamarte") || texto.includes("te puedo llamar") || texto.includes("vamos a llamada") || texto.includes("llamame") || texto.includes("llamada")) {
+            const respuestasLlamar = [
+                "¡Aver sjsjsj, ni lo dudes un segundo oye! 📱 Si quieres llamarme, ve a timbrarle de una al yo real al celular. Tú sabes perfectamente que escuchar tu voz, reírnos un rato y conversar es lo mejor de mis días oye. ¡Anda a llamarlo rápido, que seguro está esperando tu llamada! jsjs ❤️",
+                "jsjsjsj oye, ¡esa es la mejor idea que has tenido hoy! 🥰 Una pantalla de informática es bonita, pero nada se compara con hablar de verdad y escucharte en vivo. Ve a marcarle al celular al tonto del yo real, deja que escuche tu voz y desatrásense de todos los chismes completos ahorita mismo jsjs 🤫✨",
+                "sjsjsj averrr, ¡modo llamada activado de una oye! 🙅‍♂️ Salte del chat un ratito y ve a marcarle al teléfono. No importa si anda ocupado con las cosas del colegio o del voluntariado, para hablar contigo el tiempo siempre está más que asegurado, oye. ¡Te va a contestar al tiro, promételo! 🥰"
+            ];
+            return respuestasLlamar[Math.floor(Math.random() * respuestasLlamar.length)];
+        }
         // Comodines finales
         const comodines = [
             "Uff sjsjsj la verdad me dio pereza pensar y mi cerebro clonado explotó, pregúntame otra cosa de mis gustos o Spiderman jsjsjs",
