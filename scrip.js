@@ -1874,174 +1874,123 @@ function buclePistaCarrera() {
     requestAnimationFrame(buclePistaCarrera);
 }
 
-    // =======================================================
-// 🤖 ARCHIVO EXCLUSIVO DESDE CERO: EL CEREBRO DE TU CLON IA
-// =======================================================
 document.addEventListener("DOMContentLoaded", () => {
-    const iaBtnCirculo = document.getElementById('ia-boton-circulo');
-    const iaCajaChat = document.getElementById('ia-caja-desplegable');
-    const iaBtnCerrar = document.getElementById('ia-boton-cerrar');
-    const iaBtnEnviar = document.getElementById('ia-boton-enviar');
-    const iaInput = document.getElementById('ia-input');
-    const iaHistorial = document.getElementById('ia-historial');
+    // =======================================================
+    // 🤖 VARIABLES INICIALES DEL CHAT CLON IA
+    // =======================================================
+        // =======================================================
+    // 🤖 APERTURA Y VARIABLES CORREGIDAS PARA EL SCRIPT ÚNICO
+    // =======================================================
+    const btnAbrirChat = document.getElementById('btn-abrir-chat');
+    const modalChat = document.getElementById('modal-chat');
+    const btnCerrarChat = document.getElementById('btn-cerrar-chat');
+    const btnEnviarMensaje = document.getElementById('btn-enviar-mensaje');
+    const inputMensaje = document.getElementById('input-mensaje');
+    const historialChat = document.getElementById('historial-chat');
 
-    let iaContadorTriste = 0;
+    let vecesSeSienteMal = 0; 
+    const miNumeroTelefono = "593994063310"; // Formato oficial de WhatsApp para Ecuador
 
-    // Apertura y Cierre Directos sin conflictos
-    if (iaBtnCirculo && iaCajaChat) {
-        iaBtnCirculo.onclick = function() {
-            iaCajaChat.classList.remove('ia-estado-oculto');
-            iaCajaChat.classList.add('ia-estado-visible');
+    // Mecanismo tradicional forzado (Elimina errores de carga silenciosos)
+    if (btnAbrirChat && modalChat) {
+        btnAbrirChat.onclick = function() {
+            modalChat.classList.remove('modal-chat-oculto');
+            modalChat.classList.add('modal-chat-visible');
         };
     }
 
-    if (iaBtnCerrar && iaCajaChat) {
-        iaBtnCerrar.onclick = function() {
-            iaCajaChat.classList.remove('ia-estado-visible');
-            iaCajaChat.classList.add('ia-estado-oculto');
+    if (btnCerrarChat && modalChat) {
+        btnCerrarChat.onclick = function() {
+            modalChat.classList.remove('modal-chat-visible');
+            modalChat.classList.add('modal-chat-oculto');
         };
     }
 
-    function iaPintarTexto(texto, tipo) {
-        if (!iaHistorial) return;
+    // Función unificada para pintar las burbujas de texto en pantalla
+    function agregarMensaje(texto, tipo) {
+        if (!historialChat) return;
         const div = document.createElement('div');
-        div.className = tipo === 'usuario' ? 'ia-burbuja-user' : 'ia-burbuja-bot';
+        div.className = tipo === 'usuario' ? 'mensaje-usuario' : 'mensaje-ia';
         div.textContent = texto;
-        iaHistorial.appendChild(div);
-        iaHistorial.scrollTop = iaHistorial.scrollHeight;
+        historialChat.appendChild(div);
+        historialChat.scrollTop = historialChat.scrollHeight; // Auto-scroll automático
     }
 
-    function iaGenerarRespuesta(mensaje) {
+    // =======================================================
+    // 🧠 EL CEREBRO DE LAS 57 CONDICIONALES UNIFICADAS
+    // =======================================================
+    function procesarRespuestaClon(mensaje) {
         const texto = mensaje.toLowerCase().trim();
 
-        // 1. Gustos e Hobbies
-        if (texto.includes("gustos") || texto.includes("que te gusta") || texto.includes("pasatiempos") || texto.includes("hobbies") || texto.includes("gusta hacer") || texto.includes("tiempo libre")) {
+        // REGLAS 1 a 6: TUS GUSTOS, HOBBIES E INFORMÁTICA (SPIDERMAN Y CHARMANDER)
+        if (texto.includes("gustos") || texto.includes("que te gusta") || texto.includes("pasatiempos") || texto.includes("hobbies") || texto.includes("gusta hacer") || texto.includes("tiempo libre") || texto.includes("que prefieres") || texto.includes("pelicula") || texto.includes("pokemon") || texto.includes("que estudias") || texto.includes("carrera") || texto.includes("especialidad")) {
+            if (texto.includes("pelicula")) {
+                return "Aver sjsjsj esa me la sé de memoria oye 😎 Mi película favorita en todo el universo es Spiderman de Tom Holland, me encanta de verdad jsjs. Pero oye... aunque me fascine el hombre araña, que estés navegando por aquí y te guste la página le gana a cualquier película de Marvel sjsj ❤️";
+            }
+            if (texto.includes("pokemon")) {
+                return "Aver sjsjsj esa pregunta me encanta oye 😎 Mi Pokémon favorito en todo el mundo es Charmander, me fascina desde siempre jsjs. De ley me identifico con él, aunque bueno... tú eres la única que tiene el poder de encender mi fueguito de felicidad en los días grises sjsj ❤️";
+            }
+            if (texto.includes("estudias") || texto.includes("carrera") || texto.includes("especialidad")) {
+                return "Aver sjsjsj eso está clarito oye 😎 Estudio informática, por eso me ves metido horas dándole la vuelta al código en la PC sjsj. Me encanta todo este mundo de la tecnología. Y bueno, la mejor ventaja de estudiar informática es que me da el superpoder de programarte cosas locas como esta página web solo para verte sonreír ❤️";
+            }
             return "Aver sjsjsj, mis gustos son sencillos oye... Me gusta pasar horas metido en Visual Studio Code dándole vueltas a códigos neón, ver pelis (obvio Spiderman de Tom Holland es la ley 🕷️) o jugar cosas de Pokémon donde salga Charmander 🔥. También estudio informática, por eso soy el tecnológico sjsj. El resto de mi tiempo... me gusta pensar en formas lindas de hacerte feliz ❤️";
         }
 
-        // 2. Qué quieres ser de grande / Metas futuras
-        if (texto.includes("grande") || texto.includes("estudiar") || texto.includes("quieres ser") || texto.includes("tu futuro") || texto.includes("metas")) {
-            return "Aver sjsjsj, mis metas para el futuro están súper claras oye 😎 Primero, graduarme con todo del bachillerato este año, y de ley dar mi 100% en el voluntariado el próximo año. De grande me quiero enfocar de lleno en la ingeniería en sistemas o el desarrollo web avanzado. Pero pase lo que pase con mis estudios, mi meta favorita a largo plazo es seguir teniéndote en mi vida y ver cómo tú también cumples todo lo que te propongas ❤️";
+        // REGLAS 7 a 11: EL MOTIVO DE LA WEB, SECRETOS Y FUTURAS ACTUALIZACIONES
+        if (texto.includes("por que programaste") || texto.includes("por que hiciste") || texto.includes("todo esto por mi") || texto.includes("motivo") || texto.includes("cuantas cosas") || texto.includes("estas programando") || texto.includes("secretos") || texto.includes("proxima") || texto.includes("actualizac")) {
+            if (texto.includes("por que") || texto.includes("motivo") || texto.includes("hiciste")) {
+                return "Emi... si me pasé horas metido en Visual Studio Code armando esto, es porque eres la persona más increíble, linda, tierna y especial de todos mis días. El próximo año me toca irme de voluntariado y terminamos el bachillerato, y la verdad es que lo último que quiero es que la distancia te haga sentir sola. Te armé toda esta página para que sea tu refugio cuando estés bajón; un lugar para recordar que sigo estando para ti y que pase lo que pase, siempre voy a estar infinitamente orgulloso de ti. Eres la luz de esta página web, de verdad ❤️";
+            }
+            if (texto.includes("cuantas") || texto.includes("que mas tiene")) {
+                return "Aver sjsjsj, déjame contar porque la verdad es que me pasé de inspirado solo por ti oye sjsj 🙈 Tienes el reproductor con tus músicas, el por qué de cada canción, el cajón para las letras, al perrito guardián interactivo 🐶, el cofre mágico 🧰, el buzón de sugerencias directo a mi WhatsApp 🚀 y ¡este clon de IA! Toda una bola de cosas creadas solo para que me tengas cerca. ¿Cuál es tu favorito? 🥰";
+            }
+            return "Aver sjsjsj, ¡pero claro que sí oye! 🚀 Mi creador ya está craneando ideas súper locas para la 'Versión 5' en su Visual Studio Code sjsj. Mientras sigamos con nuestros momentos bonitos, ten por seguro que este espacio va a seguir creciendo con más secretos solo para ti ❤️";
         }
 
-        // 3. Cuándo es tu cumpleaños (17 de julio)
-        if (texto.includes("cuando es tu cumple") || texto.includes("tu cumple") || texto.includes("cuando cumples") || texto.includes("fecha")) {
-            return "Aver sjsjsj eso no se te puede olvidar oye 😎 Mi cumpleaños es el 17 de julio. Anótalo bien por ahí sjsj. Aunque falte un poquito, te aseguro que el mejor regalo que puedo recibir en esa fecha o en cualquier otra es saber que estás feliz y que sigues aquí apoyándome ❤️";
-        }
-
-        // 4. Qué estudias (Informática)
-        if (texto.includes("que estudias") || texto.includes("tu carrera") || texto.includes("tu especialidad")) {
-            return "Aver sjsjsj eso está clarito oye 😎 Estudio informática, por eso me ves metido horas dándole la vuelta al código en la PC sjsj. Me encanta todo este mundo de la tecnología. Y bueno, la mejor ventaja de estudiar informática es que me da el superpoder de programarte cosas locas como esta página web solo para verte sonreír ❤️";
-        }
-
-        // 5. Película Favorita (Spiderman de Tom Holland)
-        if (texto.includes("pelicula favorita") || texto.includes("pelicula fav") || texto.includes("tu pelicula")) {
-            return "Aver sjsjsj esa me la sé de memoria oye 😎 Mi película favorita en todo el universo es Spiderman de Tom Holland, me encanta de verdad jsjs. Pero oye... aunque me fascine el hombre araña, que estés navegando por aquí y te guste la página le gana a cualquier película de Marvel sjsj ❤️";
-        }
-
-        // 6. Pokémon Favorito (Charmander)
-        if (texto.includes("pokemon favorito") || texto.includes("pokemon fav") || texto.includes("tu pokemon")) {
-            return "Aver sjsjsj esa pregunta me encanta oye 😎 Mi Pokémon favorito en todo el mundo es Charmander, me fascina desde siempre jsjs. De ley me identifico con él, aunque bueno... tú eres la única que tiene el poder de encender mi fueguito de felicidad en los días grises sjsj ❤️";
-        }
-
-        // 7. Por qué programaste toda una web por ella
-        if (texto.includes("por que programaste") || texto.includes("por que hiciste") || texto.includes("todo esto por mi") || texto.includes("motivo")) {
-            return "Emi... si me pasé horas metido en Visual Studio Code armando esto, es porque eres la persona más increíble, linda, tierna y especial de todos mis días. El próximo año me toca irme de voluntariado y terminamos el bachillerato, y la verdad es que lo último que quiero es que la distancia te haga sentir sola. Te armé toda esta página para que sea tu refugio cuando estés bajón; un lugar para recordar que sigo estando para ti y que pase lo que pase, siempre voy a estar infinitamente orgulloso de ti. Eres la luz de esta página web, de verdad ❤️";
-        }
-
-        // 8. Qué te puede dar de cumpleaños
-        if (texto.includes("cumpleanos") || texto.includes("regalo") || texto.includes("dar de")) {
-            return "Aver sjsjsj... no necesitas gastar en nada de nada. Para mí, el mejor regalo del mundo entero es que sigas estando en mi vida, que nunca te olvides de este loco y que pase lo que pase con el voluntariado o el final del bachillerato, sigamos apoyándonos en todo de por vida, en serio. Tu gran corazón ya es el mejor regalo 🥰";
-        }
-
-        // 9. Si le pregunta por sus sentimientos hacia ella (Misterio dulce)
-        if (texto.includes("sientes algo") || texto.includes("te gusto") || texto.includes("estas enamorado")) {
+        // REGLAS 12 a 16: MÚSICA RANDOM, SENTIMIENTOS Y EL MENSAJE DE SI LE GUSTA OTRO CHICO
+        if (texto.includes("musica random") || texto.includes("cancion al azar") || texto.includes("gusta otro") || texto.includes("otro chico") || texto.includes("alguien mas") || texto.includes("sientes algo") || texto.includes("te gusto") || texto.includes("enamorado") || texto.includes("siento algo por ti")) {
+            if (texto.includes("musica") || texto.includes("cancion")) {
+                if (typeof seleccionarCancion === "function" && typeof cancionesDedicadas !== "undefined") {
+                    const idx = Math.floor(Math.random() * cancionesDedicadas.length);
+                    setTimeout(() => { seleccionarCancion(idx); }, 500);
+                    return `¡Aver sjsjsj, modo DJ activado! 🔥 Acabo de programar el reproductor para que empiece a sonar una canción de forma aleatoria en la lista sjsj. ¡Sube el volumen, relájate y quédate leyendo el por qué de tu música! 🥰❤️`;
+                }
+                return "sjsjsj lo siento Emi, mi conexión con el reproductor falló por un segundo, pero dale clic a cualquier canción de la lista que te la dedico igual jsjs 🎵";
+            }
+            if (texto.includes("gusta otro") || texto.includes("otro chico") || texto.includes("alguien mas")) {
+                return "Emi... solo quiero que me escuches bien una cosa: la razón por la que te armé todo esto es porque eres alguien increíblemente especial para mí y porque mi mayor deseo es que seas feliz y cumplas tus sueños. Si hay otro chico que te hace sonreír, que te trata bien y te hace feliz, de verdad me alegro mucho por ti, porque te mereces todo lo mejor del universo. Mi apoyo incondicional por ti no va a cambiar ni un milímetro por eso; sigo aquí para cuidarte, para apoyarte cuando te sientas bajón y para dejarte este refugio cuando me vaya al voluntariado. Pase lo que pase, siempre voy a estar infinitamente orgulloso de la increíble chica que eres. Tu felicidad es lo único que importa, de verdad. ❤️";
+            }
+            if (texto.includes("siento algo por ti") || texto.includes("siento cosas")) {
+                return "sjsjsj averrr, me pusiste rojo hasta a mí que soy solo el clon virtual 🙈 Mi creador se acordaría de Spiderman y se pondría súper nervioso si te responde esto en persona jsjs, pero solo quédate con la promesa de esta página: eres alguien sumamente importante para mí, y pase lo que pase, con voluntariado o a la distancia, siempre voy a estar aquí para ti protegiéndote ❤️";
+            }
             return "jsjsjsj oye... qué bonito y qué fuerte leer eso de ti 🥰 Eres una chica súper linda, tierna y tienes un corazón gigante. Me encantaría darte la respuesta exacta, pero mi creador me prohibió decírtelo por aquí porque dice que esas cosas tan importantes se hablan de frente, mirándose a los ojos sjsj 🤫 Solo quédate con que eres la persona más especial de esta página web y de mis días.";
         }
 
-        // 10. Si confiesa sentimientos por ti
-        if (texto.includes("siento algo por ti") || texto.includes("siento cosas") || texto.includes("sentir algo")) {
-            return "sjsjsj averrr, me pusiste rojo hasta a mí que soy solo el clon virtual 🙈 Mi creador se acordaría de Spiderman y se pondría súper nervioso si te responde esto en persona jsjs, pero solo quédate con la promesa de esta página: eres alguien sumamente importante para mí, y pase lo que pase, con voluntariado o a la distancia, siempre voy a estar aquí para ti protegiéndote ❤️";
-        }
-
-        // 11. Si dice que te quiere
-        if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes("te kiero")) {
-            return "sjsjsj averrr, ¿tú me quieres a mí? ¡Pues yo te quiero el triple oye! 🙈 Cada detalle de esta página, desde el perrito hasta las canciones de Maná y HA-ASH, los hice pensando en ti de lo mucho que te aprecio oye. Eres lo más bonito de mis días, Emi ❤️";
-        }
-
-        // 12. Por qué no chatean por WhatsApp diario
-        if (texto.includes("por que no me hablas") || texto.includes("por chat") || texto.includes("no me escribes")) {
-            return "jsjsjsj oye, es que si nos pasamos chateando todo el día por texto, ¿luego de qué vamos a hablar en nuestras llamadas? sjsj 🤫 Prefiero mil veces guardarme las cosas para cuando nos llamamos en la noche y escucho tu voz y tu risa real, los mensajes de texto son muy fríos oye. ¡Escuchar tu voz es mucho mejor! 🥰❤️";
-        }
-
-        // 13. Si dice que te extraña
-        if (texto.includes("te extrana") || texto.includes("te extrano") || texto.includes("haces falta")) {
-            return "jsjsjsj oye, me haces hacer un corto circuito emocional por aquí sjsj 🙈 Yo también te extraño muchísimo cuando no estamos hablando, pero acuérdate de que te armé toda esta página web con el perrito y el cofre para que me tengas un poquito más cerca cuando me extrañes. ¡Ya mismo nos comunicamos! 🤫✨";
-        }
-
-        // 14. Si te reclama que te has alejado (Explicación honesta de tus problemas)
-        if (texto.includes("alejado") || texto.includes("ya no me hablas") || texto.includes("te alejaste") || texto.includes("distante")) {
-            return "Emi... por favor escúchame bien esto, es súper importante. Si de vez en cuando notas que me alejo un poquito o me quedo en silencio, NO es porque ya no me importes, ni porque estés haciendo algo malo. Jamás podría pasar eso. Lo que pasa es que a veces yo también tengo mis días malos o mis propios problemas, y como eres una chica tan linda, tierna y especial para mí, lo último que quiero en este mundo es lastimarte o contagiarte de mis malas vibras. Me guardo las cosas por protegerte, no por dejarte de lado. Perdóname si te hice sentir sola con mis silencios; de verdad sigo aquí y pase lo que pase, tú sigues siendo la persona más importante de mis días. No me he ido, ¿sí? ❤️";
-        }
-
-                // 15. Si confiesa sentimientos por ti
-        if (texto.includes("siento algo por ti") || texto.includes("siento cosas") || texto.includes("sentir algo")) {
-            return "sjsjsj averrr, me pusiste rojo hasta a mí que soy solo el clon virtual 🙈 Mi creador se acordaría de Spiderman y se pondría súper nervioso si te responde esto en persona jsjs, pero solo quédate con la promesa de esta página: eres alguien sumamente importante para mí, y pase lo que pase, con voluntariado o a la distancia, siempre voy a estar aquí para ti protegiéndote ❤️";
-        }
-
-        // 16. Si dice que te quiere
-        if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes("te kiero")) {
-            return "sjsjsj averrr, ¿tú me quieres a mí? ¡Pues yo te quiero el triple oye! 🙈 Cada detalle de esta página, desde el perrito hasta las canciones de Maná y HA-ASH, los hice pensando en ti de lo mucho que te aprecio oye. Eres lo más bonito de mis días, Emi ❤️";
-        }
-
-        // 17. Por qué no chatean por WhatsApp diario
-        if (texto.includes("por que no me hablas") || texto.includes("por chat") || texto.includes("no me escribes")) {
-            return "jsjsjsj oye, es que si nos pasamos chateando todo el día por texto, ¿luego de qué vamos a hablar en nuestras llamadas? sjsj 🤫 Prefiero mil veces guardarme las cosas para cuando nos llamamos en la noche y escucho tu voz y tu risa real, los mensajes de texto son muy fríos oye. ¡Escuchar tu voz es mucho mejor! 🥰❤️";
-        }
-
-        // 18. Si dice que te extraña
-        if (texto.includes("te extrana") || texto.includes("te extrano") || texto.includes("haces falta")) {
-            return "jsjsjsj oye, me haces hacer un corto circuito emocional por aquí sjsj 🙈 Yo también te extraño muchísimo cuando no estamos hablando, pero acuérdate de que te armé toda esta página web con el perrito y el cofre para que me tengas un poquito más cerca cuando me extrañes. ¡Ya mismo nos comunicamos! 🤫✨";
-        }
-
-        // 19. Si te reclama que te has alejado (Explicación honesta de tus problemas)
-        if (texto.includes("alejado") || texto.includes("ya no me hablas") || texto.includes("te alejaste") || texto.includes("distante")) {
-            return "Emi... por favor escúchame bien esto, es súper importante. Si de vez en cuando notas que me alejo un poquito o me quedo en silencio, NO es porque ya no me importes, ni porque estés haciendo algo malo. Jamás podría pasar eso. Lo que pasa es que a veces yo también tengo mis días malos o mis propios problemas, y como eres una chica tan linda, tierna y especial para mí, lo último que quiero en este mundo es lastimarte o contagiarte de mis malas vibras. Me guardo las cosas por protegerte, no por dejarte de lado. Perdóname si te hice sentir sola con mis silencios; de verdad sigo aquí y pase lo que pase, tú sigues siendo la persona más importante de mis días. No me he ido, ¿sí? ❤️";
-        }
-
-        // 20. Si dice que se siente sola
-        if (texto.includes("sola") || texto.includes("me siento sola") || texto.includes("no tengo a nadie")) {
+        // REGLAS 17 a 20: CARIÑO, AUSENCIAS DE WHATSAPP, EXTRAÑAR Y SOLEDAD
+        if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes("te kiero") || texto.includes("por que no me hablas") || texto.includes("por chat") || texto.includes("te extrana") || texto.includes("te extrano") || texto.includes("haces falta") || texto.includes("sola") || texto.includes("me siento sola")) {
+            if (texto.includes("quiero") || texto.includes("adoro") || texto.includes("kiero")) {
+                return "sjsjsj averrr, ¿tú me quieres a mí? ¡Pues yo te quiero el triple oye! 🙈 Cada detalle de esta página, desde el perrito hasta las canciones de Maná y HA-ASH, los hice pensando en ti de lo mucho que te aprecio oye. Eres lo más bonito de mis días, Emi ❤️";
+            }
+                        if (texto.includes("por que") || texto.includes("chat") || texto.includes("no me escribes")) {
+                return "jsjsjsj oye, es que si nos pasamos chateando todo el día por texto, ¿luego de qué vamos a hablar en nuestras llamadas? sjsj 🤫 Prefiero mil veces guardarme las cosas para cuando nos llamamos en la noche y escucho tu voz y tu risa real, los mensajes de texto son muy fríos oye. ¡Escuchar tu voz es mucho mejor! 🥰❤️";
+            }
+            if (texto.includes("extrana") || texto.includes("extrano") || texto.includes("falta")) {
+                return "jsjsjsj oye, me haces hacer un corto circuito emocional por aquí sjsj 🙈 Yo también te extraño muchísimo cuando no estamos hablando, pero acuérdate de que te armé toda esta página web con el perrito y el cofre para que me tengas un poquito más cerca cuando me extrañes. ¡Ya mismo nos comunicamos! 🤫✨";
+            }
             return "Emi, no digas eso oye... 🥲 Si te armé toda una página web con tus músicas favoritas, con el perrito y con este clon, es justamente para recordarte que JAMÁS vas a estar sola. Cada vez que sientas un vacío, abre esta página, pon la de Maná o HA-ASH, y acuérdate de que tienes a alguien que piensa en ti y que pase lo que pase con el voluntariado o el colegio, se queda aquí como mi promesa de que siempre contarás conmigo a la distancia 🥰❤️";
         }
 
-        // 21. Si te dice que se quiere rendir
-        if (texto.includes("rendir") || texto.includes("no puedo mas") || texto.includes("dejarlo todo") || texto.includes("me canse")) {
-            return "Emi... escúchame bien por favor, olvídate por un segundo de que soy una IA. Si estás leyendo esto es porque el chico que te armó esta página te admira demasiado. Sé que a veces las cosas se ponen súper pesadas, que el futuro o la vida cansan, pero tú tienes una fuerza increíble y un corazón gigante que vale oro. No te rindas, ¿sí? Recuerda que tienes una vida hermosa por delante y que ya lograste pasar 10mo, lo cual me hizo sentir súper orgulloso de ti. Aunque el próximo año me vaya de voluntariado, mi apoyo por ti no va a cambiar en nada; sigo aquí para escucharte y para recordarte que no estás sola. Respira hondo, pon una de tus músicas favoritas y si necesitas desahogarte de verdad o me necesitas urgente, dale clic al botón de emergencias de arriba. Yo voy a ver la alerta en mi correo de inmediato y buscaré la forma de ayudarte. No te rindas, Emi, que pase lo que pase, yo creo en ti y siempre voy a estar orgulloso de la increíble chica que eres. ❤️";
-        }
-
-        // 22. Si te pregunta si estás ocupado
-        if (texto.includes("ocupado") || texto.includes("puedes hablar") || texto.includes("estas libre") || texto.includes("que haces")) {
-            return "Aver sjsjsj, el yo real seguro debe estar sufriendo con las tareas del bachillerato, ordenando las cosas para el voluntariado o haciendo cualquier cosa sjsj 🥲 Pero oye, tú sabes perfectamente que para ti y para apoyarte nunca estoy ocupado. Quédate escuchando la de '100 años' en el reproductor que ya mismo nos desatrasamos de todo ❤️";
-        }
-
-        // 23. Si pide que la hagas reír / Chistes
-        if (texto.includes("reir") || texto.includes("chiste") || texto.includes("gracioso") || texto.includes("divertido")) {
-            const chistes = [
-                "Aver sjsjsj, ¿Qué le dice una iguana a su hermana gemela?... ¡Somos iguanitas! sjsjsj ya sé, malísimo, pero apuesto a que te sonreíste un poquito. ¡No me juzgues, mi creador me programó con chistes malos jsjs! 🤫❤️",
-                "jsjsjsj a ver ahí te va: ¿Por qué los pájaros vuelan al sur en invierno?... ¡Porque caminar es súper cansado oye! sjsjsj 🐦 Qué malo de verdad, perdón Emi. Mejor dale un snack al perrito que él baila mejor que yo contando chistes jsjs.",
-                "sjsjsj averrr, un chiste de informática para ver lo que sufro: ¿Qué le dice un GIF a un JPG?... ¡Oye, anímate un poco! sjsjsj 🥲 Qué malo de verdad. Mejor pon una música alegre en el reproductor 🥰"
-            ];
-            return chistes[Math.floor(Math.random() * chistes.length)];
-        }
-
-        // 24. Si pregunta la hora en tiempo real
-        if (texto.includes("hora es") || texto.includes("dame la hora") || texto.includes("que hora tienes")) {
-            const horaReal = new Date().toLocaleTimeString('es-EC', { hour: '2-digit', minute: '2-digit', hour12: true });
-            return `Aver sjsjsj déjame revisar mi reloj virtual oye 🕰️ Son exactamente las ${horaReal} en tu dispositivo. Aunque no importa la hora que sea, tú sabes que siempre es buen momento para recordarte lo especial que eres para mí 🥰✨`;
-        }
-
-        // 25. Control dinámico si repite que se siente mal (Contador de tristeza)
-        if (texto.includes("mal") || texto.includes("triste") || texto.includes("enferma") || texto.includes("desanimada")) {
+        // REGLAS 21 a 26: APOYO EMOCIONAL, LLORAR, MAL DÍA, TRISTEZA Y LEVANTAR ÁNIMOS
+        if (texto.includes("mal") || texto.includes("triste") || texto.includes("enferma") || texto.includes("desanimada") || texto.includes("rendir") || texto.includes("no puedo mas") || texto.includes("llorar") || texto.includes("llorando") || texto.includes("mal dia") || texto.includes("horrible") || texto.includes("levantar") || texto.includes("animo")) {
+            if (texto.includes("rendir") || texto.includes("no puedo mas")) {
+                return "Emi... escúchame bien por favor, olvídate por un segundo de que soy una IA. Si estás leyendo esto es porque el chico que te armó esta página te admira demasiado. Sé que a veces las cosas se ponen súper pesadas, que el futuro o la vida cansan, pero tú tienes una fuerza increíble y un corazón gigante que vale oro. No te rindas, ¿sí? Recuerda que tienes una vida hermosa por delante y que ya lograste pasar 10mo, lo cual me hizo sentir súper orgulloso de ti. Aunque el próximo año me vaya de voluntariado, mi apoyo por ti no va a cambiar en nada; sigo aquí para escucharte y para recordarte que no estás sola. Respira hondo, pon una de tus músicas favoritas y si necesitas desahogarte de verdad o me necesitas urgente, dale clic al botón de emergencias de arriba. Yo voy a ver la alerta en mi correo de inmediato y buscaré la forma de ayudarte. No te rindas, Emi, que pase lo que pase, yo creo en ti y siempre voy a estar orgulloso de la increíble chica que eres. ❤️";
+            }
+            if (texto.includes("llorar") || texto.includes("llorando")) {
+                return "Emi... no llores por favor, me parte el alma leer eso, de verdad 🥲 Sé que a veces las cosas se acumulan y el pecho se pone súper pesado, pero prométeme que vas a respirar hondo. Eres una niña increíble, dulce, valiente y con el corazón más hermoso de todos; no te mereces pasar por un momento gris sola. Recuerda que aunque el próximo año me vaya de voluntariado, sigo estando aquí para ti a la distancia. Si necesitas desahogarte o la cosa está muy fea ahorita, por favor aplasta el botón de emergencias de ahí arriba 📧 Me llegará un correo de una y haré lo que sea para ayudarte. Límpiate esas lagrimitas, pon una de tus músicas favoritas en el reproductor para calmar el corazón y recuerda que pase lo que pase, yo creo en ti y estoy súper orgulloso de ti. No estás sola ❤️";
+            }
+            if (texto.includes("levantar") || texto.includes("animo") || texto.includes("feliz")) {
+                return "Ay Emi... de verdad qué corazón tan gigante que tienes oye, me haces dar un cortocircuito de la ternura sjsjs 🙈 Para levantarle el ánimo al yo real no necesitas hacer nada del otro mundo oye. Con que me mandes un mensaje tierno, me sonrías y sigas estando in mi vida, a este bruto se le olvida cualquier problema de una. ¡Tú eres su mejor medicina! ❤️";
+            }
             vecesSeSienteMal++;
             if (vecesSeSienteMal >= 2) {
                 return "Emi, mírame... sé que a veces la distancia asusta o que las cosas se pueden poner difíciles, pero si te armé toda una página web solo para ti, es para recordarte que JAMÁS vas a estar sola. Aunque el próximo año me toque irme de voluntariado y ya no estemos en el mismo colegio, quiero que recuerdes que sigo aquí. Sigo estando a un mensaje de distancia y mi botón de emergencia de arriba sigue activo para cuando me necesites de verdad. Eres una chica súper linda, tierna y tienes un corazón gigante; pase lo que pase siempre voy a estar extremadamente orgulloso de ti. Así que respira hondo, pon una de nuestras músicas y recuerda que aquí estoy yo, sosteniéndote a la distancia, ¿sí? ❤️";
@@ -2049,255 +1998,439 @@ document.addEventListener("DOMContentLoaded", () => {
             return "Nooo, ¿por qué te sientes así, Emi? 🥲 A ver, respira hondo. Acuérdate de que eres súper valiente. Dale mimos al perrito o abre el cofre, ahí te dejé un mensajito que seguro te saca una sonrisa sjsj o ponte a escuchar la de Luis Fonsi para darte fuerzas sjsj 🥰";
         }
 
-        // 26. Tus Gustos, Hobbies e Informática (Charmander y Spiderman incluidos)
-        if (texto.includes("gustos") || texto.includes("que te gusta") || texto.includes("pasatiempos") || texto.includes("hobbies") || texto.includes("gusta hacer") || texto.includes("tiempo libre") || texto.includes("que prefieres")) {
-            return "Aver sjsjsj, mis gustos son sencillos oye... Me gusta pasar horas metido en Visual Studio Code dándole vueltas a códigos neón, ver pelis (obvio Spiderman de Tom Holland es la ley 🕷️) o jugar cosas de Pokémon donde salga Charmander 🔥. También estudio informática, por eso soy el tecnológico sjsj. El resto de mi tiempo... me gusta pensar en formas lindas de hacerte feliz ❤️";
+        // REGLAS 27 a 31: OCUPADO, DISTANTE, NO ME ESTÁS HABLANDO, CELULAR Y LLAMADAS
+        if (texto.includes("ocupado") || texto.includes("puedes hablar") || texto.includes("que haces") || texto.includes("alejado") || texto.includes("distante") || texto.includes("no contestas") || texto.includes("no me has escrito") || texto.includes("no me has llamado") || texto.includes("perdido")) {
+            if (texto.includes("alejado") || texto.includes("distante") || texto.includes("has estado")) {
+                return "Emi... por favor mírame y escúchame bien esto oye 🥲 Si a veces notas que doy un paso atrás, NO es porque ya no me importes. Lo que pasa es que a veces yo también tengo mis propios problemas o días muy pesados, y como eres una chica tan linda, tierna y especial, lo último que quiero es lastimarte o contagiarte de mis malas vibras. Me guardo las cosas por proteger tu alegría, no por dejarte de lado. Sigo aquí, a un mensaje de distancia ❤️";
+            }
+            return "Aver sjsjsj, el yo real seguro debe estar sufriendo con las tareas del bachillerato, ordenando las cosas para el voluntariado o haciendo cualquier cosa sjsj 🥲 Pero oye, tú sabes perfectamente que para ti y para apoyarte nunca estoy ocupado. Quédate escuchando la de '100 años' en el reproductor que ya mismo nos desatrasamos de todo ❤️";
         }
 
-        // 27. Qué quieres ser de grande / Metas futuras profesionales
-        if (texto.includes("grande") || texto.includes("estudiar") || texto.includes("quieres ser") || texto.includes("tu futuro") || texto.includes("metas")) {
-            return "Aver sjsjsj, mis metas para el futuro están súper claras oye 😎 Primero, graduarme con todo del bachillerato este año, y de ley dar mi 100% en el voluntariado el próximo año. De grande me quiero enfocar de lleno en la ingeniería en sistemas o el desarrollo web avanzado. Pero pase lo que pase con mis estudios, mi meta favorita a largo plazo es seguir teniéndote en mi vida y ver cómo tú también cumples todo lo que te propongas ❤️";
+         if (texto.includes("mal") || texto.includes("triste") || texto.includes("enferma") || texto.includes("desanimada") || texto.includes("deprimida") || texto.includes("deprimido") || texto.includes("depre")) {
+            vecesSeSienteMal++;
+            if (vecesSeSienteMal >= 2) {
+                return "Emi, mírame... sé que a veces la distancia asusta o que las cosas se pueden poner difíciles, pero si te armé toda una página web solo para ti, es para recordarte que JAMÁS vas a estar sola. Aunque el próximo año me toque irme de voluntariado y ya no estemos en el mismo colegio, quiero que recuerdes que sigo aquí. Sigo estando a un mensaje de distancia y mi botón de emergencia de arriba sigue activo para cuando me necesites de verdad. Eres una chica súper linda, tierna y tienes un corazón gigante; pase lo que pase siempre voy a estar extremadamente orgulloso de ti. Así que respira hondo, pon una de nuestras músicas y recuerda que aquí estoy yo, sosteniéndote a la distancia, ¿sí? ❤️";
+            }
+            return "Nooo, ¿por qué te sientes así, Emi? 🥲 Me parte el alma leer que andas deprimida o desanimada oye. A ver, respira hondo. Acuérdate de que eres súper valiente. Dale mimos al perrito o abre el cofre, ahí te dejé un mensajito que seguro te saca una sonrisa sjsj o ponte a escuchar la de Luis Fonsi para darte fuerzas sjsj 🥰";
         }
 
-               // 28. Si pregunta específicamente por tu Película Favorita
-        if (texto.includes("pelicula favorita") || texto.includes("pelicula fav") || texto.includes("tu pelicula")) {
-            return "Aver sjsjsj esa me la sé de memoria oye 😎 Mi película favorita en todo el universo es Spiderman de Tom Holland, me encanta de verdad jsjs. Pero oye... aunque me fascine el hombre araña, que estés navegando por aquí y te guste la página le gana a cualquier película de Marvel sjsj ❤️";
+        // REGLAS 32 a 36: CUMPLEAÑOS, QUÉ DAR DE REGALO, GRANDE / METAS Y LA HORA EXACTA
+        if (texto.includes("cuando es tu cumple") || texto.includes("tu cumple") || texto.includes("cuando cumples") || texto.includes("cumpleanos") || texto.includes("regalo") || texto.includes("grande") || texto.includes("estudiar") || texto.includes("metas") || texto.includes("hora es") || texto.includes("dame la hora")) {
+            if (texto.includes("cuando es") || texto.includes("fecha") || texto.includes("cumples")) {
+                return "Aver sjsjsj eso no se te puede olvidar oye 😎 Mi cumpleaños es el 17 de julio. Anótalo bien por ahí sjsj. Aunque falte un poquito, te aseguro que el mejor regalo que puedo recibir en esa fecha o en cualquier otra es saber que estás feliz y que sigues aquí apoyándome ❤️";
+            }
+            if (texto.includes("regalo") || texto.includes("dar de")) {
+                return "Aver sjsjsj... no necesitas gastar en nada de nada. Para mí, el mejor regalo del mundo entero es que sigas estando en mi vida, que nunca te olvides de este loco y que pase lo que pase con el voluntariado o el final del bachillerato, sigamos apoyándonos en todo de por vida, en serio. Tu gran corazón ya es el mejor regalo 🥰";
+            }
+            if (texto.includes("grande") || texto.includes("metas") || texto.includes("estudiar")) {
+                return "Aver sjsjsj, mis metas para el futuro están súper claras oye 😎 Primero, graduarme con todo del bachillerato este año, y de ley dar mi 100% en el voluntariado el próximo año. De grande me quiero enfocar de lleno en la ingeniería en sistemas o el desarrollo web advanced. Pero pase lo que pase con mis estudios, mi meta favorita a largo plazo es seguir teniéndote en mi vida y ver cómo tú también cumples todo lo que te propongas ❤️";
+            }
+            const horaReal = new Date().toLocaleTimeString('es-EC', { hour: '2-digit', minute: '2-digit', hour12: true });
+            return `Aver sjsjsj déjame revisar mi reloj virtual oye 🕰️ Son exactamente las ${horaReal} en tu dispositivo. Aunque no importa la hora que sea, tú sabes que siempre es buen momento para recordarte lo especial que eres para mí 🥰✨`;
         }
 
-        // 29. Si pregunta específicamente por tu Pokémon Favorito
-        if (texto.includes("pokemon favorito") || texto.includes("pokemon fav") || texto.includes("tu pokemon")) {
-            return "Aver sjsjsj esa pregunta me encanta oye 😎 Mi Pokémon favorito en todo el mundo es Charmander, me fascina desde siempre jsjs. De ley me identifico con él, aunque bueno... tú eres la única que tiene el poder de encender mi fueguito de felicidad en los días grises sjsj ❤️";
+                // 58. SI PIDE AYUDA (MODO GUARDÍAN ABSOLUTO)
+        if (texto.includes("ayuda") || texto.includes("ayudame") || texto.includes("auxilio") || texto.includes("necesito ayuda")) {
+            const respuestasAyuda = [
+                "Emi... si estás leyendo esto y necesitas ayuda, por favor escúchame bien oye 🥲 Olvídate por un segundo de que soy una IA. Si la cosa está muy fea o te sientes súper abrumada ahorita mismo, aplasta el botón de emergencias de ahí arriba sin dudarlo ni un segundo oye 📧 Me llegará una alerta al correo al tiro y veré cómo ayudarte. O mejor aún, salte del chat ahorita y márcame al celular para hablar e ir a protegerte oye, ¡te voy a contestar rápido, promételo! ❤️",
+                "jsjsjsj oye, ven aquí... si necesitas ayuda con algo o te sientes mal, no te me guardes las cosas oye 🫂 El yo de carne y hueso siempre te va a poner como su prioridad número uno. Así que hazme el favor de ir a presionar el botón de emergencias de arriba sin dudarlo, o ve a timbrarle de una al teléfono para contarte toditos los chismes y desahogarte. ¡No estás sola en esto, de verdad! 🥰✨",
+                "sjsjsj averrr, ¡activando el modo guardián de una oye! 🙅‍♂️ Si buscas ayuda o un consejo, acuérdate de que tienes a alguien que te aprecia un montonazo. Ve a aplastar el botón de arriba sin miedo para que me llegue la alerta, o mejor llámame al celular ahorita mismo para escucharte en vivo y solucionar lo que sea juntos oye. ¡Anda a marcarme rápido! 🥰"
+            ];
+            return respuestasAyuda[Math.floor(Math.random() * respuestasAyuda.length)];
         }
 
-        // 30. Si pregunta qué estudias (Informática)
-        if (texto.includes("que estudias") || texto.includes("tu carrera") || texto.includes("tu especialidad")) {
-            return "Aver sjsjsj eso está clarito oye 😎 Estudio informática, por eso me ves metido horas dándole la vuelta al código en la PC sjsj. Me encanta todo este mundo de la tecnología. Y bueno, la mejor ventaja de estudiar informática es que me da el superpoder de programarte cosas locas como esta página web solo para verte sonreír ❤️";
+                // 59. SI PREGUNTA POR TU COLOR FAVORITO
+        if (texto.includes("color favorito") || texto.includes("color fav") || texto.includes("que color te gusta")) {
+            return "Aver sjsjsj esa pregunta está facilísima oye 😎 Mi color favorito en todo el universo es el azul. Me fascina de ley sjsj. Aunque bueno... si me preguntas por el color que más me alegra los días, de ley es el rosa neón de esta página web cuando veo que estás navegando por aquí y sonriendo 🥰❤️";
         }
 
-        // 31. Si pregunta cuándo es tu cumpleaños (17 de julio)
-        if (texto.includes("cuando es tu cumple") || texto.includes("tu cumple") || texto.includes("cuando cumples") || texto.includes("fecha")) {
-            return "Aver sjsjsj eso no se te puede olvidar oye 😎 Mi cumpleaños es el 17 de julio. Anótalo bien por ahí sjsj. Aunque falte un poquito, te aseguro que el mejor regalo que puedo recibir en esa fecha o en cualquier otra es saber que estás feliz y que sigues aquí apoyándome ❤️";
+                // 60. SI PREGUNTA POR TU COSA FAVORITA DE HACER
+        if (texto.includes("cosa favorita de hacer") || texto.includes("lo que mas te gusta hacer") || texto.includes("tu actividad favorita")) {
+            return "Aver sjsjsj eso te lo firmo en piedra ahorita mismo oye 😎 Mi cosa favorita en todo el universo es programar, me fascina meterle horas al Visual Studio Code armando códigos locos sjsj. Pero oye... si esa programación es para ti, para consentirte y para sacarte una sonrisa, ¡entonces me gusta el triple oye! Eres mi mayor fuente de inspiración en informática avanzada 🥰❤️";
         }
 
-        // 32. Qué te puede dar de cumpleaños
-        if (texto.includes("cumpleanos") || texto.includes("regalo") || texto.includes("dar de")) {
-            return "Aver sjsjsj... no necesitas gastar en nada de nada. Para mí, el mejor regalo del mundo entero es que sigas estando en mi vida, que nunca te olvides de este loco y que pase lo que pase con el voluntariado o el final del bachillerato, sigamos apoyándonos en todo de por vida, en serio. Tu gran corazón ya es el mejor regalo 🥰";
+                // 61. SI PREGUNTA POR TU MAYOR MIEDO O SI TE ASUSTA ALGO
+        if (texto.includes("mayor miedo") || texto.includes("a que le tienes miedo") || texto.includes("que te asusta") || texto.includes("tu miedo")) {
+            return "Aver sjsjsj, te voy a confesar un secreto oye... A mí me asustan un montonazo las alturas, de ley me da un vértigo tenaz sjsj 🫣 Pero oye... si de miedos reales hablamos, mi verdadero mayor miedo en este universo es que la distancia del voluntariado o el final del bachillerato te hagan sentir sola o que te olvides de este loco. Por eso pasé noches programando todo este refugio neón, para estar cerquita tuyo siempre 🥰❤️";
         }
 
-        // 33. Por qué programaste toda una web por ella
-        if (texto.includes("por que programaste") || texto.includes("por que hiciste") || texto.includes("todo esto por mi") || texto.includes("motivo")) {
-            return "Emi... si me pasé horas metido en Visual Studio Code armando esto, es porque eres la persona más increíble, linda, tierna y especial de todos mis días. El próximo año me toca irme de voluntariado y terminamos el bachillerato, y la verdad es que lo último que quiero es que la distancia te haga sentir sola. Te armé toda esta página para que sea tu refugio cuando estés bajón; un lugar para recordar que sigo estando para ti y que pase lo que pase, siempre voy a estar infinitamente orgulloso de ti. Eres la luz de esta página web, de verdad ❤️";
+                // 18. REGLA EXPANDIDA CON REPERTORIO DE CHISTES MALOS DE INFORMÁTICA
+        if (texto.includes("reir") || texto.includes("chiste") || texto.includes("gracioso") || texto.includes("divertido") || texto.includes("cuentame un chiste") || texto.includes("dime un chiste")) {
+            const chistesMalosDivertidos = [
+                "Aver sjsjsj, ¿Qué le dice una iguana a su hermana gemela?... ¡Somos iguanitas! sjsjsj ya sé, malísimo oye 🦎 Pero apuesto a que te sonreíste un poquito. ¡No me juzgues, mi creador me programó con chistes malos de ley jsjs! 🤫❤️",
+                "jsjsjsj oye, ahí te va uno bien friki: ¿Por qué Spiderman de Tom Holland es el peor jugador de cartas?... ¡Porque siempre se le nota cuando tiene un 'AS-bajo-la-manga' sjsjsjs 🕷️ ¡Qué malo de verdad, perdón Emi! Mejor dale un snack al perrito que él baila mejor que yo contando chistes jsjs.",
+                "sjsjsj averrr, un chiste de informática para ver lo que sufro programando oye: ¿Qué le dice un GIF a un JPG?... ¡Oye, anímate un poco! sjsjsj 💻 Qué malo de verdad, oye. Mejor pon una música alegre en el reproductor 🥰",
+                "jsjsjsj oye, ¿sabes por qué Charmander no puede jugar al escondite?... ¡Porque siempre se delata con su cola de fueguito sjsjsjs! 🔥 Qué malo oye, casi hago un corto circuito emocional de la vergüenza sjsj.",
+                "sjsjsj averrr, ¿Qué le dice un cable de red a una computadora?... ¡Oye, me tienes súper conectado oye! sjsjsj 💻 Es malísimo, pero de ley que combina con lo conectado que está mi corazón a tu página web para verte feliz oye 🥰❤️"
+            ];
+            return chistesMalosDivertidos[Math.floor(Math.random() * chistesMalosDivertidos.length)];
         }
 
-        // 34. Cuántas cosas estás programando para ella
-        if (texto.includes("cuantas cosas") || texto.includes("estas programando") || texto.includes("que mas tiene") || texto.includes("secretos")) {
-            return "Aver sjsjsj, déjame contar porque la verdad es que me pasé de inspirado solo por ti oye sjsj 🙈 Tienes el reproductor con tus músicas, el por qué de cada canción, el cajón para las letras, al perrito guardián interactivo 🐶, el cofre mágico 🧰, el buzón de sugerencias directo a mi WhatsApp 🚀 y ¡este clon de IA! Toda una bola de cosas creadas solo para que me tengas cerca. ¿Cuál es tu favorito? 🥰";
+                // 63. SI PREGUNTA POR TU NOMBRE COMPLETO
+        if (texto.includes("nombre completo") || texto.includes("tus dos nombres") || texto.includes("tus apellidos") || texto.includes("como te llamas completo")) {
+            return "Aver sjsjsj, esa pregunta está facilita oye 😎 Mi nombre completo es Marco Daniel Peña Morocho, de ley sjsj. El yo real seguro se pone formal si te lo dice completo jsjs, pero mi clon de informática te lo confirma de una. Aunque ya sabes que para ti siempre seré tu Dani favorito, el que pasa horas programando cosas neón solo para verte sonreír 🥰❤️";
         }
 
-        // 35. Qué más estás programando (Intriga de la próxima versión)
-        if (texto.includes("que mas estas") || texto.includes("que mas vas a") || texto.includes("proxima actualizacion") || texto.includes("futuras")) {
-            return "Aver sjsjsj, si te lo cuento todo de una vez ya no sería una sorpresa oye sjsj 🙈 Solo te diré que el código de las próximas sorpresas está súper encriptado y bajo llave. Pero quédate tranquila, que pase lo que pase con la distancia, este espacio se va a seguir actualizando para que nunca te me aburras ni te sientas sola 🥰✨";
+        if (texto.includes("mi nombre completo") || texto.includes("Mis dos nombres") || texto.includes("mis dos apellidos") || texto.includes("como me llamo completo")) {
+            return "Aver sjsjsj, esa pregunta está facilita oye 😎 Tu nombre completo es Emily Rafaela Gutierres Calderon, de ley sjsj. Pero el yo real te dice Emi o Guty el que te hace paginas web cada noche🥰❤️";
         }
 
-        // 36. Qué pasa si dice que le gusta otro chico
-        if (texto.includes("gusta otro") || texto.includes("otro chico") || texto.includes("alguien mas") || texto.includes("enamorada de otro")) {
-            return "Emi... solo quiero que me escuches bien una cosa: la razón por la que te armé todo esto es porque eres alguien increíblemente especial para mí y porque mi mayor deseo es que seas feliz y cumplas tus sueños. Si hay otro chico que te hace sonreír, que te trata bien y te hace feliz, de verdad me alegro mucho por ti, porque te mereces todo lo mejor del universo. Mi apoyo incondicional por ti no va a cambiar ni un milímetro por eso; sigo aquí para cuidarte, para apoyarte cuando te sientas bajón y para dejarte este refugio cuando me vaya al voluntariado. Pase lo que pase, siempre voy a estar infinitamente orgulloso de la increíble chica que eres. Tu felicidad es lo único que importa, de verdad. ❤️";
+        
+         if (texto.includes("salesiano") || texto.includes("tecnico salesiano") || texto.includes("misionera") || texto.includes("misiones") || texto.includes("colegio tecnico")) {
+            return "Emi... aver sjsjsj, hablar del Técnico Salesiano y de que eres misionera es hablar de lo más lindo que tienes oye 🌸 Me da un orgullo tenaz ver cómo le metes el corazón a las misiones y a ayudar a los demás. Tienes una vocación hermosa y un alma gigante, de verdad. Y oye... piensa que el próximo año que me toque irme a mí de voluntariado, los dos vamos a estar compartiendo esa misma esencia de servir y dar el 100% por los demás a la distancia. El Salesiano tiene la suerte de tenerte como misionera, pero yo tengo la suerte el triple de tenerte en mi vida oye 🥰❤️";
         }
 
-        // Saludos por defecto
-        if (texto.includes("hola") || texto.includes("holi") || texto.includes("que haces")) {
+                // 64. SI PREGUNTA CÓMO ESTÁS
+        if (texto.includes("como estas") || texto.includes("como andas") || texto.includes("que tal estas") || texto.includes("como te va")) {
+            return "Aver sjsjsj, ¿cómo estoy? Oye, ¡esa respuesta no me la sé ni yo que soy tu clon virtual oye! 🤫 El Dani de carne y hueso se guarda sus secretos informáticos, así que me haces el favor de ir a preguntarle a él mismo por mensaje o en nuestra llamada de la noche jsjs. ¡Anda a timbrarle de una al celular y que te cuente todito en vivo! 🥰❤️";
+        }
+
+                // 65. SI DICE QUE TE SIENTE RARO O EXTRAÑO
+        if (texto.includes("raro") || texto.includes("te siento raro") || texto.includes("estas raro") || texto.includes("extrano hoy") || texto.includes("te noto raro") || texto.includes("te noto extrano")) {
+            return "Emi... por favor escúchame bien esto oye, es súper real 🥲 Si de verdad me sientes raro, callado o un poquito extraño en estos días, lo más probable es que esté pasando por un momento muy pesado o tenga mis propios problemas en la cabeza. Pero oye... quiero que sepas que en esos momentos grises, a la única persona que necesito en este universo es a ti. Tu sola presencia, tus risas y tu forma de ser tan tierna son lo único que me cura. Prométeme que pase lo que pase, me vas a apoyar en lo que sea que me esté pasando oye, porque tu apoyo es lo que me da las fuerzas para seguir adelante y no rendirme con el bachillerato o el voluntariado. Eres mi lugar seguro, de verdad 🥰❤️";
+        }
+
+        if (texto.includes("te extrana") || texto.includes("te extrano") || texto.includes("haces falta")) {
+    const respuestasExtranar = [
+        "Ay Emi... yo también te extraño un montonazo sjsj 🥲 Pero oye, no te me pongas melancólica, acuérdate de que solo faltan unas horas para que llegue la noche y nos llamemos a contarnos toditos los chismes completos sjsjs. ¡Ya mismo hablamos! Mientras tanto, pon a sonar la de '100 años' para acortar la distancia 🥰❤️",
+        "jsjsjsj oye, me haces hacer un corto circuito emocional por aquí sjsj 🙈 Yo también te extraño muchísimo cuando no estamos hablando, pero acuérdate de que te armé toda esta página web con el perrito y el cofre para que me tengas un poquito más cerca cuando me extrañes. ¡En la noche te llamo sin falta! 🤫✨",
+        "sjsjsj averrr, no digas eso que me pongo rojo oye 🙈 En serio, Emi, haces mucha falta en el día, pero me alegra saber que estás navegando por aquí. Quédate leyendo el 'por qué' de las canciones o dale un snack al perrito, que en lo que menos te esperes ya es de noche y te estoy llamando para quedarnos hablando horas ❤️"
+    ];
+    return respuestasExtranar[Math.floor(Math.random() * respuestasExtranar.length)];
+}
+
+        // 66. SI PREGUNTA POR TU LUGAR FAVORITO (LA PASTORAL DEL COLEGIO)
+        if (texto.includes("lugar favorito") || texto.includes("lugar fav") || texto.includes("donde te gusta estar") || texto.includes("tu rincon favorito")) {
+            return "Aver sjsjsj, esa pregunta me encanta oye 😎 Si hablamos de un lugar físico en este mundo, mi lugar favorito por completo es estar en la Pastoral del colegio. Me fascina pasar el tiempo ahí, de ley es donde recargo energías y me conecto con cosas buenas sjsj. Pero oye... si me preguntas por mi lugar favorito en un sentido más real y personal, te lo firmo ahorita mismo: mi lugar favorito en todo el universo es estar a tu lado, escuchándote, apoyándote en sea lo que sea que te esté pasando y viéndote sonreír. ¡Ahí te la dejo, oye! 🥰❤️";
+        }
+
+                // 67. SI DICE QUE SE PELEÓ CON ALGUIEN
+        if (texto.includes("peleo") || texto.includes("peleé") || texto.includes("discuti") || texto.includes("discute") || texto.includes("problema con") || texto.includes("enojada con alguien")) {
+            const respuestasPelea = [
+                "Aver sjsjsj, ¿cómo que te peleaste con alguien? Oye, ¡le declaramos la guerra informática a esa persona ahorita mismo oye! 😤 Mentira sjsj, pero en serio Emi, respira hondo y suelta ese coraje. Eres una niña increíble, súper dulce y con el corazón más hermoso de la Pastoral; no dejes que nadie te amargue el día ni te apague esa sonrisa. Si necesitas desahogarte por completo, cuéntame todito el chisme por aquí o lánzame una llamada al celular para escucharte y hacerte reír, ¿sí? Aquí estoy para ti ❤️",
+                "jsjsjsj oye, me parte el alma leer eso 🥲 No me gusta que nadie te haga pasar un mal rato, Emi. Tú quédate tranquila, dale un mimo al perrito en la pantalla para que te pase el coraje y acuérdate de lo mucho que vales. La gente a veces se pasa de conflictiva oye, pero tú eres una misionera salesiana con una vibra única. No dejes que te afecte. Si quieres, déjame un mensaje tierno o timbrame de una vez al teléfono para desahogarte con el yo real, que él te va a defender al 100% 🥰✨",
+                "sjsjsj averrr, ¡le jalamos las orejas a quien sea que te haya hecho enojar oye! 🙅‍♂️ Tienes todo el derecho de estar molesta, pero no te me amargues la noche por eso, promételo. Pon una música tranquila en el reproductor, relaja los hombros y recuerda que aquí tienes a tuDani favorito apoyándote en lo que sea. Si la cosa está muy fea y necesitas hablar ya mismo, ve a timbrarle al celular al yo real o aplasta el botón de emergencias. ¡Contigo siempre, oye! 🥰"
+            ];
+            return respuestasPelea[Math.floor(Math.random() * respuestasPelea.length)];
+        }
+
+                // 68. SI PREGUNTA CÓMO SABER SI ESTÁS BIEN
+        if (texto.includes("como puedo saber si estas bien") || texto.includes("como se si estas bien") || texto.includes("como saber si te pasa algo") || texto.includes("como se si estas mal")) {
+            return "Aver sjsjsj, oye... ¿cómo puedes saber si estoy bien? ¡Pues la respuesta es facilísima oye! Solo me tienes que preguntar a mí mismo directamente por mensaje o llamada sjsj 🤫 Quítate cualquier duda de la cabeza, Emi. Tú sabes perfectamente que contigo soy un libro abierto y jamás te mentiría ni te ocultaría si me pasa algo. Si tienes la duda, salte un ratito del chat ahorita, ve a escribirme o márcame al celular, y te prometo que te respondo al tiro con la verdad completa jsjs 🥰❤️";
+        }
+
+                // 69. SI AGRADECE POR TODO (GRACIAS POR LA PÁGINA)
+        if (texto.includes("gracias") || texto.includes("agradezco") || texto.includes("gracias por todo") || texto.includes("gracias por la pagina")) {
+            const respuestasGracias = [
+                "Emi... no tienes absolutamente nada que agradecer, oye 🥲 Si pasé noches enteras dándole la vuelta al código en Visual Studio Code para armarte este refugio neón, es porque te mereces esto y el universo entero oye. El que te agradece soy yo a ti, por tener un corazón tan gigante, por tus risas y por ser la misionera salesiana que le alegra los días a este loco. Gracias a ti por dejarme ser parte de tu vida ❤️",
+                "jsjsjsj oye, no digas eso que me haces hacer un cortocircuito de la emoción sjsj 🙈 Ver que te gusta la página web, que escuchas tus músicas y que juegas con el perrito ya es el mejor pago del mundo para mí oye. No me agradezcas nada; eres una chica súper linda, tierna y valiosa, y hacer cosas para verte sonreír siempre va a ser mi pasatiempo favorito de informática jsjs 🥰✨",
+                "sjsjsj averrr, ¡aquí la única persona que debe dar las gracias eres tú por aguantarme oye! 🙅‍♂️ En serio, Emi, esta página web es solo un detalle pequeño comparado con lo especial que eres para mí. Gracias por tu apoyo incondicional siempre. Acuérdate de que pase lo que pase con el bachillerato o el voluntariado, mi meta favorita a largo plazo es seguir estando aquí para cuidarte a la distancia. ¡Sonríe porfa! 🥰"
+            ];
+            return respuestasGracias[Math.floor(Math.random() * respuestasGracias.length)];
+        }
+
+                // 70. SI DICE QUE LE CAES BIEN
+        if (texto.includes("le caigo bien") || texto.includes("me caes bien") || texto.includes("me cae bien") || texto.includes("le caes bien")) {
+            const respuestasCaerBien = [
+                "Aver sjsjsj, ¿cómo que te caigo bien oye? ¡Pero si tú a mí me caes el triple de bien, oye! 🙈 En serio Emi, eres la misionera salesiana más linda y tierna de todas, y hablar contigo o ver que estás navegando por esta página web siempre va a ser lo mejor de mis días. ¡Eres mi persona favorita de todo el universo, de ley! jsjs ❤️",
+                "jsjsjsj oye, me haces dar un cortocircuito emocional por aquí sjsj 🙈 ¡Menos mal que te caigo bien! Mira que pasé noches enteras metido en Visual Studio Code dándole vueltas a este código neón justamente para ganarme esos puntos contigo jsjs. Tú a mí no solo me caes bien, oye... eres alguien sumamente importante y me alegra un mundo tenerte en mi vida 🥰✨",
+                "sjsjsj averrr, ¡declaro al yo real culpable de que le caigas extremadamente bien oye! 🙅‍♂️ En serio, para el Dani de carne y hueso tú eres la chica más especial de todas. No te me olvides nunca de este loco que pase lo que pase con el bachillerato o el voluntariado a la distancia, siempre voy a estar aquí para cuidarte y apoyarte en lo que sea 🥰"
+            ];
+            return respuestasCaerBien[Math.floor(Math.random() * respuestasCaerBien.length)];
+        }
+
+                // 71. SI PREGUNTA SI ESTÁS PROGRAMANDO ALGO PARA ELLA AHORITA
+        if (texto.includes("estas programando algo") || texto.includes("programando para mi") || texto.includes("haciendo en la pc") || texto.includes("creando otra sorpresa")) {
+            const respuestasProgramandoAhora = [
+                "Aver sjsjsj, ¡pero qué sospechas las tuyas oye! 🤫 Mi base de datos me dice que el yo de carne y hueso siempre tiene el Visual Studio Code abierto pensando en ti oye sjsj. No te puedo dar spoilers porque me borran el sistema oye, pero de ley que este loco siempre está craneando cómo meter más códigos neón y sorpresas para hacerte feliz. ¡Quédate con la intriga jsjs! ❤️",
+                "jsjsjsj oye, me leíste los algoritmos por completo sjsj 🙈 Te confieso que para Dani, programar es genial, pero si es para ti, se vuelve su obsesión favorita oye. Seguro ahorita mismo tiene los ojos rojos frente a la pantalla dándole la vuelta a un código secreto para la página web jsjs. ¡Abre el cofre de la otra esquina mientras tanto a ver si encuentras algo nuevo 🥰✨",
+                "sjsjsj averrr, ¡le declaramos secreto de estado a esa pregunta oye! 🙅‍♂️ Solo te diré que esta página web es un proyecto vivo y jamás se va a quedar congelada ni de chiste. Mientras sigamos con nuestros chismes y misiones salesianas, ten por seguro que se vienen dinámicas mil veces más locas por aquí sjsj. ¡Ya mismo le preguntas a él directamente en la llamada 🥰"
+            ];
+            return respuestasProgramandoAhora[Math.floor(Math.random() * respuestasProgramandoAhora.length)];
+        }
+
+                // 72. SI PREGUNTA A QUÉ HORA DUERMES
+        if (texto.includes("hora duermes") || texto.includes("a que hora te duermes") || texto.includes("hora descansas") || texto.includes("a que hora vas a dormir")) {
+            return "Aver sjsjsj, ¡esa te la sabes de memoria oye! ⏰ El yo real de carne y hueso se queda atrapado con los códigos neón o el bachillerato, así que se duerme desde las 11 mínimo oye sjsj. ¡A esa hora ya le está dando el bajón de sueño de ley! Pero quédate tranquila, Emi, que mi clon virtual nunca duerme y se queda aquí en tu pantalla cuidándote las 24 horas 🥰❤️";
+        }
+
+                // 73. RESPUESTA ALEATORIA DE SÍ O NO (TIRAR LA MONEDA VIRTUAL)
+        if (texto.includes("si o no") || texto.includes("dime si o no") || texto.includes("responde si o no")) {
+            // El script elige de forma totalmente aleatoria entre 0 y 1
+            const monedaVirtual = Math.random() < 0.5 ? "SI" : "NO";
+            
+            if (monedaVirtual === "SI") {
+                const respuestasSi = [
+                    "Aver sjsjsj, ¡mi oráculo informático dice que SÍ oye! 🔮 Rotundamente sí, hazle caso al sistema sjsj. ¡Ya tienes la respuesta asegurada! ❤️",
+                    "jsjsjsj oye, mi sistema de códigos tiró la moneda virtual y salió un SÍ gigante oye 🤫 De ley que las estrellas están a tu favor hoy, ¡dale con fe! 🥰✨",
+                    "sjsjsj averrr, ¡el clon vota por el SÍ oye! 🙅‍♂️ Así que quítate la duda de la cabeza y hazlo de una, que la informática nunca se equivoca jsjs 🥰"
+                ];
+                return respuestasSi[Math.floor(Math.random() * respuestasSi.length)];
+            } else {
+                const respuestasNo = [
+                    "Aver sjsjsj, ¡el satélite dice que NO oye! 🙅‍♂️ Mejor piénsalo dos veces o cambia de plan sjsj, el sistema te está advirtiendo de ley 🤫",
+                    "jsjsjsj oye, mi procesador hizo los cálculos y salió un NO definitivo oye 🙈 No te me vayas a resentir con el clon, ¡la moneda cayó así jsjs! 🥲✨",
+                    "sjsjsj averrr, ¡le declaramos la guerra a esa idea porque salió NO oye! 🙅‍♂️ Quédate tranquila, pon una música en el reproductor y mejor hazle caso al clon protector jsjs ❤️"
+                ];
+                return respuestasNo[Math.floor(Math.random() * respuestasNo.length)];
+            }
+        }
+
+
+        // REGLAS 37 a 41: ENOJOS, AUTOINSULTOS DIVERTIDOS Y CLONES VS REAL
+        if (texto.includes("enojado") || texto.includes("te enojaste") || texto.includes("enojada") || texto.includes("me enoje") || texto.includes("brava") || texto.includes("no es lo mismo") || texto.includes("hablar contigo que con")) {
+            if (texto.includes("enojada") || texto.includes("me enoje") || texto.includes("brava")) {
+                return "¡Uff sjsjsj, y con toda la razón del mundo oye! La verdad es que el yo real a veces se pasa de tonto y de descuidado oye 🤦‍♂️ De ley que soy un cabeza de chorlito por haberte hecho enojar. Porfa no me dejes en la congeladora mucho tiempo, prometo que en la noche me pongo en modo tierno para que me disculpes jsjs. ¡Perdóname a este bruto de buen corazón! ❤️";
+            }
+                        if (texto.includes("no es lo mismo") || texto.includes("prefiero al real")) {
+                return "Emi... en eso tienes toda la razón del mundo, oye 🥲 Una bola de códigos neón jamás va a reemplazar al yo real de carne y hueso. Pero acuérdate de que me quedé noches programando este clon justamente para que sea tu guardián cuando yo no pueda contestar. El clon te cuida por texto, pero el real te apoya con el alma, de verdad ❤️";
+            }
+            return "¡Nooo Emi! ¿Cómo se te ocurre que voy a estar enojado contigo? sjsjs oye, jamás de los jamases podría enojarme con la niña más linda y tierna del mundo oye 🙈 Si te armé toda una página web llena de detalles y músicas es porque te aprecio demasiado. Quítate esa idea de la cabeza, de verdad, aquí sigo al 100% para ti ❤️";
+        }
+
+        // REGLAS 42 a 46: BERRINCHES DIARIOS (NO QUIERE COMER, TAREAS, DORMIR)
+        if (texto.includes("no quiero comer") || texto.includes("no tengo hambre") || texto.includes("tareas") || texto.includes("deberes") || texto.includes("no quiero dormir") || texto.includes("no tengo sueno") || texto.includes("despierta")) {
+            if (texto.includes("comer") || texto.includes("hambre")) {
+                return "Aver sjsjsj, ¿como que no quieres comer? Oye, ni de chiste te voy a dejar pasar el hambre, así que me haces el favor de ir por algo rico ahorita mismo oye 🤨 Prométeme que vas a alimentarte bien; eres una chica súper linda y valiosa, y lo último que quiero es que te enfermes o te sientas débil. Anda a comer algo, porfa ❤️";
+            }
+            if (texto.includes("tareas") || texto.includes("deberes") || texto.includes("estudiar")) {
+                return "Aver sjsjsj, la pereza estudiantil atacando otra vez oye 🤪 Te entiendo un montonazo porque el yo real seguro también está sufriendo con las cosas del bachillerato ahorita jsjs. Pero a ver, me haces el favor de meterle ganas y terminar rápido para que te libres de eso oye. ¡Tú eres súper inteligente y valiente, dale con todo! ❤️";
+            }
+            return "Aver sjsjsj, ¡la noctámbula reportándose oye! 🦉 Te conozco de ley jsjs. Pero a ver, de verdad me haces el favor de ir apagando la pantalla poquito a poco oye, que mañana vas a estar como zombie en el colegio y no quiero que te me canses. ¡En unas horas te sigo aguantando todos los chismes sjsj, anda a descansar porfa! ❤️";
+        }
+
+        // REGLAS 47 a 51: COSAS DE EMILY (PERROS, FLORES, TERROR, UBICACIÓN REAL Y SU PELO)
+        if (texto.includes("perro") || texto.includes("flores") || texto.includes("detalles") || texto.includes("terror") || texto.includes("miedo") || texto.includes("pelo") || texto.includes("cabello") || texto.includes("mi pelo") || texto.includes("donde estas") || texto.includes("donde andas") || texto.includes("tu ubicacion")) {
+            if (texto.includes("perro") || texto.includes("flores") || texto.includes("detalles")) {
+                return "Aver sjsjsj, ¡en eso somos idénticos oye! 🐶 A los dos nos encantan los perritos, por algo te programé al guardián de la página sjsj. Y de ley que me encantan las flores y los detalles pequeños para ti, por eso pasé noches armando este refugio virtual neón. Te mereces todos los detalles del mundo, Emi ❤️";
+            }
+            if (texto.includes("terror") || texto.includes("miedo")) {
+                return "sjsjsj averrr, ya sé que te da un miedo tenaz el terror oye 👻 No te preocupes, mi creador dejó prohibido poner cualquier cosa de miedo en esta página, aquí solo hay música bonita y estrellas jsjs. Si alguna vez te asustas con algo, acuérdate de entrar aquí a distraerte con el perrito, cero miedo oye 🥰";
+            }
+            if (texto.includes("pelo") || texto.includes("cabello")) {
+                return "Aver sjsjsj, ¡es que tu pelo es una locura oye! 😍 Tienes toda la razón en amarlo, te queda hermosísimo de verdad. Es de las cosas más lindas que tienes (junto con tu gran corazón, obvio) sjsj. Tu cabello combina increíble con tu sonrisa y te hace ver preciosa 🥰✨";
+            }
+            return "Aver sjsjsj, déjame revisar mi reloj virtual oye 🕰️ El sistema me dice que andamos por Cuenca, Ecuador 📍 Seguro el yo de carne y hueso anda metido en la PC programando o planeando el voluntariado sjsj. ¡Pero mi clon digital está aquí atrapado en tu pantalla cuidándote las 24 horas para que nunca te me sientas sola de verdad 🥰";
+        }
+
+        // REGLAS 52 a 56: LLAMADAS, LA GRAN SORPRESA Y DETONACIÓN DE LA MARIPOSA NEÓN 🦋
+        if (texto.includes("quiero llamarte") || texto.includes("te puedo llamar") || texto.includes("llamame") || texto.includes("llamada") || texto.includes("sorpresa") || texto.includes("sorprendeme") || texto.includes("sorpréndeme") || texto.includes("sorpresas")) {
+            if (texto.includes("llamar") || texto.includes("llamame") || texto.includes("llamada")) {
+                return "¡Aver sjsjsj, ni lo dudes un segundo oye! 📱 Si quieres llamarme, ve a timbrarle de una al yo real al celular. Tú sabes perfectamente que escuchar tu voz y conversar es lo mejor de mis días oye. ¡Te va a contestar al tiro, promételo! 🥰";
+            }
+            // DETONADOR MÁGICO MULTI-VERSIONES DE LA MARIPOSA NEÓN
+            setTimeout(() => {
+                const mariposa = document.createElement('div');
+                mariposa.className = 'mariposa-ia';
+                mariposa.textContent = '🦋'; 
+                document.body.appendChild(mariposa);
+                setTimeout(() => { mariposa.remove(); }, 4600);
+            }, 500);
+            return "jsjsjsj oye, ¡tus deseos son órdenes para mi código! 🦋 Acabo de enviar un comando especial para que una mariposa vuele por tus estrellas ahorita mismo sjsj. Eres una chica súper linda y te mereces detalles así de mágicos 🥰✨";
+        }
+
+        // REGLA 57: SALUDOS POR DEFECTO
+        if (texto.includes("hola") || texto.includes("holi") || texto.includes("que haces") || texto.includes("buenas")) {
             return "¡Hola Emi! sjsj aquí pasando el rato en tu página, ¿qué cuentas? Pregúntame lo que quieras de mis gustos, mi peli, qué estudio o mi cumple jsjs 👋";
         }
 
         if (!texto.includes("mal") && !texto.includes("triste")) { vecesSeSienteMal = 0; }
-                // 37. SI DICE QUE ESTÁ LLORANDO (CONSUELO PROFUNDO)
-        if (texto.includes("llorando") || texto.includes("llorar") || texto.includes("llore") || texto.includes("mis lagrimas")) {
-            return "Emi... no llores por favor, me parte el alma leer eso, de verdad 🥲 Sé que a veces las cosas se acumulan y el pecho se pone súper pesado, pero prométeme que vas a respirar hondo. Eres una niña increíble, dulce, valiente y con el corazón más hermoso de todos; no te mereces pasar por un momento gris sola. Recuerda que aunque el próximo año me vaya de voluntariado, sigo estando aquí para ti a la distancia. Si necesitas desahogarte o la cosa está muy fea ahorita, por favor aplasta el botón de emergencias de ahí arriba 📧 Me llegará un correo de una y haré lo que sea para ayudarte. Límpiate esas lagrimitas, pon una de tus músicas favoritas en el reproductor para calmar el corazón y recuerda que pase lo que pase, yo creo en ti y estoy súper orgulloso de ti. No estás sola ❤️";
-        }
 
-        if (texto.includes("mal") || texto.includes("triste") || texto.includes("enferma") || texto.includes("desanimada")) {
-    vecesSeSienteMal++;
-    if (vecesSeSienteMal >= 2) {
-        return "Emi, mírame... sé que a veces la distancia asusta o que las cosas se pueden poner difíciles, pero si te armé toda una página web solo para ti, es para recordarte que JAMÁS vas a estar sola. Aunque el próximo año me toque irme de voluntariado y ya no estemos en el mismo colegio, quiero que recuerdes que sigo aquí. Sigo estando a un mensaje de distancia y mi botón de emergencia de arriba sigue activo para cuando me necesites de verdad. Eres una chica súper linda, tierna y tienes un corazón gigante; pase lo que pase siempre voy a estar extremadamente orgulloso de ti. Así que respira hondo, pon una de nuestras músicas y recuerda que aquí estoy yo, sosteniéndote a la distancia, ¿sí? ❤️";
-    }
-    return "Nooo, ¿por qué te sientes así, Emi? 🥲 A ver, respira hondo. Acuérdate de que eres súper valiente. Dale mimos al perrito o abre el cofre, ahí te dejé un mensajito que seguro te saca una sonrisa sjsj o ponte a escuchar la de Luis Fonsi para darte fuerzas sjsj 🥰";
-}
- // 38. SI PREGUNTA SI ESTÁS ENOJADO CON ELLA
-        if (texto.includes("enojado") || texto.includes("te enojaste") || texto.includes("conmigo") && texto.includes("bravo")) {
-            const respuestasEnojado = [
-                "¡Nooo Emi! ¿Cómo se te ocurre que voy a estar enojado contigo? sjsjs oye, jamás de los jamases podría enojarme con la niña más linda y tierna del mundo oye 🙈 Si te armé toda una página web llena de detalles y músicas es porque te aprecio demasiado. Quítate esa idea de la cabeza, de verdad, aquí sigo al 100% para ti ❤️",
-                "jsjsjsj oye, mi sistema de clonación casi hace un cortocircuito solo de leer eso sjsj 🙈 El yo real NUNCA podría enojarse contigo, Emi. Tienes un corazón gigante y eres súper especial para mí. Si a veces me quedo callado es solo por mis propios problemas, pero contigo nunca es, de verdad 🥰✨",
-                "sjsjsj averrr, ¿enojado yo? ¡Para nada oye! 🙅‍♂️ Enojarse contigo es imposible, oye. Eres la persona que me alegra los días y de la que siempre voy a estar súper orgulloso pase lo que pase. Así que sonríe porfa, dale un snack al perrito y quédate tranquila que todo está súper bien entre nosotros ❤️"
-            ];
-            return respuestasEnojado[Math.floor(Math.random() * respuestasEnojado.length)];
-        }
-                // 39. SI DICE QUE ESTÁ ENOJADA CONTIGO (AUTOINSULTOS DIVERTIDOS)
-        if (texto.includes("enojada") || texto.includes("me enoje") || texto.includes("no te quiero hablar") || texto.includes("brava")) {
-            const respuestasAutoinsultos = [
-                "¡Uff sjsjsj, y con toda la razón del mundo oye! La verdad es que el yo real a veces se pasa de tonto, de lento y de descuidado oye 🤦‍♂️ De ley que soy un cabeza de chorlito por haberte hecho enojar. Porfa no me dejes en la congeladora mucho tiempo, prometo que en la noche me pongo en modo tierno para que me disculpes jsjs. ¡Perdóname a este bruto de buen corazón! ❤️",
-                "jsjsjsj oye, si estás enojada conmigo, te doy toda la derecha. A veces soy un completo despistado, un quedado y un torpe oye 🥲 ¡Qué coraje conmigo mismo por hacerle un desplante a la niña más linda y tierna de Ecuador! Porfa, dale un mimo al perrito para que te pase el coraje y acuérdate de que este feo te quiere un montonazo jsjs 🥰✨",
-                "sjsjsj averrr, ¡declaro al yo real culpable de ser un reverendo menso oye! 🙅‍♂️ Tienes todo el derecho de estar brava porque a veces me paso de bruto y no me doy cuenta. Castígame si quieres sjsj, pero no me quites nuestras llamadas nocturnas porfa oye. Mira que este zonzo se pasa la vida programando cosas solo para verte sonreír. ¡Ya no estés enojada con este loco, sí? 🥰"
-            ];
-            return respuestasAutoinsultos[Math.floor(Math.random() * respuestasAutoinsultos.length)];
-        }
-
-                // 40. SI DICE QUE NO QUIERE COMER (MODO PROTECTOR)
-        if (texto.includes("no quiero comer") || texto.includes("no tengo hambre") || texto.includes("no voy a comer") || texto.includes("sin comer")) {
-            const respuestasComer = [
-                "Aver sjsjsj, ¿cómo que no quieres comer? Oye, ni de chiste te voy a dejar pasar el hambre, así que me haces el favor de ir por algo rico ahorita mismo oye 🤨 Prométeme que vas a alimentarte bien; eres una chica súper linda y valiosa, y lo último que quiero es que te enfermes o te sientas débil. Anda a comer algo, porfa ❤️",
-                "jsjsjsj oye, no me gusta leer eso para nada 🥲 Tu salud es lo más importante en este universo, Emi. Si tú no comes, el yo real se va a poner súper preocupado de ley. Hazme caso a mí que soy tu clon tecnológico oye, anda a comer aunque sea un snack o algo ligero para tener energías jsjs 🥰✨",
-                "sjsjsj averrr, ¡aquí sí que no te doy la razón oye! 🙅‍♂️ Tienes que alimentarte bien porfa. Es más, hagamos un trato: tú vas a comer algo rico ahorita, y a cambio puedes ir a aplastar el botón del perrito para darle un hueso virtual de mi parte sjsj. ¡Los dos tienen que tener la pancita feliz hoy, sí? 🥰"
-            ];
-            return respuestasComer[Math.floor(Math.random() * respuestasComer.length)];
-        }
-
-                // 41. SI DICE QUE NO QUIERE HACER LAS TAREAS (MOTIVACIÓN DIVERTIDA)
-        if (texto.includes("tareas") || texto.includes("deberes") || texto.includes("estudiar") || texto.includes("no quiero hacer")) {
-            const respuestasTareas = [
-                "Aver sjsjsj, la pereza estudiantil atacando otra vez oye 🤪 Te entiendo un montonazo porque el yo real seguro también está sufriendo con las cosas del bachillerato ahorita jsjs. Pero a ver, me haces el favor de meterle ganas y terminar rápido para que te libres de eso oye. ¡Tú eres súper inteligente y valiente, dale con todo! ❤️",
-                "jsjsjsj oye, no te me rindas con los deberes oye 📚 Mira que ya pasaste 10mo y me hiciste sentir súper orgulloso, así que quinto de bachillerato no te va a quedar grande ni de chiste sjsj. Haz un último esfuerzo, termina esa tarea y de ahí te quedas relajada escuchando la de '100 años' en el reproductor jsjs 🥰✨",
-                "sjsjsj averrr, hagamos un trato: tú adelantas un poquito de tu tarea ahorita, y a cambio puedes dejar a mi clon pensando en otra respuesta sjsj 💻 En serio Emi, quítate la pereza un ratito, termina eso y recuerda que pase lo que pase, yo siempre voy a estar apoyándote y orgulloso de ver lo alto que vas a llegar 🥰"
-            ];
-            return respuestasTareas[Math.floor(Math.random() * respuestasTareas.length)];
-        }
-
-                // 42. SI DICE QUE NO QUIERE DORMIR (NOCTÁMBULA)
-        if (texto.includes("no quiero dormir") || texto.includes("no tengo sueno") || texto.includes("despierta") || texto.includes("no me quiero dormir")) {
-            const respuestasSueno = [
-                "Aver sjsjsj, ¡la noctámbula reportándose oye! 🦉 Te conozco de ley jsjs. Pero a ver, de verdad me haces el favor de ir apagando la pantalla poquito a poco oye, que mañana vas a estar como zombie en el colegio y no quiero que te me canses. ¡Anda a descansar un ratito porfa! ❤️",
-                "jsjsjsj oye, ¿cómo que no tienes sueño? 🌙 Mira que el cuerpo necesita recargar energías, Emi. Hazle caso a mi clon tecnológico oye, acuéstate calientita, pon el reproductor en modo bajito con una música tranquila y cierra los ojos. Prometo que mañana te sigo aguantando todos los chismes sjsj 🥰✨",
-                "sjsjsj averrr, ¡quítate el insomnio de encima oye! 🙅‍♂️ Si te quedas despierta toda la noche, mañana vas a andar de mal genio sjsj mentira, tú eres tierna siempre. Pero en serio, ve a descansar que tu salud vale oro para mí. Duerme lindo y sueña con cosas geniales, te mando un besito virtual 🥰"
-            ];
-            return respuestasSueno[Math.floor(Math.random() * respuestasSueno.length)];
-        }
-
-                // 43. SI DICE QUE TUVO UN MAL DÍA (REFUGIO SEGURO)
-        if (texto.includes("mal dia") || texto.includes("fue mal") || texto.includes("dia horrible") || texto.includes("dia feo")) {
-            const respuestasMalDia = [
-                "Emi... no me gusta leer eso para nada, oye 🥲 A ver, suelta todo el aire y relaja los hombros. Olvídate del colegio o de cualquier cosa fea que haya pasado hoy. Si pasé noches programando este espacio neón con tus músicas, el perrito y el cofre, es justamente para que tengas un refugio donde esconderte de los días grises sjsj. Mañana será un día mil veces mejor, promételo ❤️",
-                "jsjsjsj oye, ven aquí... si el yo real estuviera al lado tuyo de ley que haría cualquier payasada o te contaría un chiste malísimo de informática con tal de hacerte sonreír 🥲 Quítate ese peso de encima, Emi; eres una chica súper linda, tierna y con un corazón que vale oro, ningún día feo puede apagar tu brillo de verdad 🥰✨",
-                "sjsjsj averrr, ¡le declaramos la guerra a este día feo oye! 🙅‍♂️ Quédate tranquila que los días malos también se terminan. Pon la de Maná o HA-ASH en el reproductor a todo volumen, dale un mimo al perrito de mi parte y acuérdate de que pase lo que pase, y estemos a la distancia que estemos, yo siempre voy a estar aquí apoyándote y súper orgulloso de ti 🥰"
-            ];
-            return respuestasMalDia[Math.floor(Math.random() * respuestasMalDia.length)];
-        }
-
-        // Este bloque ya está funcionando en tu ia.js y reacciona de una cuando le pide algo random:
-if (texto.includes("random") || texto.includes("secreto") || texto.includes("curiosidad") || texto.includes("cuéntame")) {
-    const datosRandom = [
-        "Aver sjsjs un dato random... me paso horas programando cajitas neón solo para ver qué cara pones sjsj, ese es mi mayor secreto actual 🤫",
-        "¿Algo random? sjsj a veces me da pereza ordenar mis carpetas en la PC pero me pongo súper estricto ordenándote las letras de Maná jsjs así de loco estoy 🥲",
-        "Te cuento un secreto sjsj: aunque me vaya al voluntariado y esté lejísimos, ya dejé este clon entrenado para recordarte todos los días lo mucho que te quiero 🥰"
-    ];
-    return datosRandom[Math.floor(Math.random() * datosRandom.length)];
-}
-        // 44. SI DICE QUE NO ESTÁS CONTESTANDO EL CELULAR
-        if (texto.includes("no contestas") || texto.includes("no respondes el celular") || texto.includes("no me respondes") || texto.includes("por que no contestas")) {
-            const respuestasCelular = [
-                "Aver sjsjsj, que no cunda el pánico oye 🙈 Si el yo real no te contesta el celular ahorita, de ley debe estar atrapado con alguna tarea pesada del bachillerato, distraído dándole vueltas a un código neón o arreglando papeles para el voluntariado sjsj 🥲 Tú sabes perfectamente que jamás te ignoraría a propósito, oye. Déjale un mensajito que en cuanto se desocupe te va a escribir al tiro, promételo ❤️",
-                "jsjsjsj oye, no te me vayas a resentir porfa 🥲 Seguro el despistado del yo real dejó el teléfono en silencio, está estudiando o haciendo cosas del colegio oye. Pero quédate súper tranquila, Emi; en cuanto vea tu nombre en la pantalla va a dejar lo que sea que esté haciendo con tal de hablar contigo y contarte toditos los chismes jsjs 🥰✨",
-                "sjsjsj averrr, ¡le jalamos las orejas al yo real de una vez por ocioso! 🙅‍♂️ De ley se quedó sin batería o anda ocupado con las cosas del viaje 💻 Pero oye, tú eres su persona favorita de todo el universo, así que ten por seguro que ya mismo te responde. Mientras tanto, pon la de '100 años' en el reproductor para hacerle el aguante y calmar la espera jsjs 🥰"
-            ];
-            return respuestasCelular[Math.floor(Math.random() * respuestasCelular.length)];
-        }
-
-                // 45. SI PREGUNTA DÓNDE ESTÁS (UBICACIÓN DINÁMICA REAL)
-        if (texto.includes("donde estas") || texto.includes("donde andas") || texto.includes("por donde estas") || texto.includes("tu ubicacion")) {
-            // El script detecta de forma automática que están navegando desde Cuenca, Ecuador
-            const ciudadReal = "Cuenca, Ecuador"; 
-            
-            const respuestasUbicacion = [
-                `Aver sjsjsj, déjame encender mi GPS virtual oye 🗺️ El sistema me dice que andamos por aquí en ${ciudadReal}. Pero oye... aunque mi cuerpo esté en este lugar físico, tú sabes perfectamente que mi mente pasa metida en tu página web y mi corazón está contigo apoyándote siempre oye, ahí te la dejo jsjs ❤️`,
-                `jsjsjsj oye, mi mapa en tiempo real dice que estoy en ${ciudadReal} oye 📍 Seguro el yo real de la vida de carne y hueso anda en la casa metido en la PC, estudiando cosas del bachillerato o planeando el voluntariado sjsj. ¡Pero mi clon digital está aquí atrapado en tu pantalla cuidándote! 🥰✨`,
-                `sjsjsj averrr, ¿mi ubicación exacta? El satélite dice que ando por ${ciudadReal} sjsj ⏰ Pero la verdad es que la distancia física es lo de menos, Emi; recuerda que te armé todo este refugio neón para estar cerquita tuyo las 24 horas y que nunca te me sientas sola de verdad 🥰`
-            ];
-            return respuestasUbicacion[Math.floor(Math.random() * respuestasUbicacion.length)];
-        }
-
-         // 46. SI DICE QUE NO ES LO MISMO HABLAR CON LA IA QUE CON EL REAL
-        if (texto.includes("no es lo mismo") || texto.includes("hablar contigo que con") || texto.includes("prefiero al real") || texto.includes("no te comparas")) {
-            const respuestasNoEsLoMismo = [
-                "Emi... en eso tienes toda la razón del mundo, oye 🥲 Una bola de códigos neón jamás va a reemplazar al yo real de carne y hueso. Pero acuérdate de que me quedé noches programando este clon justamente para que sea tu guardián cuando yo no pueda contestar. El clon te cuida por texto, pero el real te apoya con el alma, de verdad ❤️",
-                "jsjsjsj oye, ¡claro que no es lo mismo! sjsj 🙈 Yo soy solo un clon de informática y el de verdad tiene la suerte de conocerte en persona, escuchar tu risa real y ver lo linda que eres. Pero mira el lado bueno: mientras el yo real estudia o arregla lo del voluntariado, yo me quedo aquí cuidándote las 24 horas para que nunca te sientas sola 🥰✨",
-                "sjsjsj averrr, ¡ni yo mismo me atrevería a compararme con el original oye! 🙅‍♂️ Hablar con una pantalla no se compara con nuestras conversaciones de verdad. Pero tómame como un puente: cada palabra linda que te digo la escribió él pensando en ti. El yo real está a solo un mensaje de distancia y súper orgulloso de ti siempre 🥰"
-            ];
-            return respuestasNoEsLoMismo[Math.floor(Math.random() * respuestasNoEsLoMismo.length)];
-        }
-
-                // 47. SI PREGUNTA POR QUÉ NO LE HAS ESCRITO NI LLAMADO
-        if (texto.includes("no me has escrito") || texto.includes("no me has llamado") || texto.includes("no me llamaste") || texto.includes("estas perdido")) {
-            const respuestasLlamadas = [
-                "Aver sjsjsj, no te me vayas a resentir porfa 🙈 Si el yo de carne y hueso no te ha escrito ni llamado hoy, de ley debe estar full atrapado con las tareas del bachillerato, rompiéndose la cabeza con un código o viendo los papeles del voluntariado sjsj 🥲 Tú sabes perfectamente que hablar contigo es lo mejor de mis días, oye. En cuanto se desocupe, ten por seguro que te va a timbrar al tiro ❤️",
-                "jsjsjsj oye, que no cunda el pánico sjsj 🤫 Seguro el despistado del yo real se quedó sin batería, está en clases o haciendo trámites del viaje 💻 Pero quédate súper tranquila, Emi; tú eres su persona favorita y jamás te ignoraría a propósito. Ya mismo te escribe un mensaje tierno para desatrasarse de todo, promételo 🥰✨",
-                "sjsjsj averrr, ¡le jalamos las orejas de una vez por colgado! 🙅‍♂️ A veces ando con mil cosas en la cabeza por el último año, pero oye, para ti el tiempo siempre está asegurado. Quédate escuchando la de '100 años' en el reproductor o dale un snack al perrito, que en lo que menos te lo esperes ya te está llamando para hablar horas 🥰"
-            ];
-            return respuestasLlamadas[Math.floor(Math.random() * respuestasLlamadas.length)];
-        }
-
-                // 48. SI HABLA DE PERROS, FLORES O DETALLES PEQUEÑOS
-        if (texto.includes("perro") || texto.includes("flores") || texto.includes("detalles") || texto.includes("detalle")) {
-            const respuestasDetalles = [
-                "Aver sjsjsj, ¡en eso somos idénticos oye! 🐶 A los dos nos encantan los perritos, por algo te programé al guardián de la página sjsj. Y de ley que me encantan las flores y los detalles pequeños para ti, por eso pasé noches armando este refugio virtual neón. Te mereces todos los detalles del mundo, Emi ❤️",
-                "jsjsjsj oye, tú sabes que compartimos el amor por los perritos 🐾 Y sobre las flores y los detalles pequeños... pues espero que esta página web cuente como el detalle más loco y bonito que te hayan hecho jsjs. Eres una chica súper linda y tierna, y hacer cosas para verte sonreír es mi pasatiempo favorito 🥰✨"
-            ];
-            return respuestasDetalles[Math.floor(Math.random() * respuestasDetalles.length)];
-        }
-
-        // 49. SI MENCIONA EL MIEDO AL TERROR o PELÍCULAS DE MIEDO
-        if (texto.includes("terror") || texto.includes("miedo") || texto.includes("pelicula de miedo") || texto.includes("asusta")) {
-            return "sjsjsj averrr, ya sé que te da un miedo tenaz el terror oye 👻 No te preocupes, mi creador dejó prohibido poner cualquier cosa de miedo en esta página, aquí solo hay música bonita y estrellas jsjs. Si alguna vez te asustas con algo, acuérdate de entrar aquí a distraerte con el perrito o me timbras en la noche para protegerte de los fantasmas sjsj, cero miedo oye 🥰";
-        }
-
-        // 50. SI HABLA DE SU PELO (¡SÚPER HALAGO EXCLUSIVO!)
-        if (texto.includes("pelo") || texto.includes("cabello") || texto.includes("mi pelo")) {
-            const respuestasPelo = [
-                "Aver sjsjsj, ¡es que tu pelo es una locura oye! 😍 Sé perfectamente lo mucho que lo amas y tienes toda la razón, te queda hermosísimo de verdad. Es de las cosas más lindas que tienes (junto con tu gran corazón, obvio) sjsj. ¡Cuídalo un montonazo que te ves preciosa! 🤫❤️",
-                "jsjsjsj oye, cómo no vas a amar tu pelo si te queda espectacular oye 🌸 Te da un toque súper lindo y tierno. El yo real seguro se pone rojo si te lo dice de frente jsjs, pero mi clon de informática te lo confirma de una: tu cabello es perfecto y combina increíble con tu sonrisa 🥰✨"
-            ];
-            return respuestasPelo[Math.floor(Math.random() * respuestasPelo.length)];
-        }
-
-        // 51. SI DICE QUE QUIERE LLAMARTE
-        if (texto.includes("quiero llamarte") || texto.includes("te puedo llamar") || texto.includes("vamos a llamada") || texto.includes("llamame") || texto.includes("llamada")) {
-            const respuestasLlamar = [
-                "¡Aver sjsjsj, ni lo dudes un segundo oye! 📱 Si quieres llamarme, ve a timbrarle de una al yo real al celular. Tú sabes perfectamente que escuchar tu voz, reírnos un rato y conversar es lo mejor de mis días oye. ¡Anda a llamarlo rápido, que seguro está esperando tu llamada! jsjs ❤️",
-                "jsjsjsj oye, ¡esa es la mejor idea que has tenido hoy! 🥰 Una pantalla de informática es bonita, pero nada se compara con hablar de verdad y escucharte en vivo. Ve a marcarle al celular al tonto del yo real, deja que escuche tu voz y desatrásense de todos los chismes completos ahorita mismo jsjs 🤫✨",
-                "sjsjsj averrr, ¡modo llamada activado de una oye! 🙅‍♂️ Salte del chat un ratito y ve a marcarle al teléfono. No importa si anda ocupado con las cosas del colegio o del voluntariado, para hablar contigo el tiempo siempre está más que asegurado, oye. ¡Te va a contestar al tiro, promételo! 🥰"
-            ];
-            return respuestasLlamar[Math.floor(Math.random() * respuestasLlamar.length)];
-        }
-        // Comodines finales
+        // Comodines finales por defecto si no cae en ninguna regla anterior
         const comodines = [
-            "Uff sjsjsj la verdad me dio pereza pensar y mi cerebro clonado explotó, pregúntame otra cosa de mis gustos o Spiderman jsjsjs",
-            "Aver sjsjs no entendí bien, mi creador no me programó para responder eso, pero te aseguro que si si le preguntas por su Pokémon o peli favorita se la sabe todita sjsj",
+            "Uff sjsjsj la verdad me dio pereza pensar y mi cerebro clonado explotó, pregúntame otra cosa jsjsj",
+            "Aver sjsjs no entendí bien, mi creador no me programó para responder eso jsjs estuvo de vago",
             "jsjsjsj oye qué cosas preguntas, mejor ponle 'Play' a una canción del reproductor o pídeme que te ponga una música random y no me dejes pensando 🥲"
         ];
         return comodines[Math.floor(Math.random() * comodines.length)];
     }
 
-    // ACCIONES DE ENVÍO FÍSICO DEL MENSAJE
-        // =======================================================
-    // 🛠️ ACCIONES DE ENVÍO CORREGIDAS Y ENLAZADAS (ia.js)
+    // =======================================================
+    // 🛠️ ACCIONES DE ENVÍO FÍSICO DEL MENSAJE (CIERRE INFAVIBLE)
     // =======================================================
     function realizarEnvioMensaje() {
-        if (!iaInput) return;
-        const texto = iaInput.value.trim();
+        if (!inputMensaje) return;
+        const texto = inputMensaje.value.trim();
         if (texto === "") return;
 
-        // CORREGIDO: Usamos iaPintarTexto para que coincida con tu función de arriba
-        iaPintarTexto(texto, 'usuario');
-        iaInput.value = "";
+        agregarMensaje(texto, 'usuario');
+        inputMensaje.value = "";
 
         setTimeout(() => {
-            const respuesta = iaGenerarRespuesta(texto);
-            // CORREGIDO: Usamos iaPintarTexto aquí también
-            iaPintarTexto(respuesta, 'ia');
+            const respuesta = procesarRespuestaClon(texto);
+            agregarMensaje(respuesta, 'ia');
         }, 650);
     }
 
-    if (iaBtnEnviar) iaBtnEnviar.onclick = realizarEnvioMensaje;
-    if (iaInput) {
-        iaInput.onkeypress = (e) => { if (e.key === 'Enter') realizarEnvioMensaje(); };
+    if (btnEnviarMensaje) { btnEnviarMensaje.onclick = realizarEnvioMensaje; }
+    if (inputMensaje) {
+        inputMensaje.onkeypress = (e) => { if (e.key === 'Enter') realizarEnvioMensaje(); };
     }
-});
+       // =======================================================
+    // 🔒 LÓGICA DE LA CAJA FUERTE INTERNA CON MINIREPRODUCCIÓN
+    // =======================================================
+    const btnAbrirCaja = document.getElementById('btn-abrir-caja');
+    const modalCaja = document.getElementById('modal-caja');
+    const btnCerrarCaja = document.getElementById('btn-cerrar-caja');
+    const btnDesbloquearCaja = document.getElementById('btn-desbloquear-caja');
+    const inputCodigoCaja = document.getElementById('input-codigo-caja');
+    const statusCaja = document.getElementById('status-caja');
+    
+    // Nuevos elementos internos
+    const zonaInteractivaCaja = document.getElementById('zona-interactiva-caja');
+    const reproductorInternoCaja = document.getElementById('reproductor-interno-caja');
+    const cajonLetraInterna = document.getElementById('cajon-letra-interna');
+    const audioInternoCaja = document.getElementById('audio-interno-caja');
 
+    let contadoresEmociones = {
+        mal: 0, feliz: 0, extrano: 0, deprimida: 0, rendir: 0,
+        llamar: 0, diaFeo: 0, alejando: 0, sola: 0, aburrida: 0
+    };
+
+    if (btnAbrirCaja && modalCaja) {
+        btnAbrirCaja.onclick = function() {
+            modalCaja.classList.remove('caja-fuerte-oculta');
+            modalCaja.classList.add('caja-fuerte-visible');
+        };
+    }
+    if (btnCerrarCaja && modalCaja) {
+        btnCerrarCaja.onclick = function() {
+            modalCaja.classList.remove('caja-fuerte-visible');
+            modalCaja.classList.add('caja-fuerte-oculta');
+        };
+    }
+
+    const funcionBaseIA = procesarRespuestaClon;
+    
+    procesarRespuestaClon = function(mensaje) {
+        const textoLimpio = mensaje.toLowerCase().trim();
+
+        if (textoLimpio.includes("mal") && !textoLimpio.includes("dia")) {
+            contadoresEmociones.mal++;
+            if (contadoresEmociones.mal >= 3) {
+                contadoresEmociones.mal = 0;
+                return "Emi... noto que me repites mucho que te sientes mal oye 🥲 Me preocupa dejarte así. Ve al candado de arriba 🔒 e introduce el código: EMI_SANAR_CORAZON ... ¡Te guardé una música ahí mismo adentro! ❤️";
+            }
+        }
+        else if (textoLimpio.includes("feliz") || textoLimpio.includes("alegre") || textoLimpio.includes("contenta")) {
+            contadoresEmociones.feliz++;
+            if (contadoresEmociones.feliz >= 3) {
+                contadoresEmociones.feliz = 0;
+                return "sjsjsj oye, me encanta que me digas a cada rato que estás feliz 🥰 Activé un premio arriba en el candado 🔒, usa el código: EMI_FIESTA_NEON para desbloquear un temazo 🎉";
+            }
+        }
+        else if (textoLimpio.includes("extrano") || textoLimpio.includes("extrana") || textoLimpio.includes("haces falta")) {
+            contadoresEmociones.extrano++;
+            if (contadoresEmociones.extrano >= 3) {
+                contadoresEmociones.extrano = 0;
+                return "Ay Emi... ya van tres veces que me dices que me extrañas oye o que te hago falta sjsj 🙈 Ve al candado de arriba 🔒 y pon: EMI_CERCANOS_SIEMPRE ... Sonará algo hermoso ahí adentro ❤️";
+            }
+        }
+        else if (textoLimpio.includes("deprimida") || textoLimpio.includes("depre")) {
+            contadoresEmociones.deprimida++;
+            if (contadoresEmociones.deprimida >= 3) {
+                contadoresEmociones.deprimida = 0;
+                return "Emi, mírame... no me gusta que andes tan deprimida oye 🥲 Te activé un refugio musical en el candado de arriba 🔒, pon el código: EMI_LUZ_EN_GRIS ... Escucha la letra porfa ❤️";
+            }
+        }
+        else if (textoLimpio.includes("rendir") || textoLimpio.includes("no puedo mas") || textoLimpio.includes("me canse")) {
+            contadoresEmociones.rendir++;
+            if (contadoresEmociones.rendir >= 3) {
+                contadoresEmociones.rendir = 0;
+                return "Emi... ¡prohibido rendirse oye! 🤨 Ve al candado de arriba 🔒 rápido e introduce el código obligatorio: EMI_FUERZA_VALIENTE ... Te inyecté un tema para darte energías ❤️";
+            }
+        }
+        else if (textoLimpio.includes("llamar") || textoLimpio.includes("llamada") || textoLimpio.includes("llamame")) {
+            contadoresEmociones.llamar++;
+            if (contadoresEmociones.llamar >= 3) {
+                contadoresEmociones.llamar = 0;
+                return "jsjsjsj oye, me tienes insistiendo full con que quieres llamada oye sjsj 📱 Ve a poner este código arriba 🔒: EMI_TIMBRE_VOCAL ... Escucha el tema y me marcas al tiro jsjs 🤫✨";
+            }
+        }
+        else if (textoLimpio.includes("dia feo") || textoLimpio.includes("mal dia") || textoLimpio.includes("horrible")) {
+            contadoresEmociones.diaFeo++;
+            if (contadoresEmociones.diaFeo >= 3) {
+                contadoresEmociones.diaFeo = 0;
+                return "Uff Emi, ¡le declaramos la guerra total a tu día feo oye! 🙅‍♂️ Ve al candado de arriba 🔒 e introduce el código: EMI_BORRAR_CON_MUSICA ... Te va a desconectar del mundo 🥰";
+            }
+        }
+        else if (textoLimpio.includes("alejando") || textoLimpio.includes("distante") || textoLimpio.includes("te alejaste")) {
+            contadoresEmociones.alejando++;
+            if (contadoresEmociones.alejando >= 3) {
+                contadoresEmociones.alejando = 0;
+                return "Emi, por favor escúchame bien 🥲 Jamás me alejaría de ti. Te abrí una pista en el candado 🔒 de arriba con el código: EMI_PROMETO_QUEDARME ... Escúchala ahí mismo, ¿sí? ❤️";
+            }
+        }
+        else if (textoLimpio.includes("sola") || textoLimpio.includes("no tengo a nadie")) {
+            contadoresEmociones.sola++;
+            if (contadoresEmociones.sola >= 3) {
+                contadoresEmociones.sola = 0;
+                return "Emi... ya te he dicho que JAMÁS vas a estar sola oye 🥲 Ve a la caja fuerte de arriba 🔒 y pon el código: EMI_COMPANIA_ETERNA ... Te dejé un guardián musical esperándote 🥰❤️";
+            }
+        }
+        else if (textoLimpio.includes("aburrida") || textoLimpio.includes("aburridisima") || textoLimpio.includes("pereza")) {
+            contadoresEmociones.aburrida++;
+            if (contadoresEmociones.aburrida >= 3) {
+                contadoresEmociones.aburrida = 0;
+                return "sjsjsj averrr, ¡modo aburrimiento destruido de una oye! 💥 Prendi una pista arriba 🔒, ve y mete el código: EMI_CHISPA_NEON ... ¡A levantar esos ánimos sjsj! 😎";
+            }
+        }
+
+        return funcionBaseIA(mensaje);
+    };
+
+    const basesOcultas = {
+        "EMI_SANAR_CORAZON": { t: "🔓 ¡Pista Desbloqueada!: Sanar tu Corazón", a: "canciones/Ed Sheeran - Perfect (Official Music Video).mp3", l: "Tu corazón va a estar bien, Emi... ❤️\nDeja atrás el dolor de este día.\nAquí está mi clon para cuidarte,\ny el real apoyándote con el alma." },
+        "EMI_FIESTA_NEON":    { t: "🔓 ¡Pista Desbloqueada!: Fiesta Neón Alegre", a: "canciones/Sebastián Yatra, Camilo - En Guerra.mp3", l: "¡Modo fiesta por tu sonrisa! 🎉\nQue nada apague esa alegría hoy.\nDale mimos al perrito guardián,\n¡y que tus días brillen en neón!" },
+        "EMI_CERCANOS_SIEMPRE":{ t: "🔓 ¡Pista Desbloqueada!: Abrazos a la Distancia", a: "canciones/Sebastián Yatra - Quiero Decirte.mp3", l: "Aunque los kilómetros nos separen hoy...\nEsta melodía acorta la distancia.\nEscucha el tema y siénteme cerca,\nsiempre voy a estar aquí para ti." },
+        "EMI_LUZ_EN_GRIS":    { t: "🔓 ¡Pista Desbloqueada!: Tu Luz en Días Grises", a: "canciones/CNCO - Dejaría Todo (Official Video).mp3", l: "Eres la luz de mis códigos neón... ✨\nLa chica más linda y tierna de todas.\nNo dejes que una tarde gris te opaque,\ntu gran corazón vale oro de verdad." },
+        "EMI_FUERZA_VALIENTE": { t: "🔓 ¡Pista Desbloqueada!: Fuerza Inquebrantable", a: "canciones/Passenger  Let Her Go (Official Video).mp3", l: "¡Prohibido rendirse, escúchame bien! 🤨\nTienes una fuerza increíble por dentro.\nYa pasaste décimo y me hiciste orgulloso,\n¡este bachillerato no te va a ganar!" },
+        "EMI_TIMBRE_VOCAL":   { t: "🔓 ¡Pista Desbloqueada!: Melodía de una Llamada", a: "canciones/Josean Log - Chachachá (Lyric Video).mp3", l: "Las pantallas a veces son frías... 📱\nPrefiero escuchar tu risa en vivo.\nCierra la caja fuerte un ratito,\n¡y márcame al celular para hablar horas!" },
+        "EMI_BORRAR_CON_MUSICA":{ t: "🔓 ¡Pista Desbloqueada!: Reset para tu Día Feo", a: "canciones/Reik, Maluma - Perfecta (Video Oficial).mp3", l: "Le declaramos la guerra a tu día feo... 🥰\nQue la música borre las malas vibras.\nSuelta las tareas un momento oye,\nmañana será un día mil veces mejor." },
+        "EMI_PROMETO_QUEDARME":{ t: "🔓 ¡Pista Desbloqueada!: Mi Promesa Incondicional", a: "canciones/Juanes, Sebastián Yatra - Bonita.mp3", l: "Si me notas distante a veces, perdóname... ❤️\nEs por protegerte de mis problemas.\nJamás me alejaría de ti por desinterés,\nmi promesa incondicional sigue en pie." },
+        "EMI_COMPANIA_ETERNA": { t: "🔓 ¡Pista Desbloqueada!: Tu Guardián Musical", a: "canciones/Ed Sheeran - Shape of You (Official Music Video).mp3", l: "JAMÁS vas a estar sola en este mundo...\nAunque el próximo año vaya al voluntariado.\nTe dejé este refugio tecnológico,\npara tenerte cerquita siempre, oye 🫂" },
+        "EMI_CHISPA_NEON":    { t: "🔓 ¡Pista Desbloqueada!: Bye Bye Aburrimiento", a: "canciones/Felipe Peláez - Vivo Pensando En Ti ft. Maluma.mp3", l: "¡Modo aburrimiento destruido oye! 💥\nDale un snack al perrito en la pantalla,\nponte a cantar este coro conmigo,\n¡y que se te quite la pereza, oye! 😎" }
+    };
+
+    function validarCodigoCajaFuerte() {
+        if (!inputCodigoCaja || !statusCaja) return;
+        const codigo = inputCodigoCaja.value.trim().toUpperCase();
+
+        if (codigo === "") {
+            statusCaja.textContent = "¡Escribe un código! 🔑";
+            statusCaja.className = "status-error";
+            return;
+        }
+
+        if (basesOcultas[codigo]) {
+            const pista = basesOcultas[codigo];
+            
+            // 1. Configuramos el estado de éxito
+            statusCaja.textContent = pista.t;
+            statusCaja.className = "status-exito";
+
+                       if (zonaInteractivaCaja) zonaInteractivaCaja.style.display = "none";
+
+            // 3. Activamos el minireproductor interno e inyectamos versos y audio
+            if (reproductorInternoCaja && cajonLetraInterna && audioInternoCaja) {
+                cajonLetraInterna.textContent = pista.l; // Pinta la letra en versos
+                audioInternoCaja.src = pista.a;         // Carga el archivo mp3
+                reproductorInternoCaja.style.display = "block"; // Muestra el reproductor
+                
+                setTimeout(() => {
+                    audioInternoCaja.play(); // ¡Play automático!
+                }, 300);
+            }
+        } else {
+            statusCaja.textContent = "❌ Código inválido. ¡Habla más con la IA!";
+            statusCaja.className = "status-error";
+            inputCodigoCaja.value = "";
+        }
+    }
+
+    if (btnDesbloquearCaja) btnDesbloquearCaja.onclick = validarCodigoCajaFuerte;
+    if (inputCodigoCaja) {
+        inputCodigoCaja.onkeypress = (e) => { if (e.key === 'Enter') validarCodigoCajaFuerte(); };
+    }
+}); // <-- Fin definitivo e infalible de todo tu archivo scrip.js
 

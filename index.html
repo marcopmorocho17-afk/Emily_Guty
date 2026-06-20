@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Emily Guty de Mi </title>
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="icono.png">
     <link rel="stylesheet" href="style.css">
     <script src="scrip.js"></script>
@@ -37,6 +38,46 @@
 </div>
 <br>
 <br>
+<!-- ==========================================
+     🔒 CAJA FUERTE CON MINIREPRODUCTOR PROPIOS
+     ========================================== -->
+<div id="contenedor-caja-fuerte">
+    <!-- Botón circular flotante (Arriba a la derecha) -->
+    <button id="btn-abrir-caja" title="Abrir Caja Fuerte de Músicas">🔒</button>
+
+    <!-- Ventana Circular de la Caja Fuerte -->
+    <div id="modal-caja" class="caja-fuerte-oculta">
+        <div class="pantalla-caja-circular">
+            <div class="cabecera-caja">
+                <span>🔒 Caja Fuerte Digital</span>
+                <button id="btn-cerrar-caja">✕</button>
+            </div>
+            
+            <div class="cuerpo-caja">
+                <!-- Estado del código -->
+                <div id="status-caja" class="status-neutral">Esperando código...🔑</div>
+                
+                <!-- Zona dinámica: Cambia al meter la clave -->
+                <div id="zona-interactiva-caja">
+                    <p class="instruccion-caja">Introduce un código secreto de la IA para desbloquear la música oculta:</p>
+                    <input type="text" id="input-codigo-caja" placeholder="Escribe el código aquí..." autocomplete="off">
+                    <button id="btn-desbloquear-caja">Desbloquear Pista</button>
+                </div>
+
+                <!-- Minireproductor oculto (Se activa con JavaScript) -->
+                <div id="reproductor-interno-caja" style="display: none; width: 100%;">
+                    <div id="cajon-letra-interna"></div>
+                    <audio id="audio-interno-caja" controls style="width: 100%; margin-top: 10px;"></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<br>
+<br>
+
          <div id="contenedor-cajon">
         
         <!-- A. El Cajón Cerrado Inicial (Botón de Sorpresa) -->
@@ -92,33 +133,33 @@
     <br>
     <br>
     <!-- ==========================================
-     🤖 SECCIÓN DESDE CERO: CHAT CLON IA
+     🤖 REEMPLAZO DEFINITIVO EN TU INDEX.HTML
      ========================================== -->
-<div id="ia-modulo-fijo">
-    <!-- El botón circular neón fijo a la izquierda -->
-    <button id="ia-boton-circulo" title="Hablar con mi Clon IA">💬</button>
+<div id="contenedor-ia-flotante">
+    <!-- El botón circular neón a la izquierda -->
+    <button id="btn-abrir-chat" title="Hablar con mi Clon IA">💬</button>
 
-    <!-- El cuadradito de chat que se abrirá justo encima -->
-    <div id="ia-caja-desplegable" class="ia-estado-oculto">
-        <div class="ia-pantalla">
-            <div class="ia-cabecera">
-                <span>🤖 Clon IA de tu favorito</span>
-                <button id="ia-boton-cerrar">✕</button>
+    <!-- El cuadradito de chat desplegable -->
+    <div id="modal-chat" class="modal-chat-oculto">
+        <div class="caja-chat">
+            <div class="cabecera-chat">
+                <span>🤖 Clon de Dani</span>
+                <button id="btn-cerrar-chat">✕</button>
             </div>
             
-            <!-- Zona de mensajes -->
-            <div id="ia-historial" class="ia-conversacion">
-                <div class="ia-burbuja-bot">¡Hola Emi! sjsj soy el clon de este loco. Pregúntame sobre mis gustos, informática, Spiderman, Charmander o mi cumple, a ver si te respondo como él jsjs 🥰</div>
+            <div id="historial-chat" class="historial-mensajes">
+                <div class="mensaje-ia">¡Hola Emi! sjsj soy el clon de este loco. Pregúntame lo que quieras🥰</div>
             </div>
             
-            <!-- Entrada de texto -->
-            <div class="ia-formulario">
-                <input type="text" id="ia-input" placeholder="Pregúntame algo, te leo... ✨" autocomplete="off">
-                <button id="ia-boton-enviar">Enviar</button>
+            <div class="input-chat-contenedor">
+                <input type="text" id="input-mensaje" placeholder="Pregúntame algo, te leo... ✨" autocomplete="off">
+                <button id="btn-enviar-mensaje">Enviar</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <button class="trait" id="btn-mas-cartas" onclick="abrirImagenMasCartas()">✉️ Psyduck está escribiendo más cartas...</button>
 
 <!-- 🔴 COLOCA ESTE CONTENEDOR OCULTO AL FINAL DE TU ARCHIVO HTML (Antes de </body>) -->

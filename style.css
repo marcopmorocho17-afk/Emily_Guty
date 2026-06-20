@@ -1460,18 +1460,18 @@ body.fondo-rapunzel {
 }
 
 /* =======================================================
-   💬 ESTILOS DESDE CERO: CHAT IA CIRCULAR IZQUIERDO
+   🎨 DISEÑO NEÓN DESDE CERO: CHAT IA CIRCULAR IZQUIERDO
    ======================================================= */
-#ia-modulo-fijo {
+#contenedor-ia-flotante {
     position: fixed;
-    bottom: 20px;
-    left: 20px; /* Fijado al margen izquierdo de la pantalla */
-    z-index: 999; /* Por encima de cualquier fondo o animación */
+    bottom: 25px;          
+    left: 25px;            /* Fijado estrictamente al margen izquierdo */
+    z-index: 999999 !important; /* Lo pone al frente de nubes, estrellas o reproductores */
     font-family: sans-serif;
 }
 
 /* El botón circular neón */
-#ia-boton-circulo {
+#btn-abrir-chat {
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, #7f00ff, #ff007f);
@@ -1487,36 +1487,37 @@ body.fondo-rapunzel {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#ia-boton-circulo:hover {
+#btn-abrir-chat:hover {
     transform: scale(1.08);
     box-shadow: 0 0 25px rgba(255, 0, 127, 0.9);
 }
 
 /* El cuadradito del chat flotante */
-#ia-caja-desplegable {
+#modal-chat {
     position: absolute;
     bottom: 75px;
     left: 0;
     transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s;
 }
 
-/* Controladores de estado (Evitan el display: none que bloqueaba el JS) */
-.ia-estado-oculto {
+/* Controladores de estado limpios (Sin display: none que bloqueaba el JavaScript) */
+.modal-chat-oculto {
     opacity: 0 !important;
     visibility: hidden !important;
     transform: translateY(20px) scale(0.8);
     pointer-events: none;
 }
 
-.ia-estado-visible {
+.modal-chat-visible {
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) scale(1);
     pointer-events: auto;
+    display: flex !important; /* Activa la caja con flexbox */
 }
 
-/* El diseño del cuadro cuadrado */
-.ia-pantalla {
+/* La caja del chat */
+.caja-chat {
     background: #0d0b1a;
     border: 2px solid #ff007f;
     border-radius: 20px;
@@ -1528,7 +1529,7 @@ body.fondo-rapunzel {
     box-shadow: 0 15px 35px rgba(0,0,0,0.7);
 }
 
-.ia-cabecera {
+.cabecera-chat {
     background: #16142a;
     padding: 12px 15px;
     display: flex;
@@ -1540,16 +1541,16 @@ body.fondo-rapunzel {
     font-size: 0.9rem;
 }
 
-#ia-boton-cerrar {
+#btn-cerrar-chat {
     background: transparent;
     border: none;
     color: #94a3b8;
     font-size: 1.1rem;
     cursor: pointer;
 }
-#ia-boton-cerrar:hover { color: #ff007f; }
+#btn-cerrar-chat:hover { color: #ff007f; }
 
-.ia-conversacion {
+.historial-mensajes {
     flex-grow: 1;
     padding: 12px;
     overflow-y: auto;
@@ -1559,8 +1560,8 @@ body.fondo-rapunzel {
     background: #0a0814;
 }
 
-/* Burbujas */
-.ia-burbuja-user {
+/* Burbujas del chat */
+.mensaje-usuario {
     background: #7f00ff;
     color: white;
     padding: 8px 12px;
@@ -1572,7 +1573,7 @@ body.fondo-rapunzel {
     word-break: break-word;
 }
 
-.ia-burbuja-bot {
+.mensaje-ia {
     background: #221f47;
     color: #cbd5e1;
     border: 1px solid #ff007f;
@@ -1586,7 +1587,7 @@ body.fondo-rapunzel {
 }
 
 /* Input inferior */
-.ia-formulario {
+.input-chat-contenedor {
     padding: 10px;
     background: #16142a;
     display: flex;
@@ -1594,7 +1595,7 @@ body.fondo-rapunzel {
     border-top: 1px solid #221f47;
 }
 
-#ia-input {
+#input-mensaje {
     flex-grow: 1;
     background: #0d0b1a;
     border: 1px solid #7f00ff;
@@ -1604,9 +1605,9 @@ body.fondo-rapunzel {
     outline: none;
     font-size: 0.85rem;
 }
-#ia-input:focus { border-color: #ff007f; }
+#input-mensaje:focus { border-color: #ff007f; }
 
-#ia-boton-enviar {
+#btn-enviar-mensaje {
     background: #ff007f;
     border: none;
     color: white;
@@ -1617,22 +1618,236 @@ body.fondo-rapunzel {
     cursor: pointer;
 }
 
-/* Adaptación para celulares */
+/* Clase para el efecto de la mariposa volante neón 🦋 */
+.mariposa-ia {
+    position: fixed;
+    bottom: -50px;
+    left: -50px;
+    font-size: 2.5rem;
+    z-index: 9999999;
+    pointer-events: none;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #7f00ff;
+    animation: volarPantalla 4.5s linear forwards, aleteo 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes volarPantalla {
+    0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translate(calc(100vw + 100px), calc(-100vh - 100px)) rotate(45deg); opacity: 0; }
+}
+
+@keyframes aleteo {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0.4); }
+}
+
+/* Optimización móvil */
 @media (max-width: 480px) {
-    #ia-modulo-fijo {
-        bottom: 85px; /* Sube un poco para no encimarse con el cofre */
+    #contenedor-ia-flotante {
+        bottom: 85px; /* Lo sube en celular para no tapar el cofre al ras del suelo */
         left: 15px;
     }
-    #ia-boton-circulo {
-        width: 52px;
-        height: 52px;
-        font-size: 1.4rem;
+    #btn-abrir-chat { width: 52px; height: 52px; font-size: 1.4rem; }
+    .caja-chat { width: 250px; height: 320px; }
+    #modal-chat { bottom: 65px; }
+}
+
+/* =======================================================
+   🔒 NUEVO ESTILO ESTÉTICO PREMIUM: CAJA FUERTE INTERNA
+   ======================================================= */
+#contenedor-caja-fuerte {
+    position: fixed;
+    top: 25px;             /* Al ras de la pantalla arriba */
+    right: 25px;           /* Al filo derecho */
+    z-index: 999999 !important; 
+    font-family: sans-serif;
+}
+
+/* Botón de Candado con el Degradado de tu Web */
+#btn-abrir-caja {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #7f00ff, #ff007f); /* Mismos tonos neón */
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btn-abrir-caja:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+}
+
+/* Ventana Desplegable Estilo Reproductor */
+#modal-caja {
+    position: absolute;
+    top: 75px;             
+    right: 0;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s;
+}
+
+.caja-fuerte-oculta {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) scale(0.8);
+    pointer-events: none;
+}
+
+.caja-fuerte-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Contenedor Curvo Idéntico a tu Captura */
+.pantalla-caja-circular {
+    background: #110e24; /* Mismo fondo oscuro profundo */
+    border: 2px solid #ff007f; /* Borde rosado delgado y estético */
+    border-radius: 24px; /* Curvatura idéntica a tu reproductor */
+    width: 290px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+/* Cabecera con Botón de Cerrar Rosado */
+.cabecera-caja {
+    background: #16142a;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff007f; /* Letras rosadas */
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+#btn-cerrar-caja {
+    background: #ff007f;
+    border: none;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px; /* Estilo píldora como tu botón cerrar */
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+#btn-cerrar-caja:hover { opacity: 0.8; }
+
+.cuerpo-caja {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    background: #0d0b1a;
+}
+
+.instruccion-caja {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Alertas de Estado Estilizadas */
+#status-caja {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color: #cbd5e1;
+    margin-bottom: 2px;
+}
+.status-exito { color: #00ff7f !important; text-shadow: 0 0 8px rgba(0, 255, 127, 0.4); }
+.status-error { color: #ff4500 !important; }
+
+/* Input de Contraseña Redondeado Elegante */
+#input-codigo-caja {
+    width: 90%;
+    background: #110e24;
+    border: 1.5px solid #ff007f;
+    border-radius: 20px; /* Bordes circulares perfectos */
+    color: white;
+    padding: 10px 15px;
+    outline: none;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+#input-codigo-caja:focus { border-color: #7f00ff; }
+
+/* Botón de Desbloqueo Tipo Píldora (Copia fiel de tu botón Play) */
+#btn-desbloquear-caja {
+    background: linear-gradient(135deg, #7f00ff, #ff007f); /* Degradado morado/rosado */
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px; /* Forma de píldora exacta */
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 85%;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+    transition: transform 0.1s ease, box-shadow 0.2s;
+}
+#btn-desbloquear-caja:hover {
+    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.5);
+}
+#btn-desbloquear-caja:active { transform: scale(0.97); }
+
+/* Cajón de Versos de la Letra Interna Estilo Lista */
+#cajon-letra-interna {
+    background: #06050d;
+    border: 1px solid #ff007f;
+    border-radius: 16px;
+    padding: 12px;
+    height: 120px;
+    width: 90%;
+    overflow-y: auto;
+    color: #00ff7f;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: pre-line;
+    text-shadow: 0 0 5px rgba(0, 255, 127, 0.3);
+    text-align: center;
+}
+
+/* Personalización del Scrollbar de tu Letra (Igual al de tu captura) */
+#cajon-letra-interna::-webkit-scrollbar {
+    width: 6px;
+}
+#cajon-letra-interna::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+#cajon-letra-interna::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Optimización para teléfonos celulares */
+@media (max-width: 480px) {
+    #contenedor-caja-fuerte {
+        top: 20px; 
+        right: 20px;
     }
-    .ia-pantalla {
-        width: 250px;
-        height: 310px;
-    }
-    #ia-caja-desplegable {
-        bottom: 65px;
-    }
+    #btn-abrir-caja { width: 52px; height: 52px; font-size: 1.4rem; }
+    .pantalla-caja-circular { width: 250px; height: 300px; }
+    #modal-caja { top: 65px; }
 }
