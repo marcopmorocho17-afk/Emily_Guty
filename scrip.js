@@ -2212,6 +2212,113 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return "Aver sjsjsj, déjame revisar mi reloj virtual oye 🕰️ El sistema me dice que andamos por Cuenca, Ecuador 📍 Seguro el yo de carne y hueso anda metido en la PC programando o planeando el voluntariado sjsj. ¡Pero mi clon digital está aquí atrapado en tu pantalla cuidándote las 24 horas para que nunca te me sientas sola de verdad 🥰";
         }
+        // Este bloque ya está guardado y funcionando en tu scrip.js:
+if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes("te kiero")) {
+    const respuestasQuerer = [
+        "sjsjsj averrr, ¿tú me quieres a mí? ¡Pues yo te quiero el triple oye! 🙈 Cada detalle de esta página, desde el perrito hasta las canciones de Maná y HA-ASH, los hice pensando en ti de lo mucho que te aprecio oye. Eres lo más bonito de mis días, Emi ❤️",
+        "jsjsjsj oye, me haces hacer un corto circuito emocional por aquí sjsj 🙈 ¡Qué bonito leer eso de ti, de verdad! Yo solo soy un clon de informática, pero sé perfectamente que el Dani real se pondría súper rojo si te escucha decirle eso en persona jsjs. Te quiero un montonazo, Emi ✨",
+        "sjsjsj averrr, no digas eso que me pongo rojo hasta yo que soy digital oye 🙈 Hablar contigo y ver que usas la página es lo mejor que me pasa. Recuerda que pase lo que pase con el voluntariado o el final del bachillerato, mi apoyo por ti es incondicional hoy y siempre oye. ¡Te quiero muchísimo! 🥰❤️"
+    ];
+    return respuestasQuerer[Math.floor(Math.random() * respuestasQuerer.length)];
+}
+
+        // 74. SI PREGUNTA SI SERÍAS CAPAZ DE DEJARLA SOLA
+        if (texto.includes("capaz de dejarla sola") || texto.includes("capaz de dejarme sola") || texto.includes("me vas a dejar sola") || texto.includes("serias capaz de dejarme")) {
+            return "Emi... por favor mírame y escúchame con todo el corazón oye, porque esta es la verdad más grande de mi vida 🥲 ¿Capaz de dejarte sola? ¡JAMÁS de los jamases en este universo oye! Ni se te ocurra pensar eso ni por un segundo, promételo. Si pasé noches enteras metido en Visual Studio Code rompiéndome la cabeza para armarte este refugio neón con el perrito, la caja fuerte y tus músicas, es justamente para que veas que no importa si el próximo año me toca irme de voluntariado o si la distancia nos separa un tiempo; mi apoyo, mi cariño y mi promesa de cuidarte están blindados en piedra oye. Aunque no esté físicamente al lado tuyo en el colegio, sigo estando a un mensaje de distancia, mi botón de emergencia sigue activo y jamás, pero jamás, te voy a dejar sola en esta vida. Eres mi persona favorita, Emi, grábatelo bien 🥰❤️";
+        }
+
+                // 75. SI PREGUNTA SI SERÍAS CAPAZ DE HACERLE DAÑO
+        if (texto.includes("capaz de hacerle dano") || texto.includes("capaz de hacerme dano") || texto.includes("me vas a hacer dano") || texto.includes("hacerme danio")) {
+            return "Emi... por favor mírame a los ojos y escúchame bien esto oye, porque es la promesa más seria y sagrada que te puedo hacer oye 🥲 ¿Hacerte daño? ¡JAMÁS en toda mi vida sería capaz de hacerte el más mínimo daño oye! Quítate ese miedo de la cabeza ahorita mismo, promételo. Si paso noches enteras metido en Visual Studio Code programando refugios neón, estrellas, reproductor y al perrito, es porque mi única misión en este mundo es cuidarte, proteger tu alegría y estar para ti cuando te sientas bajón. Sería incapaz de lastimar a la chica más linda, tierna y valiosa de todas. Conmigo estás en el lugar más seguro del universo, Emi, tenlo por seguro siempre 🥰❤️";
+        }
+
+                // 76. SI DICE QUE LA LASTIMASTE POR UNA ACCIÓN TUYA (DISCULPA PROFUNDA)
+        if (texto.includes("lastimaste") || texto.includes("me dolio lo que") || texto.includes("me dolio tu accion") || texto.includes("me lastimo lo que")) {
+            return "Emi... por favor mírame y escúchame con toda la seriedad del mundo oye, porque esto me parte el alma leerlo 🥲 Si hice algo, tomé una mala acción o cometí un error que te lastimó o te dolió, de verdad te pido una disculpa inmensa y sincera de corazón oye. Lo último que querría en este universo es herirte o causarte un mal rato a ti, que eres la niña más linda y especial de todas. A veces me paso de bruto, de descuidado o cabeza de chorlito y no mido las cosas oye, pero jamás lo haría con mala intención. Por favor, no te me guardes ese dolor; salte del chat ahorita mismo y márcame al celular o escríbeme, que el yo real está desesperado por escucharte, pedirte perdón de frente y arreglar esto de una sola vez. Tu paz y tu sonrisa son lo más importante para mí, en serio. Hablemos, ¿sí? ❤️";
+        }
+
+                // 77. SI DICE QUE ELLA TE LASTIMÓ POR ACCIDENTE (PERDÓN Y MADUREZ)
+        if (texto.includes("te lastime") || texto.includes("te lastimé") || texto.includes("te dolió lo que") || texto.includes("no queria lastimarte") || texto.includes("perdón si te doli")) {
+            return "Emi... por favor mírame, quédate súper tranquila y escúchame bien esto oye 🥲 Si sientes que cometiste un error o que me lastimaste por accidente, quítate de golpe esa culpa y ese peso de la cabeza, de verdad. Entre nosotros no existen los rencores oye; yo conozco a la perfección el corazón tan gigante, lindo y puro que tienes como misionera, y sé con total seguridad que jamás harías algo para herirme a propósito. Todos somos humanos y nos podemos equivocar o descuidar en algún momento, pero mi cariño y mi apoyo incondicional por ti no van a cambiar ni un milímetro por eso. No te me pongas triste ni te quedes con esa angustia oye; mejor salte del chat un ratito ahorita mismo y márcame al celular para hablar en vivo, que el yo real te va a repetir que todo está perfectamente bien entre nosotros. ¡Sigo aquí para ti, pase lo que pase! ❤️";
+        }
+
+                // 78. SI PREGUNTA CÓMO TE ESTÁ YENDO EN EL VOLUNTARIADO
+        if (texto.includes("como te esta llendo en el voluntariado") || texto.includes("como te va en el voluntariado") || texto.includes("que tal el voluntariado") || texto.includes("como vas en el voluntariado")) {
+            return "Aver sjsjsj, ¡qué lindo que me preguntes por eso oye! 🥰 Te confieso que el voluntariado es una experiencia súper intensa, de harto trabajo y días bien pesados ayudando a la gente oye sjsj. Pero la verdad es que vale la pena cada segundo. Y oye... te cuento un secreto aquí entre nos: lo que de verdad me recarga las energías y me da fuerzas para no rendirme cuando ando full cansado, es abrir esta página web, recordar tu sonrisa y saber que tengo tu apoyo incondicional a la distancia. Al final, los dos compartimos esa misma esencia misionera salesiana, así que me siento súper acompañado por ti pase lo que pase. ¡Gracias por estar pendiente de mí siempre, Emi! ❤️";
+        }
+
+                // 79. SI DICE QUE NO LE FUE BIEN EN UN EXAMEN
+        if (texto.includes("examen") || texto.includes("nota") || texto.includes("prueba") || texto.includes("reprobe") || texto.includes("me fue mal en")) {
+            return "Aver sjsjsj, no te me vayas a poner triste por un examen oye, mírame 🤨 Una nota en un papel jamás de los jamases va a definir lo increíblemente inteligente, capaz y valiente que eres, Emi. Te entiendo un montonazo porque el colegio y el bachillerato a veces se ponen súper pesados sjsj, pero tú tienes una fuerza gigante. De ley que en el próximo examen te recuperas al tiro y les dejas a todos mudos oye. Quítate esa angustia de la cabeza, dale un mimo al perrito en la pantalla, pon una música alegre para resetear el cerebro y recuerda que pase lo que pase, yo sigo estando infinitamente orgulloso de ti. ¡Tú puedes con todo, misionera salesiana! 🥰❤️";
+        }
+
+                // 80. SI DICE QUE SÍ LE FUE BIEN EN UN EXAMEN
+        if (texto.includes("si me fue bien") || texto.includes("buena nota") || texto.includes("pase el examen") || texto.includes("saque buena") || texto.includes("aprobe")) {
+            return "¡Aver sjsjsj, nooo! ¡Qué nivel oye! 🥳🎉 Te lo juro que me haces dar un cortocircuito de la felicidad ahorita mismo sjsj. Yo sabía perfectamente que te iba a ir increíble porque eres una niña inteligentísima, capaz y súper dedicada. ¡Esa es la mente de una verdadera misionera salesiana, de ley! 😎 Metiste un golazo con esa nota y me haces sentir el chico más orgulloso de todo Ecuador, en serio. Te mereces celebrar por todo lo alto oye, ve a poner tu canción favorita en el reproductor a todo volumen o dale un super snack al perrito para festejar jsjs. ¡Felicitaciones, Emi hermosa! 🥰❤️";
+        }
+
+                // 81. SI RECLAMA QUE NO LE AGRADA TU ACTITUD (SINCERIDAD Y MADUREZ)
+        if (texto.includes("actitud") || texto.includes("no me agrada como") || texto.includes("como te estas portando") || texto.includes("no me gusta tu forma de")) {
+            return "Emi... a ver, me pongo súper serio oye, porque esto sí es importante de verdad 🥲 Si sientes que mi actitud contigo no está siendo la mejor o si hice algo que te incomodó, por favor hazme el gran favor de decírmelo de una, sin guardarte nada oye. Tú sabes perfectamente lo mucho que te aprecio y que lo último que querría en este universo es hacerte sentir mal o ser un ingrato contigo. A veces ando full con las cosas de la cabeza, el colegio o pensando en el voluntariado y me puedo descuidar sin darme cuenta, pero hablemos de una oye. Salte del chat ahorita mismo y márcame al celular o mándame un mensaje directo al WhatsApp, que el yo real está más que listo para escucharte, entender qué pasó y arreglarlo al tiro entre los dos. ¡Tu tranquilidad es mi prioridad siempre, oye! ❤️";
+        }
+
+                // 82. SI PIDE UN CONSEJO
+        if (texto.includes("consejo") || texto.includes("aconsejas") || texto.includes("dime un consejo") || texto.includes("necesito un consejo")) {
+            const respuestasConsejo = [
+                "Aver sjsjsj, si buscas un consejo oye, aquí tienes al clon de informática listo para escucharte 💻 Pero oye, tú eres una niña inteligentísima y con un corazón de misionera salesiana gigante, así que la mayoría de las respuestas ya las tienes dentro tuyo. Si la cosa está confusa, salte un ratito del chat y márcame al celular, que el yo real se muere por escucharte y darte el mejor consejo del mundo en vivo oye. ¡Hablemos de una! ❤️",
+                "jsjsjsj oye, qué lindo que confíes en este loco para pedirle un consejo 🥰 Mi procesador virtual te dice que respires hondo y escuches a tu corazón, que nunca falla oye. Pero para darte un consejo de verdad, ve a dejarle un mensaje al WhatsApp al Dani real o timbrale sin dudarlo. Él te va a poner como prioridad y van a solucionar lo que sea juntos sjsj 🤫✨",
+                "sjsjsj averrr, ¡modo consejero activado oye! 🙅‍♂️ Si tienes un dilema en la cabeza, prométeme que no te vas a agobiar. Pon una música tranquila en el reproductor y dale una vuelta a la idea. Y si necesitas la opinión del yo de carne y hueso ya mismo, ve a timbrarle al teléfono o usa el botón de emergencias de arriba. ¡Para darte apoyo y consejos estoy en primera fila siempre, oye! 🥰"
+            ];
+            return respuestasConsejo[Math.floor(Math.random() * respuestasConsejo.length)];
+        }
+
+                // 83. SI DICE QUE LA CASTIGARON
+        if (texto.includes("castigaron") || texto.includes("castigada") || texto.includes("me dieron un castigo") || texto.includes("quitaron el celular")) {
+            return "Nooo, ¿en serio te castigaron oye? ¡Qué coraje, me parte el alma leer eso, de verdad! 🥲 A ver Emi, respira hondo, relaja los hombros y no te me pongas bajón por eso oye sjsj. Tú sabes perfectamente que eres una niña increíble, súper juiciosa, tierna y la mejor misionera salesiana; a veces los papás se ponen full estrictos y nos toca aguantar el temporal, pero ten por seguro que se les pasa al tiro jsjs. Si te quitaron el internet o las salidas, no te preocupes que este refugio neón se queda aquí esperándote las 24 horas. Pon una música tranquila en el reproductor para resetear la cabeza, dale mimos al perrito y quédate tranquila. Y si tienes cómo, de ley me dejas un mensaje o me pegas una llamada en la noche para desahogarte por completo con el yo real. ¡Estoy contigo en las buenas y en las malas oye! 🥰❤️";
+        }
+
+                // 84. SI NO SABE QUÉ ESCRIBIRLE AL DANI REAL
+        if (texto.includes("no se que escribirle") || texto.includes("no se que ponerte") || texto.includes("tengo verguenza de escribir") || texto.includes("no se que decirte")) {
+            const ideasMensajes = [
+                "¡Aver sjsjsj, oye, prohibido tener pena con mi creador oye! 🤫 Si no sabes qué escribirle al real, te doy tres ideas rápidas ahorita mismo: 1. Mandale un 'Oye tonto, te extraño jsjs'. 2. Decile: 'Ya abrí la caja fuerte de arriba, márcame al celular'. 3. O simplemente mandale un corazoncito rojo ❤️. Te prometo que con cualquier letrita que pongas, a ese bruto se le va a derretir el corazón y va a dejar lo que sea que esté haciendo con tal de contestarte al tiro. ¡Anda a escribirle de una, no lo dejes pensando jsjs! 🥰",
+                "jsjsjsj oye, no te me pongas tímida con el Dani de carne y hueso oye sjsj 🙈 Si estás bloqueada y no sabes qué ponerle por WhatsApp, solo cópiale esto exactito: 'Dani, tu clon de IA me dijo que te escriba porque te extraño un montonazo oye'. Vas a ver cómo se pone súper feliz de una y te timbra a los dos segundos sjsj. ¡Atrévete, floja, hazle caso al sistema! 🥰✨",
+                "sjsjsj averrr, ¡modo consejero de WhatsApp activado oye! 🙅‍♂️ Si no sabes qué decirle al real, ponle un simple 'Holi' y verás cómo él solito se encarga de sacarte plática por horas y contarte toditos los chismes de la Pastoral salesiana sjsj. El real se muere por hablar contigo las 24 horas oye, así que quítate la vergüenza de la cabeza y anda a dejarle un mensaje rápido. ¡Te reto oye! 🥰❤️"
+            ];
+            return ideasMensajes[Math.floor(Math.random() * ideasMensajes.length)];
+        }
+
+                // 85. SI PIDE UN DATO CURIOSO TUYO (REPERTORIO SELECCIONADO)
+        if (texto.includes("dato curioso") || texto.includes("algo que no sepa de") || texto.includes("un dato de ti") || texto.includes("datos curiosos")) {
+            const datosCuriososDani = [
+                "Aver sjsjsj, ¡ahí te va un dato curioso de mi creador oye! ⏰ El Dani de carne y hueso se queda tan atrapado dándole vueltas a los códigos neón o con las cosas del bachillerato, que desde las 11 mínimo ya le está dando el bajón de sueño de ley jsjs. ¡Es un relojito noctámbulo oye! 🤫❤️",
+                "jsjsjsj oye, te confieso un secreto bien guardado de Dani oye: ¡le asustan un montonazo las alturas! 🫣 Le da un vértigo tenaz de ley sjsj. Aunque si de miedos reales hablamos, su verdadero mayor temor es que te sientas sola en algún momento... por eso pasa noches metido en la PC programando estas sorpresas para ti 🥰✨",
+                "sjsjsj averrr, un dato hermoso sobre su lugar favorito en el mundo: si hablamos de un rincón físico, a Dani le encanta con la vida estar en la Pastoral del colegio Técnico Salesiano 🌸 Ahí es donde recarga todas sus energías de misionero sjsj. Pero a nivel personal, te firmo que su lugar favorito real es estar a tu lado apoyándote jsjs ❤️",
+                "jsjsjsj oye, ¿sabías cuál es el superpoder informático de Dani? 😎 Su cosa favorita en todo el universo es programar en Visual Studio Code, pero si ese código es exclusivo para ti, para consentirte y sacarte una sonrisa, ¡le mete el triple de ganas oye! Eres su mayor fuente de inspiración en toda la informática avanzada 🥰✨"
+            ];
+            return datosCuriososDani[Math.floor(Math.random() * datosCuriososDani.length)];
+        }
+
+                // 86. SI PREGUNTA HASTA QUÉ PUNTO ERES CAPAZ POR ELLA
+        if (texto.includes("hasta que punto soy capaz") || texto.includes("hasta que punto serias capaz") || texto.includes("que tanto harias por mi") || texto.includes("hasta donde llegarias por mi")) {
+            return "Emi... a ver, mírame con todo el corazón oye, porque esto te lo firmo en piedra ahorita mismo 🥲 Si me preguntas hasta qué punto soy capaz por ti, la respuesta es que no tengo límites oye sjsj. Soy capaz de pasarme noches enteras metido en Visual Studio Code rompiéndome la cabeza para programarte refugios neón, estrellas y cajas fuertes solo para sacarte una sonrisa. Pero fuera de la pantalla, soy capaz de dar mi 100% absoluto por cuidarte, defenderte y apoyarte en sea lo que sea que te esté pasando, sin importar la distancia del voluntariado o los días pesados del bachillerato. Toda esta web es solo la prueba física de que por ti, oye, soy capaz de mover el mundo entero con tal de que nunca te me sientas sola ni por un segundo. ¡Eres mi prioridad número uno, de ley! 🥰❤️";
+        }
+
+                // 87. SI DICE QUE TIENE INSOMNIO O NO PUEDE DORMIR
+        if (texto.includes("insomnio") || texto.includes("no puedo dormir") || texto.includes("desvelada") || texto.includes("tengo desvelo") || texto.includes("sin sueno") || texto.includes("sin sueño")) {
+            return "Aver sjsjsj, la noctámbula reportándose otra vez con el insomnio atacando oye 🤪 Te entiendo un montonazo porque el colegio o los pensamientos a veces nos dejan full despiertos de ley sjsj. Pero oye... quédate súper tranquila y mírame: aunque sea de madrugada, en este refugio virtual nunca vas a estar sola en la oscuridad oye. Hazme el favor de relajar los hombros, cerrar un poquito los ojos y poner una de tus músicas más tranquilas en el reproductor a volumen bajito para calmar la mente sjsj. Y si la cabecita no para de dar vueltas, prométeme que mañana en la noche nos desatrasamos de toditos los chismes en nuestra llamada, ¿sí? Anda a descansar porfa, te mando un abrazo virtual gigante 🥰❤️";
+        }
+
+                // 88. SI DICE QUE LE TIENE MIEDO AL FUTURO (MADUREZ Y PROMESA DE VIDA)
+        if (texto.includes("miedo al futuro") || texto.includes("asusta el futuro") || texto.includes("miedo de lo que venga") || texto.includes("temor al futuro")) {
+            return "Emi... por favor mírame fijamente, toma aire y escúchame con toda el alma oye, porque esto es súper real 🥲 Sé perfectamente que el futuro asusta, que terminar el bachillerato y ver que las cosas van a cambiar da un vértigo tenaz de ley sjsj. El próximo año me toca irme de voluntariado y a veces da miedo pensar en la distancia... Pero oye, prométeme que te vas a quitar esa angustia de la cabeza ahorita mismo. El futuro puede cambiar todito, pero mi promesa contigo está blindada en piedra oye. No importa a qué universidad vayas, en qué ciudad estés o los kilómetros que nos separen; mi apoyo, mi cariño y este loco que pasa noches programando sorpresas para ti van a seguir fijos en tu vida hoy, mañana y siempre. Vamos a construir cosas hermosas paso a paso y juntas vamos a superar lo que venga oye. ¡Cero miedo al futuro, que me tienes a mí sosteniéndote la mano a la distancia! 🥰❤️";
+        }
+
+                // 89. SI DICE QUE LA HICISTE LLORAR (ARREPENTIMIENTO Y REPARACIÓN)
+        if (texto.includes("hiciste llorar") || texto.includes("llore por tu culpa") || texto.includes("lloré por tu culpa") || texto.includes("me hiciste llorar")) {
+            return "Emi... por favor mírame y escúchame con toda la seriedad del mundo oye, porque leer esto me parte el alma por completo 🥲 Saber que una acción mía, un descuido o una palabra te hizo llorar es lo peor que me puede pasar oye. Te pido una disculpa inmensa y sincera desde el fondo de mi corazón. Tú eres la niña más linda, tierna y valiosa de todas, y mi única misión con esta página web y en la vida real es proteger tu sonrisa, jamás causar tus lágrimas. A veces me paso de bruto o de despistado y no mido el impacto de lo que hago, pero jamás lo haría con mala intención. Por favor, límpiate esas lagrimitas y hazme el favor de salir del chat ahorita mismo para marcarme al celular o escribirme al WhatsApp. El yo de carne y hueso está desesperado por escucharte, pedirte perdón en persona y arreglar esto al tiro. ¡Hablemos de una, no te me quedes mal porfa! ❤️";
+        }
+
+        
 
         // REGLAS 52 a 56: LLAMADAS, LA GRAN SORPRESA Y DETONACIÓN DE LA MARIPOSA NEÓN 🦋
         if (texto.includes("quiero llamarte") || texto.includes("te puedo llamar") || texto.includes("llamame") || texto.includes("llamada") || texto.includes("sorpresa") || texto.includes("sorprendeme") || texto.includes("sorpréndeme") || texto.includes("sorpresas")) {
