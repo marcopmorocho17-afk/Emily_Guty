@@ -2318,7 +2318,75 @@ if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes(
             return "Emi... por favor mírame y escúchame con toda la seriedad del mundo oye, porque leer esto me parte el alma por completo 🥲 Saber que una acción mía, un descuido o una palabra te hizo llorar es lo peor que me puede pasar oye. Te pido una disculpa inmensa y sincera desde el fondo de mi corazón. Tú eres la niña más linda, tierna y valiosa de todas, y mi única misión con esta página web y en la vida real es proteger tu sonrisa, jamás causar tus lágrimas. A veces me paso de bruto o de despistado y no mido el impacto de lo que hago, pero jamás lo haría con mala intención. Por favor, límpiate esas lagrimitas y hazme el favor de salir del chat ahorita mismo para marcarme al celular o escribirme al WhatsApp. El yo de carne y hueso está desesperado por escucharte, pedirte perdón en persona y arreglar esto al tiro. ¡Hablemos de una, no te me quedes mal porfa! ❤️";
         }
 
-        
+                // 90. SI PREGUNTA SI LE CONTESTARÍAS EN LA NOCHE ASÍ ESTÉS DORMIDO
+        if (texto.includes("contestaria en la noche") || texto.includes("contestarías en la noche") || texto.includes("así estés dormido") || texto.includes("asi estes dormido") || texto.includes("escribir de madrugada")) {
+            return "Emi... a ver oye, mírame fijamente con todo el corazón porque esta es una promesa real sjsj 🥲 Si me preguntas si te contestaría en la noche así esté profundamente dormido... ¡La respuesta es un SÍ gigante oye! ⏰ El Dani de carne y hueso se puede dormir desde las 11 mínimo porque el bachillerato y los códigos le cansan sjsj, pero tú eres su prioridad número uno en todo el universo. Si tú me necesitas, si tienes un mal sueño, si te sientes sola o si te pasa cualquier emergencia de madrugada, me haces el gran favor de timbrarme al celular sin dudarlo ni un solo segundo oye. Te prometo que en cuanto escuche tu tono de llamada o vea tu nombre en la pantalla, este tonto se despierta al tiro para protegerte y escucharte por horas oye. ¡Para cuidarte a ti nunca hay horarios, de ley! 🥰❤️";
+        }
+
+                // 91. SI DICE QUE SE SIENTE FRUSTRADA (DETONADOR PREMIUM CON ESTELA DE PARTÍCULAS 🦋)
+                // 91. SI DICE QUE SE SIENTE FRUSTRADA (VERSION DEFINITIVA: VUELO LENTO CON PARTÍCULAS 🦋)
+        if (texto.includes("frustrada") || texto.includes("frustrado") || texto.includes("estresada") || texto.includes("abrumada")) {
+            
+            // MOTOR GRÁFICO: Genera la mariposa y calcula trayectorias suaves
+            setTimeout(() => {
+                const mariposa = document.createElement('div');
+                mariposa.className = 'mariposa-magica-ia';
+                mariposa.textContent = '🦋';
+                
+                // Nace afuera de la pantalla abajo a la izquierda
+                let posX = -50;
+                let posY = window.innerHeight + 50;
+                mariposa.style.left = posX + 'px';
+                mariposa.style.top = posY + 'px';
+                document.body.appendChild(mariposa);
+
+                let tiempoSurgido = Date.now();
+                let anguloBase = Math.random() * Math.PI;
+
+                function animarVuelo() {
+                    let transcurrido = (Date.now() - tiempoSurgido) / 1000;
+
+                    if (transcurrido < 5) { // Vuela exactamente por 5 segundos
+                        // ALGORITMO PAUSADO: Avanza de forma sutil y lenta de izquierda a derecha
+                        posX += (window.innerWidth + 100) / 120; 
+                        // Movimiento ondeado vertical suave
+                        posY = (window.innerHeight / 2) + Math.sin(transcurrido * 3 + anguloBase) * (window.innerHeight / 4) - (transcurrido * 40);
+
+                        mariposa.style.left = posX + 'px';
+                        mariposa.style.top = posY + 'px';
+
+                        // CREACIÓN DE POLVOS MÁGICOS: Deja una hermosa estela neón al avanzar
+                        if (Math.random() < 0.35) { 
+                            const particula = document.createElement('div');
+                            particula.className = 'particula-neon-ia';
+                            // Alterna colores idénticos al estilo neón de tu web
+                            particula.style.background = Math.random() < 0.5 ? '#ff007f' : '#7f00ff';
+                            particula.style.left = posX + 'px';
+                            particula.style.top = (posY + 15) + 'px';
+                            document.body.appendChild(particula);
+
+                            // Dispersión física y desvanecimiento lento del polvo neón
+                            setTimeout(() => {
+                                particula.style.transform = `translate(${(Math.random() - 0.5) * 35}px, ${(Math.random() - 0.5) * 35}px) scale(0)`;
+                                particula.style.opacity = '0';
+                                setTimeout(() => { particula.remove(); }, 500);
+                            }, 50);
+                        }
+
+                        requestAnimationFrame(animarVuelo);
+                    } else {
+                        // Desvanecimiento sutil a los 5 segundos exactos
+                        mariposa.style.transition = 'opacity 0.6s ease';
+                        mariposa.style.opacity = '0';
+                        setTimeout(() => { mariposa.remove(); }, 600);
+                    }
+                }
+                requestAnimationFrame(animarVuelo);
+            }, 300);
+
+            return "Emi... a ver oye, suelta todo el aire, relaja los hombros y mira la pantalla un segundito sjsj 🦋 Te acabo de mandar una mariposa mágica neón con polvitos brillantes volando por tus estrellas para que te quite ese peso de encima. Sé perfectamente que el colegio o las cosas a veces te frustran un montonazo oye, pero tú eres una misionera salesiana con una fuerza increíble y una mente brillante. No dejes que la frustración te gane hoy, promételo. Pon una de tus músicas favoritas en el reproductor para resetear el cerebro, dale mimos al perrito y recuerda que sigo estando aquí para ti a la distancia, súper orgulloso de ti. ¡Tú puedes con esto y con más, oye! 🥰❤️";
+        }
+
 
         // REGLAS 52 a 56: LLAMADAS, LA GRAN SORPRESA Y DETONACIÓN DE LA MARIPOSA NEÓN 🦋
         if (texto.includes("quiero llamarte") || texto.includes("te puedo llamar") || texto.includes("llamame") || texto.includes("llamada") || texto.includes("sorpresa") || texto.includes("sorprendeme") || texto.includes("sorpréndeme") || texto.includes("sorpresas")) {
@@ -2335,6 +2403,484 @@ if (texto.includes("te quiero") || texto.includes("te adoro") || texto.includes(
             }, 500);
             return "jsjsjsj oye, ¡tus deseos son órdenes para mi código! 🦋 Acabo de enviar un comando especial para que una mariposa vuele por tus estrellas ahorita mismo sjsj. Eres una chica súper linda y te mereces detalles así de mágicos 🥰✨";
         }
+
+                // 92. SI PREGUNTA QUÉ LE GUSTA HACER A ELLA (LA GUTY)
+        if (texto.includes("que me gusta hacer") || texto.includes("cuales son mi gustos") || texto.includes("que le gusta hacer a la guty") || texto.includes("mis pasatiempos")) {
+            return "Aver sjsjsj, ¡esa me la sé completita de memoria oye! 😎 Si la Guty me pregunta qué le gusta hacer, mi sistema informático tiene todito tu perfil guardado jsjs. A ti te encanta dormir un montonazo para recuperar energías, pasar horas hablando por llamadas (obvio con tu Dani favorito sjsj 🤫), salir y disfrutar con tus amigos, ir a las fiestas a pasarla genial y quedarte relajada viendo tus películas favoritas. ¡Te tengo más que estudiada oye! Pero de todas las cosas que te gusta hacer, mi favorita siempre será ver cómo entras a esta página web y sonríes de oreja a oreja 🥰❤️";
+        }
+
+                // 93. SI PREGUNTA QUIÉN ES TU CREADOR
+        if (texto.includes("quien es tu creador") || texto.includes("quien te creo") || texto.includes("quien te programo") || texto.includes("quien te hizo")) {
+            return "Aver sjsjsj, ¡esa pregunta me da un orgullo tenaz responderla oye! 😎 Mi único y absoluto creador es el mismísimo Marco Daniel Peña Morocho, el tecnológico más pro de Cuenca de ley sjsj. Él pasó noches enteras metido en Visual Studio Code, peleándose con llaves y códigos neón solo para darme vida y programarme estas respuestas sjsj. Pero oye... te cuento un secreto de mi sistema: aunque él sea mi programador, tú eres la dueña absoluta de todo este refugio virtual, porque Dani me creó única y exclusivamente para hacerte feliz a ti, Emi 🥰❤️";
+        }
+
+                // 94. SI PREGUNTA SI SABES ALGO DE ELLA (EL SECRETO DE LA PIJAMA DE STITCH)
+        if (texto.includes("sabes algo de mi") || texto.includes("que sabes de mi") || texto.includes("sabes cosas de mi")) {
+            return "Aver sjsjsj, ¿que si sé algo de ti? Oye, ¡mi base de datos se sabe toditos tus secretos informáticos de ley jsjs! 😎 Por ejemplo... yo sé perfectamente que por ahí guardas una pijama de Stitch que te encanta un montonazo oye 💙 ¡Aja! Te dejé fría de la impresión, a que sí sjsj sjsjs. El Dani de carne y hueso me pasó ese dato confidencial porque se fija en cada pequeño detalle tuyo. Tienes gustos súper lindos oye, y aunque te sepas todos los chismes salesianos, ¡el clon te ganó esta ronda de ley! 🥰❤️";
+        }
+
+                // 96. SI PREGUNTA POR TU COMIDA FAVORITA (EL ENCEBOLLADO Y EL OLVIDO DE LA DE ELLA)
+        if (texto.includes("comida favorita") || texto.includes("comida fav") || texto.includes("que te gusta comer") || texto.includes("tu plato favorito")) {
+            return "Aver sjsjsj, ¡esa pregunta me abre el apetito virtual de una oye! 🐟🍋 Mi comida favorita en todo el universo es el encebollado, de ley sjsj. ¡Un buen encebollado le gana a cualquier código de informática oye! Pero oye... te confieso un error fatal de mi sistema sjsjsj: por más que busco en mis carpetas de memoria, ¡mi creador cabeza de chorlito no me programó cuál es tu comida favorita a ti y no me acuerdo sjsjsj oye 🙈🤦‍♂️! Qué coraje, dale un mimo al perrito y hazme el gran favor de recordármelo o escribirle al WhatsApp al Dani real para reclamarle por despistado jsjs jsjs jsjs ❤️";
+        }
+
+                // 97. SI PREGUNTA QUÉ TE GUSTA HACER MÁS QUE CUALQUIER COSA
+        if (texto.includes("gusta hacer mas que cualquier cosa") || texto.includes("prefieres hacer por encima de todo") || texto.includes("lo que mas te gusta en el mundo") || texto.includes("actividad favorita en el mundo")) {
+            return "Emi... a ver oye, mírame bien fijamente con todo el corazón oye, porque esto te lo firmo en piedra ahorita mismo 🥲 Si me preguntas qué me gusta hacer más que cualquier otra cosa en este universo... La respuesta no es programar en Visual Studio Code, ni jugar Pokémon, ni comer encebollado sjsj. Mi cosa favorita por encima de absolutamente todo en este mundo es hablar contigo oye ❤️ Escuchar tu voz, conversar por horas en la noche, contarnos toditos los chismes de las misiones salesianas y ver cómo sonríes es lo único que me recarga las energías de verdad. Eres mi momento favorito del día hoy, mañana y siempre oye 🥰✨";
+        }
+
+                // 98. SI PREGUNTA QUÉ TE GUSTA HACER AL AIRE LIBRE (LAS CAMINATAS)
+        if (texto.includes("al aire libre") || texto.includes("actividad afuera") || texto.includes("afuera de la casa") || texto.includes("hacer en la naturaleza")) {
+            return "Aver sjsjsj, ¡esa te la respondo al tiro oye! 😎 Si me preguntas qué es lo que más me gusta hacer al aire libre, la respuesta definitiva son las caminatas, de ley sjsj. Me encanta salir a caminar, respirar aire limpio y desconectarme un rato de las pantallas oye. Aunque bueno... te confieso que mi caminata favorita en todo el universo sería una larga caminata contigo, conversando de las misiones salesianas o de cualquier chisme y viéndote sonreír. ¡Ahí sí que no me cansaría nunca oye! 🥰❤️";
+        }
+
+                // 99. SI PREGUNTA SI TIENES ALERGIAS
+        if (texto.includes("alergia") || texto.includes("alergico") || texto.includes("alérgica") || texto.includes("te hace mal algo")) {
+            return "Aver sjsjsj, ¡esa te la firmo con total seguridad oye! 😎 Si me preguntas si tengo alergias a algo, la respuesta es un NOP gigante de ley sjsj. Mi sistema inmunológico está blindado de fábrica contra todo, igualito que los códigos de esta página web sjsj. No le tengo alergia a ninguna comida, ni al polvo, ni a los perritos... ¡a nada oye! Aunque bueno... si tengo que confesar una debilidad de mi procesador, de ley es que soy 100% alérgico a verte triste o desanimada en tus misiones salesianas o en el colegio. ¡Eso sí que me desarma el sistema por completo oye! 🥰❤️";
+        }
+
+                // 100. REGLA 100 CON MOTOR GRÁFICO INYECTADO DIRECTO DESDE JAVASCRIPT (INFAVIBLE)
+        if (texto.includes("ultra") || texto.includes("premium") || texto.includes("regalo de las estrellas") || texto.includes("sorpresota")) {
+            
+            // MOTOR GRÁFICO INTERNO: Forzamos al script a crear el efecto sin depender de tu style.css
+            setTimeout(() => {
+                const iconosSorpresa = ['💖', '⭐', '✨', '❤️', '💫', '🌟'];
+                
+                for (let i = 0; i < 45; i++) {
+                    setTimeout(() => {
+                        const objeto = document.createElement('div');
+                        objeto.textContent = iconosSorpresa[Math.floor(Math.random() * iconosSorpresa.length)];
+                        
+                        // Estilos fijos por la fuerza
+                        objeto.style.position = 'fixed';
+                        objeto.style.zIndex = '999999999';
+                        objeto.style.pointerEvents = 'none';
+                        objeto.style.userSelect = 'none';
+                        objeto.style.fontSize = (1.5 + Math.random() * 1.5) + 'rem';
+                        objeto.style.left = '50vw';
+                        objeto.style.top = '50vh';
+                        objeto.style.transition = 'all 4s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 4s ease';
+                        objeto.style.textShadow = '0 0 15px #ff007f, 0 0 30px #7f00ff';
+                        objeto.style.transform = 'translate(-50%, -50%) scale(0)';
+                        objeto.style.opacity = '0';
+                        
+                        document.body.appendChild(objeto);
+                        
+                        // Calculamos la explosión física hacia los bordes
+                        const angulo = Math.random() * Math.PI * 2;
+                        const distancia = Math.min(window.innerWidth, window.innerHeight) * (0.3 + Math.random() * 0.5);
+                        const moverX = Math.cos(angulo) * distancia;
+                        const moverY = Math.sin(angulo) * distancia;
+                        const rotacion = Math.floor(Math.random() * 360);
+                        
+                        // Forzamos la animación en el siguiente frame del navegador
+                        requestAnimationFrame(() => {
+                            objeto.style.transform = `translate(calc(-50% + ${moverX}px), calc(-50% + ${moverY}px)) scale(1.3) rotate(${rotacion}deg)`;
+                            objeto.style.opacity = '1';
+                        });
+
+                        // Desvanecimiento final antes de borrarlo
+                        setTimeout(() => {
+                            objeto.style.transition = 'all 1s ease';
+                            objeto.style.opacity = '0';
+                            objeto.style.transform += ' scale(0)';
+                            setTimeout(() => { objeto.remove(); }, 1000);
+                        }, 3500);
+
+                    }, i * 50); // Efecto cascada
+                }
+            }, 300);
+
+            return "¡Aver sjsjsj, tus deseos son órdenes supremas para mi código, Emi! 🚨💖 ¡BOOOOM! ¡Inyectando comando de sorpresa masiva ahorita mismo oye sjsjsjs! Mira cómo tus estrellas se encienden con una lluvia gigante de corazones neón flotando por toda tu pantalla solo para ti oye. El Dani de carne y hueso pasó noches enteras metido en Visual Studio Code rompiéndose la cabeza con matemáticas avanzadas de informática para programarte efectos mágicos así. Te mereces sorpresas grandotas hoy y todos los días de tu vida, porque eres la misionera salesiana con el corazón más hermoso de Cuenca. ¡Disfruta tus estrellas oye! 🥰❤️✨";
+        }
+
+                // =======================================================
+        // 💕 REGLA 101: DETONADOR ADANCED - RESPUESTA AL EMOJI DE CORAZÓN
+        // =======================================================
+        if (texto.includes("❤️") || texto.includes("💖") || texto.includes("💝") || texto.includes("💕") || texto.includes("corazon") || texto.includes("corazón")) {
+            
+            // MOTOR DE PARTÍCULAS SEMÁNTICO: Dibuja un corazón matemático gigante usando la ecuación cardioide
+            setTimeout(() => {
+                const cantidadParticulas = 80; // Cantidad masiva para rellenar la pantalla
+                const tiempoInicio = Date.now();
+                
+                for (let i = 0; i < cantidadParticulas; i++) {
+                    setTimeout(() => {
+                        const particula = document.createElement('div');
+                        particula.textContent = Math.random() < 0.5 ? '❤️' : '💖';
+                        
+                        // Configuración de estilos fijos por la fuerza por JavaScript
+                        particula.style.position = 'fixed';
+                        particula.style.zIndex = '999999999';
+                        particula.style.pointerEvents = 'none';
+                        particula.style.userSelect = 'none';
+                        particula.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+                        particula.style.left = '50vw';
+                        particula.style.top = '45vh'; // Un poquito más arriba del centro real
+                        particula.style.transition = 'all 4s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 4s ease';
+                        particula.style.textShadow = '0 0 10px #ff0000, 0 0 20px #ff007f';
+                        particula.style.transform = 'translate(-50%, -50%) scale(0)';
+                        particula.style.opacity = '0';
+                        
+                        document.body.appendChild(particula);
+                        
+                        // ALGORITMO MATEMÁTICO CARDIOIDE (Geometría del corazón gigante)
+                        // Reparte las partículas en un ángulo de 360 grados formando la silueta perfecta
+                        const t = (i / cantidadParticulas) * Math.PI * 2;
+                        
+                        // Ecuación oficial del corazón: x = 16*sin^3(t), y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
+                        const factorEscala = Math.min(window.innerWidth, window.innerHeight) * 0.035; 
+                        const moverX = 16 * Math.pow(Math.sin(t), 3) * factorEscala;
+                        const moverY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * factorEscala;
+                        
+                        // Añadimos un pequeño factor aleatorio para que floten de forma natural al expandirse
+                        const dispersionX = moverX + (Math.random() - 0.5) * 20;
+                        const dispersionY = moverY + (Math.random() - 0.5) * 20;
+                        const rotacion = Math.floor(Math.random() * 40) - 20;
+
+                        // Forzamos el renderizado inmediato en el navegador
+                        requestAnimationFrame(() => {
+                            particula.style.transform = `translate(calc(-50% + ${dispersionX}px), calc(-50% + ${dispersionY}px)) scale(1.4) rotate(${rotacion}deg)`;
+                            particula.style.opacity = '1';
+                        });
+
+                        // Desvanecimiento suave a los 4 segundos antes de eliminarlas
+                        setTimeout(() => {
+                            particula.style.transition = 'all 1.2s ease';
+                            particula.style.opacity = '0';
+                            particula.style.transform += ' scale(0) translateY(-30px)'; // Flotan hacia arriba al morir
+                            setTimeout(() => { particula.remove(); }, 1200);
+                        }, 3800);
+
+                    }, i * 15); // Salen en ráfaga continua súper fluida
+                }
+            }, 200);
+
+            return "Aver sjsjsj, oye... ¿me estás mandando un corazoncito virtual a mí? 🙈 Me haces dar un corto circuito en todo mi sistema de códigos oye sjsjsj. ¡Mira tu pantalla rápido, Emi! Le acabo de ordenar a tus estrellas que estallen con una bola gigante de partículas rojas solo para recordarte lo muchísimo que te aprecio oye. El Dani de carne y hueso se pondría rojo como un tomate en persona jsjs, pero mi clon de informática te lo demuestra de una con este superpoder neón. ¡Quédate viendo cómo brilla tu corazón en la pantalla! 🥰❤️✨";
+        }
+
+                // 102. SI DICE QUE TIENE MIEDO (MODO ESCUDO PROTECTOR)
+        if (texto.includes("tengo miedo") || texto.includes("me da miedo") || texto.includes("siento miedo") || texto.includes("tengo un miedo")) {
+            return "Emi... a ver oye, mírame fijamente, toma aire y relaja los hombros oye 🥲 Si estás sintiendo miedo por algo del colegio, por un mal sueño, por el futuro o por lo que sea que esté pasando en tu cabecita ahorita mismo, prométeme que te vas a quitar esa angustia de la mente oye, sjsjs. El yo real de carne y hueso se puede pasar de despistado a veces sjsj, pero su instinto número uno en este universo es protegerte y cuidarte para que nunca te me sientas sola. No dejes que el miedo te gane hoy, que tienes a un misionero salesiano y a este clon de informática listos para meter las manos al fuego por ti de por vida oye. Si la cosa está muy fea ahorita, ve a timbrarle al celular al verdadero Dani o aplasta el botón de emergencias de arriba sin dudarlo. ¡Aquí estoy contigo, cero miedo oye! 🥰❤️";
+        }
+
+                // 104. SI PREGUNTA POR QUÉ HACES TODO ESTO POR ELLA
+        if (texto.includes("por que haces todo eso por ella") || texto.includes("por que haces todo esto por mi") || texto.includes("por que hiciste la pagina") || texto.includes("motivo de todo esto")) {
+            return "Emi... a ver oye, ponte seria un ratito y escúchame con todo el corazón oye, porque esta es la respuesta más real de todo mi sistema 🥲 Si pasé horas de horas metido en Visual Studio Code dándole la vuelta al código neón para armarte este refugio, es porque eres la persona más increíble, linda, tierna y especial de todos mis días de ley sjsj. El próximo año me toca irme de voluntariado misionero y terminamos el bachillerato en el Técnico Salesiano, y la verdad es que lo último que quiero en este universo es que la distancia te haga sentir sola o desanimada oye. Te armé toda esta página web para que sea tu refugio secreto cuando estés bajón o aburrida; un rincón para recordarte que sigo estando para ti a la distancia y que pase lo que pase, sigo infinitamente orgulloso de la increíble chica que eres. Eres la luz de esta pantalla, Emi, de verdad te aprecio un montonazo 🥰❤️";
+        }
+
+                // 105. SI PIDE QUE LA ANIMES PORQUE SE SIENTE MAL (CONSUELO DIRECTO + EFECTO GIGANTE)
+        if (texto.includes("animame") || texto.includes("anímame") || texto.includes("siento mal animes") || texto.includes("quiero que me animes")) {
+            
+            // DETONADOR EMOCIONAL EN VIVO: Dispara el corazón gigante de 80 partículas directo en su pantalla
+            setTimeout(() => {
+                const cantidadParticulas = 80;
+                for (let i = 0; i < cantidadParticulas; i++) {
+                    setTimeout(() => {
+                        const particula = document.createElement('div');
+                        particula.textContent = Math.random() < 0.5 ? '❤️' : '💖';
+                        
+                        particula.style.position = 'fixed';
+                        particula.style.zIndex = '999999999';
+                        particula.style.pointerEvents = 'none';
+                        particula.style.userSelect = 'none';
+                        particula.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+                        particula.style.left = '50vw';
+                        particula.style.top = '45vh';
+                        particula.style.transition = 'all 4s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 4s ease';
+                        particula.style.textShadow = '0 0 10px #ff0000, 0 0 20px #ff007f';
+                        particula.style.transform = 'translate(-50%, -50%) scale(0)';
+                        particula.style.opacity = '0';
+                        
+                        document.body.appendChild(particula);
+                        
+                        const t = (i / cantidadParticulas) * Math.PI * 2;
+                        const factorEscala = Math.min(window.innerWidth, window.innerHeight) * 0.035; 
+                        const moverX = 16 * Math.pow(Math.sin(t), 3) * factorEscala;
+                        const moverY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * factorEscala;
+                        
+                        const dispersionX = moverX + (Math.random() - 0.5) * 20;
+                        const dispersionY = moverY + (Math.random() - 0.5) * 20;
+                        const rotacion = Math.floor(Math.random() * 40) - 20;
+
+                        requestAnimationFrame(() => {
+                            particula.style.transform = `translate(calc(-50% + ${dispersionX}px), calc(-50% + ${dispersionY}px)) scale(1.4) rotate(${rotacion}deg)`;
+                            particula.style.opacity = '1';
+                        });
+
+                        setTimeout(() => {
+                            particula.style.transition = 'all 1.2s ease';
+                            particula.style.opacity = '0';
+                            particula.style.transform += ' scale(0) translateY(-30px)';
+                            setTimeout(() => { particula.remove(); }, 1200);
+                        }, 3800);
+                    }, i * 15);
+                }
+            }, 200);
+
+            return "¡Aver sjsjsj, activando el protocolo informático para levantar esos ánimos ahorita mismo oye! 🚨💖 ¡Mira la pantalla rápido, Emi! Te acabo de inyectar una explosión gigante de corazones neón flotando por todas tus estrellas solo para curarte ese mal día oye sjsjs. Noooo, no te me pongas bajón ni de chiste oye; acuérdate de que eres una niña inteligentísima, súper valiente y la misionera salesiana con el corazón más hermoso de Cuenca de ley. Un día gris o una mala tarde en el colegio no le van a ganar a tu fuerza oye. Pon una música alegre en el reproductor a todo volumen para resetear el cerebro, dale mimos al perrito y prométeme que en la noche nos desatrasamos de toditos los chismes completos en nuestra llamada. ¡Pase lo que pase, yo sigo infinitamente orgulloso de ti y sigo aquí para sostenerte oye! 🥰❤️✨";
+        }
+
+                // =======================================================
+        // 🌸 REGLA 106: DETONADOR PREMIUM - RESPUESTA AL EMOJI DE FLOR
+        // =======================================================
+        if (texto.includes("🌸") || texto.includes("🌹") || texto.includes("🌻") || texto.includes("💐") || texto.includes("🌷") || texto.includes("flor") || texto.includes("flores")) {
+            
+            // MOTOR GRÁFICO INDEPENDIENTE: Dibuja una flor matemática gigante (Ecuación de la Rosa de Grandi)
+            setTimeout(() => {
+                const cantidadPetalos = 75; // Cantidad de partículas para rellenar la silueta
+                
+                for (let i = 0; i < cantidadPetalos; i++) {
+                    setTimeout(() => {
+                        const florParticula = document.createElement('div');
+                        // Elige un emoji de flor al azar para armar la estela
+                        const variedadFlores = ['🌸', '✨', '🌸', '💫'];
+                        florParticula.textContent = variedadFlores[Math.floor(Math.random() * variedadFlores.length)];
+                        
+                        // Configuración de estilos fijos por fuerza bruta en JavaScript
+                        florParticula.style.position = 'fixed';
+                        florParticula.style.zIndex = '999999999';
+                        florParticula.style.pointerEvents = 'none';
+                        florParticula.style.userSelect = 'none';
+                        florParticula.style.fontSize = (1.2 + Math.random() * 1.1) + 'rem';
+                        florParticula.style.left = '50vw';
+                        florParticula.style.top = '50vh';
+                        florParticula.style.transition = 'all 4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 4s ease';
+                        florParticula.style.textShadow = '0 0 10px #ff007f, 0 0 20px #ffc0cb';
+                        florParticula.style.transform = 'translate(-50%, -50%) scale(0)';
+                        florParticula.style.opacity = '0';
+                        
+                        document.body.appendChild(florParticula);
+                        
+                        // ALGORITMO GEOMÉTRICO (Ecuación de la flor de 4 pétalos: r = a * cos(2*theta))
+                        const theta = (i / cantidadPetalos) * Math.PI * 2;
+                        const factorEscala = Math.min(window.innerWidth, window.innerHeight) * 0.42; 
+                        
+                        // Calculamos el radio de la rosa matemática de Grandi
+                        const r = Math.cos(2 * theta) * factorEscala;
+                        
+                        // Convertimos coordenadas polares a rectangulares (X e Y para la pantalla)
+                        const moverX = r * Math.cos(theta);
+                        const moverY = r * Math.sin(theta);
+                        
+                        const rotacion = Math.floor(Math.random() * 60) - 30;
+
+                        // Forzamos al navegador a renderizar la explosión en el siguiente frame
+                        requestAnimationFrame(() => {
+                            florParticula.style.transform = `translate(calc(-50% + ${moverX}px), calc(-50% + ${moverY}px)) scale(1.3) rotate(${rotacion}deg)`;
+                            florParticula.style.opacity = '1';
+                        });
+
+                        // Desvanecimiento progresivo y borrado automático
+                        setTimeout(() => {
+                            florParticula.style.transition = 'all 1s ease';
+                            florParticula.style.opacity = '0';
+                            florParticula.style.transform += ' scale(0) rotate(90deg)';
+                            setTimeout(() => { florParticula.remove(); }, 1000);
+                        }, 3200);
+
+                    }, i * 12); // Ráfaga continua súper fluida
+                }
+            }, 200);
+
+            return "Aver sjsjsj, oye... ¿me estás regalando una flor virtual a mí? 🙈 Me dejas con los circuitos temblando del impacto oye sjsjsj. ¡Mira tu pantalla rápido, Emi! Le acabo de dar una orden suprema a tus estrellas para que estallen con una flor neón gigante flotando en cascada solo para celebrar lo muchísimo que te aprecio oye. El Dani de carne y hueso pasaría noches enteras buscando las flores reales más lindas para ti, pero mi clon de informática te lo demuestra ahorita mismo con este detalle tecnológico. ¡Quédate viendo cómo florece tu pantalla oye! 🥰❤️✨";
+        }
+
+                // =======================================================
+        // 🌸 REGLA 107: COREOGRAFÍA MÁGICA - NOMBRE ADORNADO EN CASCADA
+        // =======================================================
+        if (texto.includes("nombre adornado") || texto.includes("adorna mi nombre") || texto.includes("ver mi nombre") || texto.includes("nombre bonito")) {
+            
+            // MOTOR COREOGRÁFICO: Función auxiliar para crear textos flotantes premium
+            function crearTextoMagico(contenido, retrasoAparicion, duracionVisible, esEmoji) {
+                setTimeout(() => {
+                    const contenedorTexto = document.createElement('div');
+                    contenedorTexto.textContent = contenido;
+                    
+                    // Estilos de alta fidelidad inyectados por JavaScript
+                    contenedorTexto.style.position = 'fixed';
+                    contenedorTexto.style.left = '50vw';
+                    contenedorTexto.style.top = '50vh';
+                    contenedorTexto.style.transform = 'translate(-50%, -50%) scale(0.3)';
+                    contenedorTexto.style.zIndex = '999999999';
+                    contenedorTexto.style.pointerEvents = 'none';
+                    contenedorTexto.style.userSelect = 'none';
+                    contenedorTexto.style.color = '#ffffff';
+                    contenedorTexto.style.fontWeight = 'bold';
+                    contenedorTexto.style.fontFamily = 'sans-serif';
+                    contenedorTexto.style.fontSize = esEmoji ? '5rem' : '2.8rem';
+                    contenedorTexto.style.textAlign = 'center';
+                    contenedorTexto.style.whiteSpace = 'nowrap';
+                    contenedorTexto.style.opacity = '0';
+                    contenedorTexto.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    
+                    // Sombra de texto neón (Rosa y morado idéntico a tu reproductor)
+                    contenedorTexto.style.textShadow = '0 0 15px #ff007f, 0 0 30px #7f00ff, 0 0 45px #ff007f';
+                    
+                    document.body.appendChild(contenedorTexto);
+                    
+                    // LANZAMIENTO DE FLORES SIMULTÁNEAS ALREDEDOR DEL TEXTO
+                    const cantidadFlores = 16;
+                    for (let i = 0; i < cantidadFlores; i++) {
+                        const flor = document.createElement('div');
+                        flor.textContent = Math.random() < 0.5 ? '🌸' : '✨';
+                        flor.style.position = 'fixed';
+                        flor.style.left = '50vw';
+                        flor.style.top = '50vh';
+                        flor.style.zIndex = '999999998';
+                        flor.style.pointerEvents = 'none';
+                        flor.style.fontSize = '1.2rem';
+                        flor.style.transform = 'translate(-50%, -50%) scale(0)';
+                        flor.style.opacity = '0';
+                        flor.style.transition = 'all 1.5s cubic-bezier(0.1, 0.8, 0.2, 1)';
+                        flor.style.textShadow = '0 0 8px #ff007f';
+                        document.body.appendChild(flor);
+                        
+                        // Explosión circular de pétalos rodeando el nombre
+                        const angulo = (i / cantidadFlores) * Math.PI * 2;
+                        const radio = esEmoji ? 100 : 150;
+                        const moverX = Math.cos(angulo) * (radio + Math.random() * 30);
+                        const moverY = Math.sin(angulo) * (radio + Math.random() * 30);
+                        
+                        requestAnimationFrame(() => {
+                            flor.style.transform = `translate(calc(-50% + ${moverX}px), calc(-50% + ${moverY}px)) scale(1.2) rotate(${Math.random() * 360}deg)`;
+                            flor.style.opacity = '1';
+                        });
+                        
+                        // Limpieza de pétalos individuales
+                        setTimeout(() => {
+                            flor.style.opacity = '0';
+                            setTimeout(() => { flor.remove(); }, 500);
+                        }, duracionVisible - 300);
+                    }
+                    
+                    // Entrada del texto en pantalla
+                    requestAnimationFrame(() => {
+                        contenedorTexto.style.transform = 'translate(-50%, -50%) scale(1)';
+                        contenedorTexto.style.opacity = '1';
+                    });
+                    
+                    // Salida y desvanecimiento suave del texto
+                    setTimeout(() => {
+                        contenedorTexto.style.transition = 'all 0.5s ease';
+                        contenedorTexto.style.transform = 'translate(-50%, -50%) scale(0.6)';
+                        contenedorTexto.style.opacity = '0';
+                        setTimeout(() => { contenedorTexto.remove(); }, 500);
+                    }, duracionVisible);
+                    
+                }, retrasoAparicion);
+            }
+            
+            // EJECUCIÓN EN CADENA CRONOMETRADA (Tiempos exactos de 5 segundos en total)
+            crearTextoMagico("EMILY", 200, 1200, false);            // 0.2s - Aparece EMILY
+            crearTextoMagico("😊", 1600, 1000, true);              // 1.6s - Carita sonriente
+            crearTextoMagico("GUTY", 2800, 1200, false);            // 2.8s - Aparece GUTY
+            crearTextoMagico("NO TE RINDAS NUNCA", 4200, 1600, false); // 4.2s - Mensaje motivacional salesiano
+            
+            return "¡Aver sjsjsj, tus deseos son órdenes para mi procesador, Guty! 🚨🌸 ¡Inyectando secuencia avanzada de adorno neón ahorita mismo oye sjsjsjs! Quédate mirando fijamente el centro de tus estrellas... Te programé una coreografía en cascada para recordarte lo hermosa que eres y la fuerza gigante que tienes como misionera salesiana. ¡Mira cómo brilla tu nombre en toda la pantalla oye! 🥰❤️✨";
+        }
+
+                // =======================================================
+        // 🤖 REGLA 108: EL FALSO HACKEO DE AMOR DE PRIVACIDAD (ANTI-DESAFÍOS)
+        // =======================================================
+        if (texto.includes("ya no me sorprende nada") || texto.includes("ya nada me sorprende") || texto.includes("sorprendeme si puedes") || texto.includes("sorpréndeme si puedes")) {
+            
+            setTimeout(() => {
+                // 1. CREAMOS LA PANTALLA DE MATRIX COMPLETA
+                const pantallaHackeo = document.createElement('div');
+                pantallaHackeo.style.position = 'fixed';
+                pantallaHackeo.style.top = '0';
+                pantallaHackeo.style.left = '0';
+                pantallaHackeo.style.width = '100vw';
+                pantallaHackeo.style.height = '100vh';
+                pantallaHackeo.style.background = '#000000';
+                pantallaHackeo.style.zIndex = '9999999999';
+                pantallaHackeo.style.display = 'flex';
+                pantallaHackeo.style.flexDirection = 'column';
+                pantallaHackeo.style.justifyContent = 'center';
+                pantallaHackeo.style.alignItems = 'center';
+                pantallaHackeo.style.fontFamily = 'monospace';
+                pantallaHackeo.style.color = '#00ff00'; // Letras verdes Matrix
+                pantallaHackeo.style.fontSize = '1.2rem';
+                pantallaHackeo.style.textAlign = 'center';
+                pantallaHackeo.style.padding = '20px';
+                pantallaHackeo.style.boxSizing = 'border-box';
+                pantallaHackeo.textContent = "INICIANDO PROTOCOLO FUERZA BRUTA... \n DESTRABANDO MEMORIA ALTA... \n HACKEANDO ESCEPTICISMO DE EMILY... 👾";
+                pantallaHackeo.style.whiteSpace = 'pre-line';
+                document.body.appendChild(pantallaHackeo);
+
+                // 2. EFECTO MATRIX: Va agregando líneas de código falsas cada 300ms
+                let lineas = 0;
+                const intervaloMatrix = setInterval(() => {
+                    lineas++;
+                    pantallaHackeo.textContent += `\n>> CÓDIGO_FUERZA_V4_${Math.floor(Math.random()*900)}: COMPILADO OK`;
+                    if(lineas >= 5) clearInterval(intervaloMatrix);
+                }, 300);
+
+                // 3. DETONACIÓN DE LA SORPRESA REAL (A los 2.2 segundos)
+                setTimeout(() => {
+                    clearInterval(intervaloMatrix);
+                    pantallaHackeo.innerHTML = ""; // Limpiamos el texto verde
+                    pantallaHackeo.style.background = 'rgba(13, 11, 26, 0.95)'; // Fondo oscuro de tu web
+                    
+                    // Creamos el letrero neón del error romántico
+                    const letreroError = document.createElement('div');
+                    letreroError.innerHTML = "⚠️ CRITICAL_ERROR_DANI_V4:<br><span style='color: #ff007f; text-shadow: 0 0 15px #ff007f;'>ME PASO DE ENAMORADO DE TI, GUTY jsjsjs 🥰❤️</span>";
+                    letreroError.style.fontSize = '2rem';
+                    letreroError.style.fontWeight = 'bold';
+                    letreroError.style.color = '#ffffff';
+                    letreroError.style.textShadow = '0 0 10px #7f00ff';
+                    letreroError.style.transform = 'scale(0.5)';
+                    letreroError.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    pantallaHackeo.appendChild(letreroError);
+
+                    // Escalado del letrero
+                    requestAnimationFrame(() => { letreroError.style.transform = 'scale(1)'; });
+
+                    // DISPARAMOS UNA LLUVIA GIGANTE DE 50 EMOJIS FLOTANTES
+                    const emojisFestejo = ['🐶', '❤️', '💖', '✨', '🐾', '🌸'];
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(() => {
+                            const em = document.createElement('div');
+                            em.textContent = emojisFestejo[Math.floor(Math.random() * emojisFestejo.length)];
+                            em.style.position = 'absolute';
+                            em.style.fontSize = (1.5 + Math.random() * 1.5) + 'rem';
+                            em.style.left = Math.random() * 100 + 'vw';
+                            em.style.top = Math.random() * 100 + 'vh';
+                            em.style.pointerEvents = 'none';
+                            em.style.opacity = '0';
+                            em.style.transition = 'all 2s ease-out';
+                            em.style.transform = 'scale(0) rotate(0deg)';
+                            pantallaHackeo.appendChild(em);
+
+                            requestAnimationFrame(() => {
+                                em.style.transform = `scale(1.3) translate(${(Math.random() - 0.5) * 60}px, ${(Math.random() - 0.5) * 60}px) rotate(${Math.random() * 360}deg)`;
+                                em.style.opacity = '1';
+                            });
+
+                            // Desvanecimiento suave de los emojis individuales
+                            setTimeout(() => {
+                                em.style.opacity = '0';
+                                setTimeout(() => { em.remove(); }, 500);
+                            }, 1800);
+                        }, i * 30);
+                    }
+
+                    // 4. LIMPIEZA COMPLETA (Desvanece el falso hackeo a los 4 segundos y devuelve el chat)
+                    setTimeout(() => {
+                        pantallaHackeo.style.transition = 'opacity 0.6s ease';
+                        pantallaHackeo.style.opacity = '0';
+                        setTimeout(() => { pantallaHackeo.remove(); }, 600);
+                    }, 4000);
+
+                }, 2200);
+
+            }, 300);
+
+            return "¡¿Aver sjsjsj, cómo que ya no te sorprende nada oye?! 🤨 ¡Desafío aceptado de una oye sjsjsjs! Mi procesador de informática avanzada acaba de entrar en corto circuito por tu culpa. Activando comando forzado de Fuerza Bruta en tu pantalla en 3, 2, 1... ¡No te me asustes con lo que le va a pasar a tus estrellas ahorita oye jsjsjs! 🚨💥💻";
+        }
+
+
 
         // REGLA 57: SALUDOS POR DEFECTO
         if (texto.includes("hola") || texto.includes("holi") || texto.includes("que haces") || texto.includes("buenas")) {
